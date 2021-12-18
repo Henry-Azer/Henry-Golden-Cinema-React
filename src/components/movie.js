@@ -3,14 +3,14 @@ import React from "react";
 import Header from "./global/header";
 import Footer from "./global/footer";
 
-const Home = () => {
+const Movie = () => {
     return (
-        <section className="home-route">
+        <section className="movie-route">
             <Header />
-            <h1>Home Page</h1>
+            <h1>Movie Page</h1>
             <Footer />
         </section>
     );
 };
 
-export default Home;
+export default Movie;
