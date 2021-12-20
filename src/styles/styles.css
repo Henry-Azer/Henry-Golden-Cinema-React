@@ -1,11 +1,38 @@
 /* ----- GLOBAL PROPS START ----- */
+::-webkit-scrollbar {
+    display: none;
+}
+
 ::root {
 }
 
 * {
+    font-family: "Century Gothic";
+    font-weight: 300;
 }
 
 body {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: "Century Gothic";
+    src: local("GOTHIC"), url(../../resources/fonts/GOTHIC.TTF) format("TTF");
+}
+
+.btn-1 {
+    height: 40px;
+    width: 150px;
+    margin: 10px 0;
+    color: white;
+    background-color: #e5890a;
+    font-size: 18px;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
 }
 /* ----- GLOBAL PROPS END ----- */
 
@@ -48,6 +75,106 @@ body {
 
 /* ----- MOVIE ROUTE START ----- */
 .movie-route {
+    background: url("../..//resources/backgrounds/Requirements-01.png");
+    color: rgb(231, 230, 230);
+    padding: 100px 0;
+}
+
+.movie-route .movie-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: 0 220px;
+}
+
+.movie-wrapper .movie-details {
+    flex: 40%;
+}
+
+.movie-details img {
+    width: 230px;
+    height: 300px;
+    -webkit-box-shadow: 15px 19px 12px -6px rgba(0, 0, 0, 0.47);
+    box-shadow: 15px 19px 12px -6px rgba(0, 0, 0, 0.47);
+}
+
+.movie-details .MuiTypography-h4 {
+    padding-top: 10px;
+    color: white;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.movie-details .MuiTypography-subtitle1 {
+    font-size: 15px;
+}
+
+.movie-details .rate-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.movie-details .details-wrapper {
+    padding: 25px 0;
+}
+
+.rate-wrapper img {
+    width: 30px;
+    height: 20px;
+    box-shadow: none;
+}
+
+.movie-wrapper .movie-booking {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    flex: 60%;
+    gap: 50px;
+}
+
+.movie-booking .booking-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-booking .booking-form .btn-1 {
+    margin-top: 50px;
+}
+
+.movie-booking .movie-trailer .MuiTypography-h5 {
+    font-size: 28px;
+}
+
+.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root,
+.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+    color: rgb(185, 185, 185) !important;
+}
+
+.css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon,
+.css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon {
+    color: #e5890a !important;
+}
+
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+    background: url("../..//resources/backgrounds/Requirements-01.png") !important;
+}
+
+.css-1480iag-MuiInputBase-root-MuiInput-root,
+.css-6hp17o-MuiList-root-MuiMenu-list {
+    color: white !important;
+}
+
+.css-1480iag-MuiInputBase-root-MuiInput-root:before {
+    border-bottom: 1px solid #e5890a !important;
+}
+
+.css-1480iag-MuiInputBase-root-MuiInput-root:after {
+    border-bottom: 2px solid #e5890a !important;
 }
 /* ----- MOVIE ROUTE END ----- */
 
@@ -70,7 +197,47 @@ body {
 /* ----- CHAT-BOT START ----- */
 .chat-bot {
 }
+
+@import url("https://fonts.googleapis.com/css?family=Heebo:300&display=swap");
+
+.bot {
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+    position: fixed;
+    width: 350px;
+    z-index: 94;
+}
+
+.btn {
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    bottom: 40px;
+    right: 40px;
+    margin-bottom: 30px;
+    float: right;
+    background-color: #1e524c;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+}
+.btn:hover {
+    opacity: 0.9;
+}
+.btn:focus {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.img {
+    height: 200px;
+    width: 300px;
+}
 /* ----- CHAT-BOT END ----- */
 
 /* -------------------------------------------------------- */
-

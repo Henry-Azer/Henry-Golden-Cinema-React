@@ -11,6 +11,6 @@ const Bookings = () => {
             <Footer />
         </section>
     );
-};
+};  
 
 export default Bookings;

@@ -4,7 +4,7 @@ const Login = () => {
     return (
         <section className="login-route">
             <h1>Login Page</h1>
-        </section>
+        </section> 
     );
 };
 
