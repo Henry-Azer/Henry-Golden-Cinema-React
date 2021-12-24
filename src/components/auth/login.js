@@ -28,7 +28,7 @@ const Login = () => {
         <section className="login-route">
             <div className="reg-log-wrapper display-flex">
                 <Box
-                    className="home-link display-flex flex-row"
+                    className="logo-wrapper display-flex flex-row"
                     onClick={() => navigate("/")}
                 >
                     <img src={logoImg} className="logo-img" alt="logo-img" />

@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 import logoName from "../../resources/images/Requirements-02.png";
-
-import Typography from "@mui/material/Typography";
+import logoImg from "../../resources/images/Requirements-03.png";
 
 import {
     FaGithub,
@@ -14,12 +17,27 @@ import {
 } from "react-icons/fa";
 
 const Footer = () => {
+    const navigate = useNavigate();
+    
     return (
         <section className="footer-section">
             <div className="footer-wrapper display-flex">
                 <div className="social-wrapper display-flex flex-row">
-                    <img src={logoName} alt="logo-name" />
-
+                    <Box
+                        className="logo-wrapper display-flex flex-row"
+                        onClick={() => navigate("/")}
+                    >
+                        <img
+                            src={logoImg}
+                            className="logo-img"
+                            alt="logo-img"
+                        />
+                        <img
+                            src={logoName}
+                            className="logo-name"
+                            alt="logo-name"
+                        />
+                    </Box>
                     <div className="social-container">
                         <FaFacebookF
                             className="social-icon"
