@@ -19,6 +19,9 @@
 body {
     margin: 0;
     padding: 0;
+    background: url("/src/resources/backgrounds/Requirements-01.png") fixed
+        no-repeat center;
+    color: var(--fontColor);
 }
 
 @font-face {
@@ -35,6 +38,19 @@ body {
 
 .flex-row {
     flex-direction: row;
+}
+
+.content-fit {
+    padding: 150px 0;
+    margin: 0 220px;
+}
+
+.prevent-drag {
+    user-drag: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
 }
 
 .btn-1 {
@@ -88,7 +104,6 @@ body {
     position: fixed;
     height: 10vh;
     width: 100%;
-    color: var(--fontColor);
     background-color: var(--main3rdColor);
     z-index: 99;
 }
@@ -121,7 +136,8 @@ body {
 
 .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
     width: 120px;
-    background: url("/src/resources/backgrounds/Requirements-01.png") fixed no-repeat cover;
+    background: url("/src/resources/backgrounds/Requirements-01.png") fixed
+        no-repeat cover;
 }
 /* ----- HEADER SECTION END ----- */
 
@@ -131,7 +147,6 @@ body {
 .footer-section {
     height: 20vh;
     padding: 25px 0;
-    color: var(--fontColor);
     background-color: var(--main3rdColor);
 }
 
@@ -168,7 +183,6 @@ body {
 .register-route {
     background: url("/src/resources/backgrounds/Requirements-04.png") no-repeat
         center;
-    color: var(--fontColor);
     height: 100vh;
 }
 /* ----- REGISTER ROUTE END ----- */
@@ -219,7 +233,6 @@ body {
 .login-route {
     background: url("/src/resources/backgrounds/Requirements-04.png") fixed
         no-repeat center;
-    color: var(--fontColor);
     height: 100vh;
 }
 
@@ -243,18 +256,8 @@ body {
 /* -------------------------------------------------------- */
 
 /* ----- MOVIE ROUTE START ----- */
-.movie-route {
-    background: url("/src/resources/backgrounds/Requirements-01.png") fixed
-        no-repeat center;
-    color: var(--fontColor);
-}
-
 .movie-route .movie-wrapper {
-    display: flex;
-    flex-direction: row;
     gap: 20px;
-    padding: 100px;
-    margin: 0 220px;
 }
 
 .movie-wrapper .movie-details {
@@ -280,14 +283,15 @@ body {
 }
 
 .movie-details .rate-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     gap: 10px;
 }
 
 .movie-details .details-wrapper {
     padding: 25px 0;
+}
+
+.rate-wrapper {
+    justify-content: flex-start;
 }
 
 .rate-wrapper img {
@@ -297,19 +301,8 @@ body {
 }
 
 .movie-wrapper .movie-booking {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
     flex: 60%;
     gap: 50px;
-}
-
-.movie-booking .booking-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .movie-booking .booking-form .btn-1 {
@@ -339,6 +332,10 @@ body {
     color: white !important;
 }
 
+.css-6hp17o-MuiList-root-MuiMenu-list li {
+    justify-content: center !important;
+}
+
 .css-1480iag-MuiInputBase-root-MuiInput-root:before {
     border-bottom: 1px solid #e5890a !important;
 }
@@ -358,7 +355,52 @@ body {
 /* -------------------------------------------------------- */
 
 /* ----- BOOKINGS ROUTE START ----- */
-.bookings-route {
+.bookings-wrapper .bookings {
+    margin-top: 40px;
+}
+
+.bookings-wrapper .bookings .Collapsible {
+    margin-top: 20px;
+}
+
+.bookings .Collapsible span {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.bookings .Collapsible span::after {
+    content: "";
+    padding-top: 15px;
+    border-bottom: 1px solid var(--mainColor);
+    width: 100%;
+    display: block;
+}
+
+.bookings .Collapsible__trigger svg {
+    color: var(--mainColor);
+    transition: all 0.5s;
+    float: right;
+}
+
+.bookings .Collapsible__trigger.is-open svg {
+    transform: rotate(-90deg);
+    color: var(--mainColor);
+    transition: all 0.5s;
+}
+
+.bookings .ticket-wrapper img {
+    width: 450px;
+    height: 230px;
+}
+
+.bookings .ticket-operations a {
+    color: var(--font2ndColor);
+}
+
+/* Isn't flexible */
+.bookings-wrapper .ticket-operations {
+    justify-content: space-between;
+    margin: 0 250px;
 }
 /* ----- BOOKINGS ROUTE END ----- */
 

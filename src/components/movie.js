@@ -60,7 +60,7 @@ const Movie = () => {
     return (
         <section className="movie-route">
             <Header />
-            <div className="movie-wrapper">
+            <div className="movie-wrapper display-flex flex-row content-fit">
                 <div className="movie-details">
                     <img
                         src="https://assets.voxcinemas.com/posters/P_HO00006784.jpg"
@@ -74,7 +74,7 @@ const Movie = () => {
                             </b>
                         </Typography>
 
-                        <div className="rate-wrapper">
+                        <div className="rate-wrapper display-flex flex-row">
                             <Typography variant="subtitle1" component="div">
                                 <b>Rate:</b> &emsp;&emsp;&emsp; 8.3/10
                             </Typography>
@@ -130,8 +130,8 @@ const Movie = () => {
                         </Typography>
                     </Box>
                 </div>
-                <div className="movie-booking">
-                    <div className="booking-form">
+                <div className="movie-booking display-flex">
+                    <div className="booking-form display-flex">
                         <FormControl
                             variant="standard"
                             sx={{ m: 1, minWidth: 500 }}
