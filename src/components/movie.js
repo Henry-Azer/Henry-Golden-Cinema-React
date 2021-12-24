@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import YouTube from "react-youtube";
 
@@ -15,9 +15,13 @@ import Header from "./global/header";
 import Footer from "./global/footer";
 
 const Movie = () => {
-    const [movieDate, setMovieDate] = React.useState("");
-    const [movieTime, setMovieTime] = React.useState("");
-    const [ticketsNumber, setTicketsNumber] = React.useState("");
+    const [movieDate, setMovieDate] = useState("");
+    const [movieTime, setMovieTime] = useState("");
+    const [ticketsNumber, setTicketsNumber] = useState("");
+
+     useEffect(() => {
+        document.title = "Movie | Henry Golden Cinema";
+    });
 
     const handleMovieDateChange = (event) => {
         setMovieDate(event.target.value);

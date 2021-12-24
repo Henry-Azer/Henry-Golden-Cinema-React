@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Formik } from "formik";
@@ -20,10 +20,17 @@ const Login = () => {
 
     const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
+    useEffect(() => {
+        document.title = "Login | Henry Golden Cinema";
+    });
+
     return (
         <section className="login-route">
             <div className="reg-log-wrapper display-flex">
-                <Box className="home-link display-flex flex-row" onClick={() => navigate("/")}>
+                <Box
+                    className="home-link display-flex flex-row"
+                    onClick={() => navigate("/")}
+                >
                     <img src={logoImg} className="logo-img" alt="logo-img" />
                     <img src={logoName} className="logo-name" alt="logo-name" />
                 </Box>
