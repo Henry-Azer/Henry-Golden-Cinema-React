@@ -147,38 +147,38 @@ const Login = () => {
                     </Typography>
 
                     <div className="social-container">
-                        <Button className="social-btn">
-                            <FaGithub
-                                className="social-icon"
-                                onClick={() =>
-                                    window.open(
-                                        "https://github.com/Henry-Azer",
-                                        "_blank"
-                                    )
-                                }
-                            />
+                        <Button
+                            className="social-btn"
+                            onClick={() =>
+                                window.open(
+                                    "https://github.com/Henry-Azer",
+                                    "_blank"
+                                )
+                            }
+                        >
+                            <FaGithub className="social-icon" />
                         </Button>
-                        <Button className="social-btn">
-                            <FaLinkedinIn
-                                className="social-icon"
-                                onClick={() =>
-                                    window.open(
-                                        "https://www.linkedin.com/in/henry-azer-1220121a7",
-                                        "_blank"
-                                    )
-                                }
-                            />
+                        <Button
+                            className="social-btn"
+                            onClick={() =>
+                                window.open(
+                                    "https://www.linkedin.com/in/henry-azer-1220121a7",
+                                    "_blank"
+                                )
+                            }
+                        >
+                            <FaLinkedinIn className="social-icon" />
                         </Button>
-                        <Button className="social-btn">
-                            <FaFacebookF
-                                className="social-icon"
-                                onClick={() =>
-                                    window.open(
-                                        "https://www.facebook.com/HeNaRyAzEr",
-                                        "_blank"
-                                    )
-                                }
-                            />
+                        <Button
+                            className="social-btn"
+                            onClick={() =>
+                                window.open(
+                                    "https://www.facebook.com/HeNaRyAzEr",
+                                    "_blank"
+                                )
+                            }
+                        >
+                            <FaFacebookF className="social-icon" />
                         </Button>
                     </div>
                 </div>

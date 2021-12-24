@@ -85,9 +85,12 @@ body {
 
 /* ----- Header SECTION START ----- */
 .header-section {
+    position: fixed;
+    height: 10vh;
+    width: 100%;
     color: var(--fontColor);
     background-color: var(--main3rdColor);
-    height: 10vh;
+    z-index: 99;
 }
 
 .header-section .header-wrapper {
@@ -126,10 +129,10 @@ body {
 
 /* ----- FOOTER SECTION START ----- */
 .footer-section {
-    color: var(--fontColor);
-    background-color: var(--main3rdColor);
     height: 20vh;
     padding: 25px 0;
+    color: var(--fontColor);
+    background-color: var(--main3rdColor);
 }
 
 .social-wrapper .logo-wrapper {

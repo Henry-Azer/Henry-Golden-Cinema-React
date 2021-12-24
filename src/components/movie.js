@@ -9,8 +9,6 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-// import BackgroundOne from '../..//resources/backgrounds/Requirements-01.png';
-
 import Header from "./global/header";
 import Footer from "./global/footer";
 
