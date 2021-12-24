@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
@@ -18,6 +17,7 @@ const Header = () => {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
@@ -89,8 +89,12 @@ const Header = () => {
                             "aria-labelledby": "basic-button",
                         }}
                     >
-                        <MenuItem onClick={handleClose}>Log in</MenuItem>
-                        <MenuItem onClick={handleClose}>Register</MenuItem>
+                        <MenuItem onClick={() => navigate("/login")}>
+                            Log in
+                        </MenuItem>
+                        <MenuItem onClick={() => navigate("/register")}>
+                            Register
+                        </MenuItem>
                     </Menu>
                 </div>
             </div>
