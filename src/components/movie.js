@@ -57,7 +57,7 @@ const Movie = () => {
 
     return (
         <section className="movie-route">
-            {/* <Header /> */}
+            <Header />
             <div className="movie-wrapper">
                 <div className="movie-details">
                     <img
@@ -102,16 +102,15 @@ const Movie = () => {
                                 gutterBottom
                                 component="div"
                             >
-                                <b>Writer:</b> &emsp;&emsp;&nbsp; Hassan
-                                Shakoosh
+                                <b>Writer:</b> &emsp;&emsp;&nbsp; Joseph Emad
                             </Typography>
                             <Typography
                                 variant="subtitle1"
                                 gutterBottom
                                 component="div"
                             >
-                                <b>Stars:</b> &emsp;&emsp;&ensp;&nbsp; bavly
-                                ashraf, alper ashraf
+                                <b>Stars:</b> &emsp;&emsp;&ensp;&nbsp; Bavly
+                                Ashraf, Alper Ashraf
                             </Typography>
                         </div>
 
@@ -136,14 +135,14 @@ const Movie = () => {
                             sx={{ m: 1, minWidth: 500 }}
                         >
                             <InputLabel id="demo-simple-select-standard-label">
-                                Choose date
+                                Date
                             </InputLabel>
                             <Select
                                 labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard"
                                 value={movieDate}
                                 onChange={handleMovieDateChange}
-                                label="Choose date"
+                                label="Date"
                             >
                                 <MenuItem value="">
                                     <em>None</em>
@@ -162,19 +161,19 @@ const Movie = () => {
                                 </MenuItem>
                             </Select>
                         </FormControl>
-                         <FormControl
+                        <FormControl
                             variant="standard"
                             sx={{ m: 1, minWidth: 500 }}
                         >
                             <InputLabel id="demo-simple-select-standard-label">
-                                Choose Tickets Number
+                                Time
                             </InputLabel>
                             <Select
                                 labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard"
                                 value={movieTime}
                                 onChange={handleMovieTimeChange}
-                                label="Choose Time"
+                                label="Time"
                             >
                                 <MenuItem value="">
                                     <em>None</em>
@@ -190,14 +189,14 @@ const Movie = () => {
                             sx={{ m: 1, minWidth: 500 }}
                         >
                             <InputLabel id="demo-simple-select-standard-label">
-                                Choose Tickets Number
+                                Tickets Number
                             </InputLabel>
                             <Select
                                 labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard"
                                 value={ticketsNumber}
                                 onChange={handleTicketsNumberChange}
-                                label="Choose Tickets Number"
+                                label="Tickets Number"
                             >
                                 <MenuItem value="">
                                     <em>None</em>
@@ -227,7 +226,7 @@ const Movie = () => {
                     </div>
                 </div>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </section>
     );
 };

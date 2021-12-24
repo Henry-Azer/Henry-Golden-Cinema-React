@@ -209,7 +209,6 @@ const GoldenChatbot = (props) => {
                             id: "update-gender",
                             update: "gender",
                             trigger: "7",
-                            
                         },
                         {
                             id: "update-age",
