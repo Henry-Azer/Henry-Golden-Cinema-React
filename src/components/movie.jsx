@@ -11,13 +11,14 @@ import Select from "@mui/material/Select";
 
 import Header from "./global/header";
 import Footer from "./global/footer";
+import Chatbot from "./global/chatbot";
 
 const Movie = () => {
     const [movieDate, setMovieDate] = useState("");
     const [movieTime, setMovieTime] = useState("");
     const [ticketsNumber, setTicketsNumber] = useState("");
 
-     useEffect(() => {
+    useEffect(() => {
         document.title = "Movie | Henry Golden Cinema";
     });
 
@@ -60,6 +61,7 @@ const Movie = () => {
     return (
         <section className="movie-route">
             <Header />
+            <Chatbot />
             <div className="movie-wrapper display-flex flex-row content-fit">
                 <div className="movie-details">
                     <img

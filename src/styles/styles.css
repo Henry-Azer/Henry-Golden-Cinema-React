@@ -67,6 +67,11 @@ body {
     cursor: pointer;
 }
 
+.btn-hover:hover {
+    opacity: 0.8;
+    transition: 0.4s all;
+}
+
 .social-container .social-btn {
     color: var(--main3rdColor);
     background-color: var(--fontColor);
@@ -145,9 +150,13 @@ body {
 
 /* ----- FOOTER SECTION START ----- */
 .footer-section {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     height: 20vh;
     padding: 25px 0;
     background-color: var(--main3rdColor);
+    z-index: 99;
 }
 
 .social-wrapper .logo-wrapper {
@@ -249,7 +258,8 @@ body {
 /* -------------------------------------------------------- */
 
 /* ----- HOME ROUTE START ----- */
-.home-route {
+.home-route .home-wrapper {
+    padding: 100px 0;
 }
 /* ----- HOME ROUTE END ----- */
 
@@ -408,47 +418,33 @@ body {
 
 /* ----- CHAT-BOT START ----- */
 .chat-bot {
-}
-
-@import url("https://fonts.googleapis.com/css?family=Heebo:300&display=swap");
-
-.bot {
-    bottom: 0;
-    right: 0;
-    margin: 10px;
     position: fixed;
-    width: 350px;
-    z-index: 94;
+    z-index: 999;
 }
 
-.btn {
-    margin: 5px;
-    width: 40px;
-    height: 40px;
-    bottom: 40px;
-    right: 40px;
-    margin-bottom: 30px;
-    float: right;
-    background-color: #1e524c;
-    color: #fff;
+.chat-bot .bot-wrapper {
+    position: fixed;
+    bottom: 148px;
+    right: 148px;
+}
+
+.chat-bot .bot-btn-container {
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+}
+
+.bot-btn-container .bot-btn {
+    margin: 8px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    font-size: 22px;
     border-radius: 50px;
-    text-align: center;
-    box-shadow: 2px 2px 3px #999;
-}
-.btn:hover {
-    opacity: 0.9;
-}
-.btn:focus {
-    outline: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-.img {
-    height: 200px;
-    width: 300px;
+    color: var(--fontColor);
+    background-color: var(--mainColor);
+    box-shadow: 1px 1px 2px var(--fontColor);
+    cursor: pointer;
 }
 /* ----- CHAT-BOT END ----- */
 

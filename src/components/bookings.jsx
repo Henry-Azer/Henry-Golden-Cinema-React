@@ -8,6 +8,7 @@ import { FaCaretLeft } from "react-icons/fa";
 
 import Header from "./global/header";
 import Footer from "./global/footer";
+import ChatBot from "./global/chatbot";
 
 import Ticket from "../resources/images/Requirements-07.png";
 import TicketInfo from "../resources/images/Requirements-06.png";
@@ -16,6 +17,7 @@ const Bookings = () => {
     return (
         <section className="bookings-route">
             <Header />
+            <ChatBot />
 
             <div className="bookings-wrapper content-fit">
                 <Typography variant="h3" component="div">
@@ -46,7 +48,7 @@ const Bookings = () => {
                             </a>
                         </div>
                     </Collapsible>
-                   <Collapsible
+                    <Collapsible
                         trigger={["Spider Man Far From Home", <FaCaretLeft />]}
                     >
                         <div className="ticket-wrapper display-flex flex-row">

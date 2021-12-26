@@ -3,23 +3,20 @@ import PropTypes from "prop-types";
 
 import ChatBot from "react-simple-chatbot";
 
-import { FaRobot } from "react-icons/fa";
+import { FaComments } from "react-icons/fa";
 import { ThemeProvider } from "styled-components";
-
-import Header from "./global/header";
-import Footer from "./global/footer";
 
 // ChatBot theme provider
 const theme = {
     background: "#f5f8fb",
-    fontFamily: "Heebo",
-    headerBgColor: "#0f4d4a",
+    fontFamily: "Century Gothic",
+    headerBgColor: "#e5890a",
     headerFontColor: "#fff",
-    headerFontSize: "15px",
-    botBubbleColor: "#0f4d4a",
+    headerFontSize: "17px",
+    botBubbleColor: "#3a3a3a",
     botFontColor: "#fff",
-    userBubbleColor: "#fff",
-    userFontColor: "#4a4a4a",
+    userBubbleColor: "#e5890a",
+    userFontColor: "#fff",
 };
 
 // ChatBot config props
@@ -28,7 +25,7 @@ const config = {
     height: "400px",
     hideUserAvatar: false,
     placeholder: "Type your response.",
-    headerTitle: "ChatBot",
+    headerTitle: "Golden Chatbot",
 };
 
 class Review extends Component {
@@ -84,7 +81,7 @@ Review.defaultProps = {
 };
 
 const GoldenChatbot = (props) => {
-    let [showChat, setShowChat] = useState(false);
+    let [showChat, setShowChat] = useState(true);
 
     const startChat = () => {
         setShowChat(true);
@@ -94,12 +91,11 @@ const GoldenChatbot = (props) => {
     };
 
     return (
-        <div className="chatbot-route">
-            <Header />
-
+        <div className="chat-bot">
             <ThemeProvider theme={theme}>
                 <div style={{ display: showChat ? "none" : "" }}>
                     <ChatBot
+                        className="bot-wrapper"
                         speechSynthesis={{ enable: true, lang: "en-US" }}
                         recognitionEnable={true}
                         steps={[
@@ -236,19 +232,24 @@ const GoldenChatbot = (props) => {
                         {...config}
                     />
                 </div>
-                <div>
+                <div className="bot-btn-container">
                     {!showChat ? (
-                        <button className="btn" onClick={() => startChat()}>
-                            <FaRobot />
+                        <button
+                            className="bot-btn btn-hover"
+                            onClick={() => startChat()}
+                        >
+                            <FaComments />
                         </button>
                     ) : (
-                        <button className="btn" onClick={() => hideChat()}>
-                            <FaRobot />
+                        <button
+                            className="bot-btn btn-hover"
+                            onClick={() => hideChat()}
+                        >
+                            <FaComments />
                         </button>
                     )}
                 </div>
             </ThemeProvider>
-            <Footer />
         </div>
     );
 };

@@ -2,16 +2,18 @@ import React, { useEffect } from "react";
 
 import Header from "./global/header";
 import Footer from "./global/footer";
+import ChatBot from "./global/chatbot";
 
 const Home = () => {
     useEffect(() => {
         document.title = "Home | Henry Golden Cinema";
     });
-    
+
     return (
         <section className="home-route">
             <Header />
-            <h1>Home Page 1</h1>
+            <ChatBot />
+            <div className="home-wrapper content-fit"></div>
             <Footer />
         </section>
     );

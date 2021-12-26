@@ -5,9 +5,9 @@ import Home from "./components/home";
 import Movie from "./components/movie";
 import Movies from "./components/movies";
 import Bookings from "./components/bookings";
+import AboutUs from "./components/about-us";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
-import GoldenChatBot from "./components/chatbot";
 
 const routes = () => {
     return (
@@ -16,7 +16,7 @@ const routes = () => {
             <Route exact path="/movies" element={<Movies />} />
             <Route exact path="/movie" element={<Movie />} />
             <Route exact path="/bookings" element={<Bookings />} />
-            <Route exact path="/chatbot" element={<GoldenChatBot />} />
+            <Route exact path="/about-us" element={<AboutUs />} />
             <Route exact path="/register" element={<Register />} />
             <Route exact path="/login" element={<Login />} />
         </Routes>
