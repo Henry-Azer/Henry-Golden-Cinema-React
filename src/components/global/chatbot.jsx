@@ -1,4 +1,5 @@
 import React, { useState, Component } from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import ChatBot from "react-simple-chatbot";
@@ -8,20 +9,20 @@ import { ThemeProvider } from "styled-components";
 
 // ChatBot theme provider
 const theme = {
-    background: "#f5f8fb",
+    background: "#f2f2f2",
     fontFamily: "Century Gothic",
     headerBgColor: "#e5890a",
-    headerFontColor: "#fff",
+    headerFontColor: "#f2f2f2",
     headerFontSize: "17px",
     botBubbleColor: "#3a3a3a",
-    botFontColor: "#fff",
+    botFontColor: "#f2f2f2",
     userBubbleColor: "#e5890a",
-    userFontColor: "#fff",
+    userFontColor: "#f2f2f2",
 };
 
 // ChatBot config props
 const config = {
-    width: "300px",
+    width: "320px",
     height: "400px",
     hideUserAvatar: false,
     placeholder: "Type your response.",
@@ -81,7 +82,8 @@ Review.defaultProps = {
 };
 
 const GoldenChatbot = (props) => {
-    let [showChat, setShowChat] = useState(true);
+    const navigate = useNavigate();
+    const [showChat, setShowChat] = useState(true);
 
     const startChat = () => {
         setShowChat(true);
@@ -96,55 +98,100 @@ const GoldenChatbot = (props) => {
                 <div style={{ display: showChat ? "none" : "" }}>
                     <ChatBot
                         className="bot-wrapper"
-                        speechSynthesis={{ enable: true, lang: "en-US" }}
                         recognitionEnable={true}
                         steps={[
                             {
-                                id: "1",
-                                message: "What is your name?",
-                                trigger: "name",
+                                id: "start",
+                                message: "Hello Guest! I'm here to help you.",
+                                trigger: "2",
                             },
                             {
-                                id: "name",
-                                user: true,
+                                id: "2",
+                                message: "How can I help you!",
                                 trigger: "3",
                             },
                             {
                                 id: "3",
-                                message:
-                                    "Hi {previousValue}! What is your gender?",
-                                trigger: "gender",
-                            },
-                            {
-                                id: "gender",
                                 options: [
                                     {
-                                        value: "male",
-                                        label: "Male",
-                                        trigger: "5",
+                                        label: "Logging",
+                                        value: "login",
+                                        trigger: () => navigate("/login"),
                                     },
                                     {
-                                        value: "female",
-                                        label: "Female",
-                                        trigger: "5",
+                                        label: "Movies",
+                                        value: "movies",
+                                        trigger: () => navigate("/movies"),
+                                    },
+                                    {
+                                        label: "Bookings",
+                                        value: "bookings",
+                                        trigger: "bookings",
+                                    },
+                                    {
+                                        label: "Rate us",
+                                        value: "rate",
+                                        trigger: "4",
+                                    },
+                                    {
+                                        label: "I'm fine",
+                                        value: "fine",
+                                        trigger: "end",
                                     },
                                 ],
                             },
                             {
-                                id: "5",
-                                message: "How old are you?",
-                                trigger: "age",
+                                id: "bookings",
+                                message:
+                                    "Ohh, You are too lazy! Find out Bookings in the header.",
+                                trigger: "loop",
                             },
                             {
-                                id: "age",
-                                user: true,
+                                id: "4",
+                                message:
+                                    "Is this your first time in our website?",
+                                trigger: "5",
+                            },
+                            {
+                                id: "5",
+                                options: [
+                                    {
+                                        label: "Yes",
+                                        value: true,
+                                        trigger: "first",
+                                    },
+                                    {
+                                        label: "No!",
+                                        value: false,
+                                        trigger: "regular",
+                                    },
+                                ],
+                            },
+                            {
+                                id: "first",
+                                message: "Great, Our family has grown up!",
+                                trigger: "6",
+                            },
+                            {
+                                id: "regular",
+                                message: "Awesome! Welcome in your home again.",
+                                trigger: "6",
+                            },
+                            {
+                                id: "6",
+                                message: "How you rate our website? (1 to 10):",
                                 trigger: "7",
+                            },
+                            {
+                                id: "7",
+                                user: true,
+                                trigger: "8",
                                 validator: (value) => {
                                     if (isNaN(value)) {
                                         return "value must be a number";
                                     } else if (value < 0) {
                                         return "value must be positive";
-                                    } else if (value > 120) {
+                                    } else if (value > 10) {
                                         return `${value}? Come on!`;
                                     }
 
@@ -152,80 +199,39 @@ const GoldenChatbot = (props) => {
                                 },
                             },
                             {
-                                id: "7",
-                                message: "Great! Check out your summary",
-                                trigger: "review",
+                                id: "8",
+                                message: "It's {previousValue}! Looks good.",
+                                trigger: "9",
                             },
                             {
-                                id: "review",
-                                component: <Review />,
-                                asMessage: true,
-                                trigger: "update",
+                                id: "9",
+                                message: "Thanks for your time!",
+                                trigger: "loop",
                             },
                             {
-                                id: "update",
-                                message: "Would you like to update some field?",
-                                trigger: "update-question",
+                                id: "loop",
+                                message: "Wanna something else?",
+                                trigger: "loop-options",
                             },
                             {
-                                id: "update-question",
+                                id: "loop-options",
                                 options: [
                                     {
-                                        value: "yes",
                                         label: "Yes",
-                                        trigger: "update-yes",
+                                        value: true,
+                                        trigger: "2",
                                     },
                                     {
-                                        value: "no",
-                                        label: "No",
-                                        trigger: "end-message",
+                                        label: "No!",
+                                        value: false,
+                                        trigger: "end",
                                     },
                                 ],
                             },
                             {
-                                id: "update-yes",
-                                message: "What field would you like to update?",
-                                trigger: "update-fields",
-                            },
-                            {
-                                id: "update-fields",
-                                options: [
-                                    {
-                                        value: "name",
-                                        label: "Name",
-                                        trigger: "update-name",
-                                    },
-                                    {
-                                        value: "gender",
-                                        label: "Gender",
-                                        trigger: "update-gender",
-                                    },
-                                    {
-                                        value: "age",
-                                        label: "Age",
-                                        trigger: "update-age",
-                                    },
-                                ],
-                            },
-                            {
-                                id: "update-name",
-                                update: "name",
-                                trigger: "7",
-                            },
-                            {
-                                id: "update-gender",
-                                update: "gender",
-                                trigger: "7",
-                            },
-                            {
-                                id: "update-age",
-                                update: "age",
-                                trigger: "7",
-                            },
-                            {
-                                id: "end-message",
+                                id: "end",
                                 message:
-                                    "Thanks! Your data was submitted successfully!",
+                                    "Have a nice day! I hope I helped you!",
                                 end: true,
                             },
                         ]}
