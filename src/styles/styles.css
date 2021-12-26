@@ -67,7 +67,10 @@ body {
     cursor: pointer;
 }
 
-.btn-hover:hover {
+.btn-1:hover,
+.btn-hover:hover,
+.social-btn:hover,
+.footer-wrapper .social-wrapper .social-icon:hover {
     opacity: 0.8;
     transition: 0.4s all;
 }

@@ -1,6 +1,5 @@
-import React, { useState, Component } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
 
 import ChatBot from "react-simple-chatbot";
 
@@ -29,58 +28,6 @@ const config = {
     headerTitle: "Golden Chatbot",
 };
 
-class Review extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            name: "",
-            gender: "",
-            age: "",
-        };
-    }
-
-    componentWillMount() {
-        const { steps } = this.props;
-        const { name, gender, age } = steps;
-
-        this.setState({ name, gender, age });
-    }
-
-    render() {
-        const { name, gender, age } = this.state;
-        return (
-            <div style={{ width: "100%" }}>
-                <h3>Summary</h3>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Name</td>
-                            <td>{name.value}</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>{gender.value}</td>
-                        </tr>
-                        <tr>
-                            <td>Age</td>
-                            <td>{age.value}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        );
-    }
-}
-
-Review.propTypes = {
-    steps: PropTypes.object,
-};
-
-Review.defaultProps = {
-    steps: undefined,
-};
-
 const GoldenChatbot = (props) => {
     const navigate = useNavigate();
     const [showChat, setShowChat] = useState(true);
@@ -103,7 +50,17 @@ const GoldenChatbot = (props) => {
                             {
                                 id: "start",
                                 message: "Hello Guest! I'm here to help you.",
-                                trigger: "2",
+                                trigger: "1",
+                            },
+                            {
+                                id: "1",
+                                options: [
+                                    {
+                                        label: "Let's start",
+                                        value: "let's start",
+                                        trigger: "2",
+                                    },
+                                ],
                             },
                             {
                                 id: "2",
@@ -189,7 +146,7 @@ const GoldenChatbot = (props) => {
                                 validator: (value) => {
                                     if (isNaN(value)) {
                                         return "value must be a number";
-                                    } else if (value < 0) {
+                                    } else if (value < 1) {
                                         return "value must be positive";
                                     } else if (value > 10) {
                                         return `${value}? Come on!`;
@@ -205,6 +162,16 @@ const GoldenChatbot = (props) => {
                             },
                             {
                                 id: "9",
+                                message: "Type a review for us:",
+                                trigger: "review",
+                            },
+                            {
+                                id: "review",
+                                user: true,
+                                trigger: "10",
+                            },
+                            {
+                                id: "10",
                                 message: "Thanks for your time!",
                                 trigger: "loop",
                             },

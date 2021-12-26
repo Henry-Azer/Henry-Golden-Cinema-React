@@ -157,7 +157,7 @@ const Login = () => {
                             }
                         >
                             <FaGithub className="social-icon" />
-                        </Button>
+                        </Button> 
                         <Button
                             className="social-btn"
                             onClick={() =>
