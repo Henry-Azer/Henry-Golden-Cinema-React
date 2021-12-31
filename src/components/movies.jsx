@@ -21,10 +21,10 @@ const Movies = () => {
                         variant="h4"
                         component="div"
                     >
-                        <b>Now Playing</b>
+                        Now Playing
                     </Typography>
                 </div>
-                <div className="movies-cards-wrapper display-flex flex-row">
+                <div className="movies-cards display-flex flex-row">
                     <div className="movie-card">
                         <img
                             className="movie-card-img"

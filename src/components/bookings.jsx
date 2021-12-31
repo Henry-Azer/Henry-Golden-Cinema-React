@@ -4,7 +4,7 @@ import Collapsible from "react-collapsible";
 
 import Typography from "@mui/material/Typography";
 
-import { FaCaretLeft } from "react-icons/fa";
+import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
 import Header from "./global/header";
 import Footer from "./global/footer";
@@ -20,9 +20,16 @@ const Bookings = () => {
             <ChatBot />
 
             <div className="bookings-wrapper content-fit">
-                <Typography variant="h3" component="div">
-                    <b>Henry's Bookings</b>
-                </Typography>
+                <div className="heading-wrapper display-flex flex-row">
+                    <FaCaretRight className="heading-icon" />
+                    <Typography
+                        className="heading-title"
+                        variant="h4"
+                        component="div"
+                    >
+                        Henry's Bookings
+                    </Typography>
+                </div>
 
                 <div className="bookings">
                     <Collapsible

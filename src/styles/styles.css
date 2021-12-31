@@ -47,7 +47,6 @@ body {
 }
 
 .prevent-drag {
-    user-drag: none;
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
@@ -113,6 +112,7 @@ body {
 .heading-wrapper .heading-icon {
     font-size: 26px;
     color: var(--mainColor);
+    margin-top: -7px;
 }
 
 .heading-wrapper .heading-title {
@@ -120,9 +120,10 @@ body {
     font-size: 32px;
 }
 
-.heading-wrapper .heading-title ::after {
+.heading-wrapper .heading-title::after {
     content: "";
     border-bottom: 1px solid var(--mainColor);
+    margin-top: 7px;
     width: 100%;
     display: block;
 }
@@ -230,7 +231,7 @@ body {
 }
 
 .reg-log-wrapper .logo-wrapper .logo-name {
-    width: 140px;
+    width: 150px;
 }
 
 .reg-log-wrapper .reg-log-header {
@@ -289,40 +290,50 @@ body {
 /* ----- MOVIE ROUTE START ----- */
 .movie-route .movie-wrapper {
     gap: 20px;
+    padding: 30px 40px;
 }
 
 .movie-wrapper .movie-details {
-    flex: 40%;
+    flex: 30%;
 }
 
-.movie-details img {
+.movie-details div {
+    justify-content: flex-start;
+}
+
+.movie-details .movie-title {
+    font-weight: bold;
+}
+
+.movie-details .movie-img {
     width: 230px;
     height: 300px;
-    -webkit-box-shadow: 15px 19px 12px -6px rgba(0, 0, 0, 0.47);
-    box-shadow: 15px 19px 12px -6px rgba(0, 0, 0, 0.47);
+    border-radius: 10px;
+    box-shadow: 15px 15px 12px -6px rgba(0, 0, 0, 0.47);
+    -webkit-box-shadow: 15px 15px 12px -6px rgba(0, 0, 0, 0.47);
 }
 
-.movie-details .MuiTypography-h4 {
+.movie-details .movie-title {
     padding-top: 10px;
-    color: white;
+    color: var(--fontColor);
     font-size: 30px;
     font-weight: 900;
 }
 
-.movie-details .MuiTypography-subtitle1 {
-    font-size: 15px;
+.movie-details .movie-info-text {
+    font-size: 16px;
+    padding-left: 40px;
 }
 
 .movie-details .rate-wrapper {
     gap: 10px;
-    justify-content: flex-start;
 }
 
 .movie-details .details-wrapper {
     padding: 25px 0;
 }
 
-.movie-details .rate-wrapper img {
+.movie-details .rate-wrapper .imdb-img {
     width: 30px;
     height: 20px;
     box-shadow: none;
@@ -376,18 +387,20 @@ body {
 /* -------------------------------------------------------- */
 
 /* ----- MOVIES ROUTE START ----- */
-.movies-wrapper .movies-cards-wrapper {
+.movies-wrapper .movies-cards {
     padding-top: 20px;
     flex-wrap: wrap;
     flex: 33.333%;
 }
 
-.movies-cards-wrapper .movie-card {
+.movies-cards .movie-card {
     width: 260px;
     height: 400px;
     margin: 40px 40px 0 40px;
     background-color: var(--font2ndColor);
     border-radius: 22px;
+    box-shadow: 15px 15px 12px -6px rgba(0, 0, 0, 0.47);
+    -webkit-box-shadow: 15px 15px 12px -6px rgba(0, 0, 0, 0.47);
 }
 
 .movie-card .movie-card-img {
@@ -396,6 +409,13 @@ body {
     padding: 10px;
     border-radius: 40px;
     cursor: pointer;
+    opacity: 0.9;
+    transition: 0.6s all;
+}
+
+.movies-cards .movie-card-img:hover {
+    opacity: 1;
+    transition: 0.6s all;
 }
 
 .movie-card-info .rate-wrapper .rate-number {
