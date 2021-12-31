@@ -41,7 +41,8 @@ body {
 }
 
 .content-fit {
-    padding: 150px 0;
+    padding-top: 150px;
+    padding-bottom: 100px;
     margin: 0 220px;
 }
 
@@ -103,6 +104,29 @@ body {
 .logo-wrapper .logo-img {
     width: 70px;
 }
+
+.heading-wrapper {
+    align-items: center;
+    justify-content: start;
+}
+
+.heading-wrapper .heading-icon {
+    font-size: 26px;
+    color: var(--mainColor);
+}
+
+.heading-wrapper .heading-title {
+    text-transform: uppercase;
+    font-size: 32px;
+}
+
+.heading-wrapper .heading-title ::after {
+    content: "";
+    border-bottom: 1px solid var(--mainColor);
+    width: 100%;
+    display: block;
+}
+
 /* ----- GLOBAL PROPS END ----- */
 
 /* -------------------------------------------------------- */
@@ -291,17 +315,14 @@ body {
 
 .movie-details .rate-wrapper {
     gap: 10px;
+    justify-content: flex-start;
 }
 
 .movie-details .details-wrapper {
     padding: 25px 0;
 }
 
-.rate-wrapper {
-    justify-content: flex-start;
-}
-
-.rate-wrapper img {
+.movie-details .rate-wrapper img {
     width: 30px;
     height: 20px;
     box-shadow: none;
@@ -355,9 +376,37 @@ body {
 /* -------------------------------------------------------- */
 
 /* ----- MOVIES ROUTE START ----- */
-.movies-route {
-    
+.movies-wrapper .movies-cards-wrapper {
+    padding-top: 20px;
+    flex-wrap: wrap;
+    flex: 33.333%;
 }
+
+.movies-cards-wrapper .movie-card {
+    width: 260px;
+    height: 400px;
+    margin: 40px 40px 0 40px;
+    background-color: var(--font2ndColor);
+    border-radius: 22px;
+}
+
+.movie-card .movie-card-img {
+    width: 240px;
+    height: 340px;
+    padding: 10px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.movie-card-info .rate-wrapper .rate-number {
+    font-weight: bold;
+}
+
+.movie-card-info .rate-wrapper {
+    gap: 10px;
+    color: var(--main3rdColor);
+}
+
 /* ----- MOVIES ROUTE END ----- */
 
 /* -------------------------------------------------------- */
