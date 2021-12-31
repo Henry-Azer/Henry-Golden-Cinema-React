@@ -9,7 +9,7 @@ const Movies = () => {
         <section className="movies-route">
             <Header />
             <Chatbot />
-            <h1>Movies Page</h1>
+            <div className="home-wrapper content-fit"></div>
             <Footer />
         </section>
     );

@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 import logoName from "../../resources/images/Requirements-02.png";
-import logoImg from "../../resources/images/Requirements-03.png";
 
 import {
     FaGithub,
@@ -18,7 +17,7 @@ import {
 
 const Footer = () => {
     const navigate = useNavigate();
-    
+
     return (
         <section className="footer-section">
             <div className="footer-wrapper display-flex">
@@ -27,11 +26,6 @@ const Footer = () => {
                         className="logo-wrapper display-flex flex-row"
                         onClick={() => navigate("/")}
                     >
-                        <img
-                            src={logoImg}
-                            className="logo-img"
-                            alt="logo-img"
-                        />
                         <img
                             src={logoName}
                             className="logo-name"

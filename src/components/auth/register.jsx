@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { Formik } from "formik";
 
 import logoName from "../../resources/images/Requirements-02.png";
-import logoImg from "../../resources/images/Requirements-03.png";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -23,11 +22,14 @@ const Register = () => {
                     className="logo-wrapper display-flex flex-row"
                     onClick={() => navigate("/")}
                 >
-                    <img src={logoImg} className="logo-img" alt="logo-img" />
                     <img src={logoName} className="logo-name" alt="logo-name" />
                 </Box>
 
-                <Typography variant="h3" component="div">
+                <Typography
+                    className="reg-log-header"
+                    variant="h3"
+                    component="div"
+                >
                     <b>Register</b>
                 </Typography>
 

@@ -37,13 +37,6 @@ const Header = () => {
                     <Typography
                         variant="h6"
                         component="span"
-                        onClick={() => navigate("/chatbot")}
-                    >
-                        ChatBot
-                    </Typography>
-                    <Typography
-                        variant="h6"
-                        component="span"
                         onClick={() => navigate("/movies")}
                     >
                         Movies
