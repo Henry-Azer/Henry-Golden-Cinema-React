@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import Slider from "react-slick";
 
 const Home = () => {
-
     useEffect(() => {
         document.title = "Home | Henry Golden Cinema";
     });
@@ -15,6 +14,8 @@ const Home = () => {
         infinite: true,
         focusOnSelect: true,
         centerMode: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
         centerPadding: "-10px",
         speed: 500,
         slidesToShow: 5,
