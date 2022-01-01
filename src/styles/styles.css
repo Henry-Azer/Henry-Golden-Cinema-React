@@ -41,8 +41,7 @@ body {
 }
 
 .content-fit {
-    padding-top: 150px;
-    padding-bottom: 100px;
+    padding: 50px 0;
     margin: 0 220px;
 }
 
@@ -107,6 +106,7 @@ body {
 .heading-wrapper {
     align-items: center;
     justify-content: start;
+    margin: 100px 0 40px 0;
 }
 
 .heading-wrapper .heading-icon {
@@ -129,6 +129,43 @@ body {
 }
 
 /* ----- GLOBAL PROPS END ----- */
+
+/* -------------------------------------------------------- */
+
+/* ----- SLICK SLIDER START ----- */
+.slick-slider .slider-img {
+    width: 200px;
+    height: 300px;
+    margin: 40px 0;
+    cursor: pointer;
+}
+
+.slick-slider .slick-slide:nth-child(even) .slider-img {
+    width: 140px;
+    height: 220px;
+    margin: 120px 0 0 50px;
+    opacity: 0.5;
+}
+
+.slick-slider .slick-slide:nth-child(odd) .slider-img {
+    width: 100px;
+    height: 150px;
+    margin: 190px 0 0 50px;
+    opacity: 0.2; 
+}
+
+
+.slick-track .slick-center .slider-img {
+    width: 200px !important;
+    height: 300px !important;
+    margin: 40px 20px !important;
+    opacity: 1 !important;
+    border: 3px solid var(--fontColor);
+    box-shadow: 2px 2px 15px 6px var(--mainColor);
+    -webkit-box-shadow: 2px 2px 15px 6px var(--mainColor);
+    -moz-box-shadow: 2px 2px 15px 6px var(--mainColor);
+}
+/* ----- SLICK SLIDER END ----- */
 
 /* -------------------------------------------------------- */
 
@@ -281,7 +318,47 @@ body {
 /* -------------------------------------------------------- */
 
 /* ----- HOME ROUTE START ----- */
-.home-route {
+.home-wrapper {
+    padding-top: 120px;
+}
+
+.home-wrapper .slick-slider {
+    position: relative;
+    left: -25px;
+}
+
+.home-wrapper .btn-1 {
+    display: block;
+    margin: 0 auto;
+}
+
+.services-wrapper .services-container {
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.services-container .services {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 40px;
+    grid-template-rows: 120px 120px;
+    grid-template-columns: 150px 150px;
+}
+
+.service .service-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    border: 3px solid var(--fontColor);
+}
+
+.home-wrapper .halls-wrapper {
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.halls-wrapper .hall-img {
+    border-radius: 10px;
 }
 /* ----- HOME ROUTE END ----- */
 
@@ -388,7 +465,6 @@ body {
 
 /* ----- MOVIES ROUTE START ----- */
 .movies-wrapper .movies-cards {
-    padding-top: 20px;
     flex-wrap: wrap;
     flex: 33.333%;
 }
@@ -491,14 +567,14 @@ body {
 
 .chat-bot .bot-wrapper {
     position: fixed;
-    bottom: 148px;
-    right: 148px;
+    bottom: 120px;
+    right: 140px;
 }
 
 .chat-bot .bot-btn-container {
     position: fixed;
-    bottom: 100px;
-    right: 100px;
+    bottom: 70px;
+    right: 90px;
 }
 
 .bot-btn-container .bot-btn {
