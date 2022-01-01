@@ -1,5 +1,8 @@
 import React from "react";
 
+import { connect } from "react-redux";
+import { moviesList } from "../store/actions/actions";
+
 import Typography from "@mui/material/Typography";
 
 import { FaCaretRight } from "react-icons/fa";
@@ -170,4 +173,10 @@ const Movies = () => {
     );
 };
 
-export default Movies;
+function mapStateToProps(state) {
+    return {
+        movies: state.movies,
+    };
+}
+
+export default connect(mapStateToProps)(Movies);
