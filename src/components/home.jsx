@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import YouTube from "react-youtube";
 
@@ -12,6 +13,8 @@ import ChatBot from "./global/chatbot";
 import ImageSlider from "./global/image-slider";
 
 const Home = () => {
+    const navigate = useNavigate();
+
     useEffect(() => {
         document.title = "Home | Henry Golden Cinema";
     });
@@ -31,9 +34,13 @@ const Home = () => {
             <div className="home-wrapper content-fit">
                 <ImageSlider />
 
-                    <button className="btn-1" href="/movies" type="submit">
-                        Book Now
-                    </button>
+                <button
+                    className="btn-1"
+                    onClick={() => navigate("/movies")}
+                    type="submit"
+                >
+                    Book Now
+                </button>
 
                 <div className="heading-wrapper display-flex flex-row">
                     <FaCaretRight className="heading-icon" />

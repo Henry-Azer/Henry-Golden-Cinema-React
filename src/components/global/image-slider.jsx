@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import Slider from "react-slick";
 
 const Home = () => {
+
     useEffect(() => {
         document.title = "Home | Henry Golden Cinema";
     });
