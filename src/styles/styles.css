@@ -169,6 +169,12 @@ body {
 
 /* -------------------------------------------------------- */
 
+/* ----- ERROR PAGE START ----- */
+
+/* ----- ERROR PAGE END ----- */
+
+/* -------------------------------------------------------- */
+
 /* ----- Header SECTION START ----- */
 .header-section {
     position: fixed;
@@ -470,22 +476,26 @@ body {
 }
 
 .movies-cards .movie-card {
-    width: 260px;
-    height: 400px;
-    margin: 40px 40px 0 40px;
     background-color: var(--font2ndColor);
-    border-radius: 22px;
-    box-shadow: 15px 15px 12px -6px rgba(0, 0, 0, 0.47);
-    -webkit-box-shadow: 15px 15px 12px -6px rgba(0, 0, 0, 0.47);
+    border-radius: 40px;
+    width: 350px;
+    height: 550px;
+    margin: 20px 50px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.movies-cards .movie-card:hover {
+    background-color: #3a3a3a;
+    transform: scale(1.05) translateY(-4px);
+    box-shadow: var(--mainColor) 0 0 15px;
+    transition: 0.5s;
 }
 
 .movie-card .movie-card-img {
-    width: 240px;
-    height: 340px;
-    padding: 10px;
-    border-radius: 40px;
-    cursor: pointer;
-    opacity: 0.9;
+    width: 300px;
+    margin: 20px auto;
+    border-radius: 20px;
     transition: 0.6s all;
 }
 
@@ -494,13 +504,22 @@ body {
     transition: 0.6s all;
 }
 
+.movie-card .movie-name,
 .movie-card-info .rate-wrapper .rate-number {
+    color: var(--main3rdColor);
     font-weight: bold;
+    transition: 0.6s all;
 }
 
+.movies-cards .movie-card:hover .movie-name,
+.movies-cards .movie-card:hover .movie-card-info .rate-wrapper .rate-number {
+    color: var(--mainColor);
+    transition: 0.6s all;
+}
+
+.movie-card .movie-name,
 .movie-card-info .rate-wrapper {
     gap: 10px;
-    color: var(--main3rdColor);
 }
 
 /* ----- MOVIES ROUTE END ----- */

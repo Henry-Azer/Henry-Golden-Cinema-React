@@ -1,5 +1,5 @@
 import axios from "axios";
-import { MOVIES_LIST } from "../types";
+import { MOVIES_LIST, CLEAR_USER_LIST } from "../types";
 
 const URL = "https://jsonplaceholder.typicode.com";
 
@@ -12,9 +12,9 @@ export function moviesList() {
     };
 }
 
-// export function clearUserList() {
-//     return {
-//         type: CLEAR_USER_LIST,
-//         payload: null,
-//     };
-// }
+export function clearUserList() {
+    return {
+        type: CLEAR_USER_LIST,
+        payload: null,
+    };
+}

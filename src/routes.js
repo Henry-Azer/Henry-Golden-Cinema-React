@@ -8,6 +8,7 @@ import Bookings from "./components/bookings";
 import AboutUs from "./components/about-us";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
+import ErrorPage from "./components/global/error-page";
 
 const routes = () => {
     return (
@@ -19,6 +20,7 @@ const routes = () => {
             <Route exact path="/about-us" element={<AboutUs />} />
             <Route exact path="/register" element={<Register />} />
             <Route exact path="/login" element={<Login />} />
+            <Route exact path="/error" element={<ErrorPage />} />
         </Routes>
     );
 };

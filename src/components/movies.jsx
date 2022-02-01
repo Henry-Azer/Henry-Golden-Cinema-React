@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import { connect } from "react-redux";
-import { moviesList } from "../store/actions/actions";
+import { useSelector, useDispatch } from "react-redux";
+import { moviesList, clearUserList } from "../store/actions";
 
 import Typography from "@mui/material/Typography";
 
@@ -12,6 +12,13 @@ import Footer from "./global/footer";
 import Chatbot from "./global/chatbot";
 
 const Movies = () => {
+    const dispatch = useDispatch();
+    const movies = useSelector((state) => state.movies.movies);
+
+    useEffect(() => {
+        dispatch(moviesList());
+    }, [dispatch]);
+
     return (
         <section className="movies-route">
             <Header />
@@ -34,121 +41,13 @@ const Movies = () => {
                             src="https://assets.voxcinemas.com/posters/P_HO00006784.jpg"
                             alt="movie-img"
                         />
-                        <div className="movie-card-info">
-                            <div className="rate-wrapper display-flex flex-row">
-                                <Typography
-                                    className="rate-number"
-                                    variant="subtitle1"
-                                    component="div"
-                                >
-                                    8.3/10
-                                </Typography>
-                                <img
-                                    className="imdb-img"
-                                    src="https://akwam.in/style/assets/images/imdb.png"
-                                    alt="imdb"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="movie-card">
-                        <img
-                            className="movie-card-img"
-                            src="https://i.ebayimg.com/images/g/dAYAAOSwTxhfxK3x/s-l1600.jpg"
-                            alt="movie-img"
-                        />
-                        <div className="movie-card-info">
-                            <div className="rate-wrapper display-flex flex-row">
-                                <Typography
-                                    className="rate-number"
-                                    variant="subtitle1"
-                                    component="div"
-                                >
-                                    8.3/10
-                                </Typography>
-                                <img
-                                    className="imdb-img"
-                                    src="https://akwam.in/style/assets/images/imdb.png"
-                                    alt="imdb"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="movie-card">
-                        <img
-                            className="movie-card-img"
-                            src="https://m.media-amazon.com/images/I/51BtS7ehWTL._AC_.jpg"
-                            alt="movie-img"
-                        />
-                        <div className="movie-card-info">
-                            <div className="rate-wrapper display-flex flex-row">
-                                <Typography
-                                    className="rate-number"
-                                    variant="subtitle1"
-                                    component="div"
-                                >
-                                    8.3/10
-                                </Typography>
-                                <img
-                                    className="imdb-img"
-                                    src="https://akwam.in/style/assets/images/imdb.png"
-                                    alt="imdb"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="movie-card">
-                        <img
-                            className="movie-card-img"
-                            src="https://cdn.europosters.eu/image/750/posters/avengers-endgame-journey-s-end-i73600.jpg"
-                            alt="movie-img"
-                        />
-                        <div className="movie-card-info">
-                            <div className="rate-wrapper display-flex flex-row">
-                                <Typography
-                                    className="rate-number"
-                                    variant="subtitle1"
-                                    component="div"
-                                >
-                                    8.3/10
-                                </Typography>
-                                <img
-                                    className="imdb-img"
-                                    src="https://akwam.in/style/assets/images/imdb.png"
-                                    alt="imdb"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="movie-card">
-                        <img
-                            className="movie-card-img"
-                            src="https://m.media-amazon.com/images/I/81LHuCYlgEL._AC_SY679_.jpg"
-                            alt="movie-img"
-                        />
-                        <div className="movie-card-info">
-                            <div className="rate-wrapper display-flex flex-row">
-                                <Typography
-                                    className="rate-number"
-                                    variant="subtitle1"
-                                    component="div"
-                                >
-                                    8.3/10
-                                </Typography>
-                                <img
-                                    className="imdb-img"
-                                    src="https://akwam.in/style/assets/images/imdb.png"
-                                    alt="imdb"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="movie-card">
-                        <img
-                            className="movie-card-img"
-                            src="https://m.media-amazon.com/images/I/A1PaCX4oXjL._AC_SY679_.jpg"
-                            alt="movie-img"
-                        />
+                        <Typography
+                            className="movie-name"
+                            variant="h6"
+                            component="div"
+                        >
+                            Spider Man - Far From Home
+                        </Typography>
                         <div className="movie-card-info">
                             <div className="rate-wrapper display-flex flex-row">
                                 <Typography
@@ -173,10 +72,4 @@ const Movies = () => {
     );
 };
 
-function mapStateToProps(state) {
-    return {
-        movies: state.movies,
-    };
-}
-
-export default connect(mapStateToProps)(Movies);
+export default Movies;
