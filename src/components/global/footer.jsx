@@ -107,7 +107,7 @@ const Footer = () => {
 
                 <div className="copyright-wrapper display-flex">
                     <Typography variant="h7" component="span">
-                        Copyright ©2021 All rights reserved
+                        Copyright ©2022 All rights reserved
                     </Typography>
                     <Typography variant="h7" component="span">
                         Developed by: Henry Azer | Designed by: Bavly Ashraf
