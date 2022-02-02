@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { moviesList, clearUserList } from "../store/actions";
+import { moviesList } from "../store/actions";
 
 import Typography from "@mui/material/Typography";
 
@@ -35,36 +35,40 @@ const Movies = () => {
                     </Typography>
                 </div>
                 <div className="movies-cards display-flex flex-row">
-                    <div className="movie-card">
-                        <img
-                            className="movie-card-img"
-                            src="https://assets.voxcinemas.com/posters/P_HO00006784.jpg"
-                            alt="movie-img"
-                        />
-                        <Typography
-                            className="movie-name"
-                            variant="h6"
-                            component="div"
-                        >
-                            Spider Man - Far From Home
-                        </Typography>
-                        <div className="movie-card-info">
-                            <div className="rate-wrapper display-flex flex-row">
-                                <Typography
-                                    className="rate-number"
-                                    variant="subtitle1"
-                                    component="div"
-                                >
-                                    8.3/10
-                                </Typography>
-                                <img
-                                    className="imdb-img"
-                                    src="https://akwam.in/style/assets/images/imdb.png"
-                                    alt="imdb"
-                                />
-                            </div>
-                        </div>
-                    </div>
+                    {movies
+                        ? movies.map((movie) => ( 
+                              <div key={movie.id} className="movie-card">
+                                  <img
+                                      className="movie-card-img"
+                                      src={movie.imgUrl}
+                                      alt="movie-img"
+                                  />
+                                  <Typography
+                                      className="movie-name"
+                                      variant="h6"
+                                      component="div"
+                                  >
+                                      {movie.title}
+                                  </Typography>
+                                  <div className="movie-card-info">
+                                      <div className="rate-wrapper display-flex flex-row">
+                                          <Typography
+                                              className="rate-number"
+                                              variant="subtitle1"
+                                              component="div"
+                                          >
+                                              {movie.rate}/10
+                                          </Typography>
+                                          <img
+                                              className="imdb-img"
+                                              src="https://akwam.in/style/assets/images/imdb.png"
+                                              alt="imdb"
+                                          />
+                                      </div>
+                                  </div>
+                              </div>
+                          ))
+                        : <div>There is no movies to show!</div>}
                 </div>
             </div>
             <Footer />

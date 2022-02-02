@@ -138,6 +138,7 @@ body {
     height: 300px;
     margin: 40px 0;
     cursor: pointer;
+    border: 3px solid var(--fontColor);
 }
 
 .slick-slider .slick-slide:nth-child(odd) .slider-img,
@@ -160,7 +161,6 @@ body {
     height: 300px !important;
     margin: 40px 20px !important;
     opacity: 1 !important;
-    border: 3px solid var(--fontColor);
     box-shadow: 2px 2px 15px 6px var(--mainColor);
     -webkit-box-shadow: 2px 2px 15px 6px var(--mainColor);
     -moz-box-shadow: 2px 2px 15px 6px var(--mainColor);
@@ -349,6 +349,7 @@ body {
     grid-gap: 40px;
     grid-template-rows: 120px 120px;
     grid-template-columns: 150px 150px;
+    cursor: pointer;
 }
 
 .service .service-img {
@@ -356,6 +357,18 @@ body {
     height: 80px;
     border-radius: 50px;
     border: 3px solid var(--fontColor);
+}
+
+.service:hover .service-img {
+    border: var(--mainColor) solid 2px;
+    transform: translateY(-3px);
+    transition: 0.6s;
+}
+
+.service:hover .heading-title {
+    color: var(--mainColor);
+    transform: translateY(-2px);
+    transition: 0.8s;
 }
 
 .home-wrapper .halls-wrapper {
