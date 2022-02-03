@@ -25,7 +25,7 @@ const Home = () => {
         focusOnSelect: true,
         centerMode: true,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 2500,
         centerPadding: "-10px",
         speed: 500,
         slidesToShow: 5,
@@ -65,7 +65,7 @@ const Home = () => {
                     <div key={movie.id}>
                         <img
                             className="slider-img"
-                            src={movie.imgUrl}
+                            src={movie.imgURL}
                             alt="slider-img"
                         />
                     </div>

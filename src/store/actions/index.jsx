@@ -1,10 +1,10 @@
 import axios from "axios";
-import { MOVIES_LIST, CLEAR_USER_LIST } from "../types";
+import { MOVIES_LIST, MOVIE_DETAILS, CLEAR_MOVIE_DETAILS } from "../types";
 
 const URL = "http://localhost:8080";
 
 export function moviesList() {
-    const request = axios.get(URL + "/api/movie/all").then((response) => response.data);
+    const request = axios.get(`${URL}/api/movie/all`).then((response) => response.data);
 
     return {
         type: MOVIES_LIST,
@@ -12,9 +12,20 @@ export function moviesList() {
     };
 }
 
-export function clearUserList() {
+export function movieDetails(id) {
+    const request = axios.get(`${URL}/api/movie/id/${id}`).then((response) => response.data);
+
     return {
-        type: CLEAR_USER_LIST,
+        type: MOVIE_DETAILS,
+        payload: request,
+    };
+}
+
+
+export function clearMovieDetails(id) {
+
+    return {
+        type: CLEAR_MOVIE_DETAILS,
         payload: null,
     };
 }

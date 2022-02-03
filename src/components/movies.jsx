@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { moviesList } from "../store/actions";
@@ -12,6 +13,7 @@ import Footer from "./global/footer";
 import Chatbot from "./global/chatbot";
 
 const Movies = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const movies = useSelector((state) => state.movies.movies);
 
@@ -22,7 +24,6 @@ const Movies = () => {
     useEffect(() => {
         dispatch(moviesList());
     }, [dispatch]);
-    
 
     return (
         <section className="movies-route">
@@ -40,40 +41,54 @@ const Movies = () => {
                     </Typography>
                 </div>
                 <div className="movies-cards display-flex flex-row">
-                    {movies
-                        ? movies.map((movie) => ( 
-                              <div key={movie.id} className="movie-card">
-                                  <img
-                                      className="movie-card-img"
-                                      src={movie.imgUrl}
-                                      alt="movie-img"
-                                  />
-                                  <Typography
-                                      className="movie-name"
-                                      variant="h6"
-                                      component="div"
-                                  >
-                                      {movie.title}
-                                  </Typography>
-                                  <div className="movie-card-info">
-                                      <div className="rate-wrapper display-flex flex-row">
-                                          <Typography
-                                              className="rate-number"
-                                              variant="subtitle1"
-                                              component="div"
-                                          >
-                                              {movie.rate}/10
-                                          </Typography>
-                                          <img
-                                              className="imdb-img"
-                                              src="https://akwam.in/style/assets/images/imdb.png"
-                                              alt="imdb"
-                                          />
-                                      </div>
-                                  </div>
-                              </div>
-                          ))
-                        : <div>There are no movies to show!</div>}
+                    {movies ? (
+                        movies.map((movie) => (
+                            <div
+                                key={movie.id}
+                                className="movie-card"
+                                onClick={() =>
+                                    navigate(
+                                        `/movie/` +
+                                            movie.title
+                                                .replace(/\s+/g, "-")
+                                                .toLowerCase(),
+                                        { state: { movieId: movie.id } }
+                                    )
+                                }
+                            >
+                                <img
+                                    className="movie-card-img"
+                                    src={movie.imgURL}
+                                    alt="movie-img"
+                                />
+                                <Typography
+                                    className="movie-name"
+                                    variant="h6"
+                                    component="div"
+                                >
+                                    {movie.title}
+                                </Typography>
+                                <div className="movie-card-info">
+                                    <div className="rate-wrapper display-flex flex-row">
+                                        <Typography
+                                            className="rate-number"
+                                            variant="subtitle1"
+                                            component="div"
+                                        >
+                                            {movie.rate}/10
+                                        </Typography>
+                                        <img
+                                            className="imdb-img"
+                                            src="https://akwam.in/style/assets/images/imdb.png"
+                                            alt="imdb"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <div>There are no movies to show!</div>
+                    )}
                 </div>
             </div>
             <Footer />
