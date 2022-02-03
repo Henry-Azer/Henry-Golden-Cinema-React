@@ -19,9 +19,12 @@
 body {
     margin: 0;
     padding: 0;
-    background: url("/src/resources/backgrounds/Requirements-01.png") fixed
-        no-repeat center;
     color: var(--fontColor);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-image: url("/src/resources/backgrounds/Requirements-01.png");
 }
 
 @font-face {
@@ -41,7 +44,7 @@ body {
 }
 
 .content-fit {
-    padding: 50px 0;
+    padding: 10px 0;
     margin: 0 180px;
 }
 
@@ -550,9 +553,9 @@ body {
 .movies-cards .movie-card {
     background-color: var(--font2ndColor);
     border-radius: 40px;
-    width: 350px;
-    height: 550px;
-    margin: 20px 50px;
+    width: 300px;
+    height: 510px;
+    margin: 30px 40px;
     cursor: pointer;
     text-align: center;
 }
@@ -561,11 +564,12 @@ body {
     background-color: #3a3a3a;
     transform: scale(1.05) translateY(-4px);
     box-shadow: var(--mainColor) 0 0 15px;
-    transition: 0.5s;
+    transition: 0.6s all;
 }
 
 .movie-card .movie-card-img {
-    width: 300px;
+    width: 250px;
+    height: 360px;
     margin: 20px auto;
     border-radius: 20px;
     transition: 0.6s all;
@@ -574,6 +578,15 @@ body {
 .movies-cards .movie-card-img:hover {
     opacity: 1;
     transition: 0.6s all;
+}
+
+.movie-card .movie-name {
+    font-size: 20px;
+    margin: 0 20px;
+}
+
+.movie-card-info .rate-wrapper .rate-number {
+    font-size: 18px;
 }
 
 .movie-card .movie-name,

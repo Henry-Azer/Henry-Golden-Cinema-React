@@ -16,8 +16,13 @@ const Movies = () => {
     const movies = useSelector((state) => state.movies.movies);
 
     useEffect(() => {
+        document.title = "Movies | Henry Golden Cinema";
+    });
+
+    useEffect(() => {
         dispatch(moviesList());
     }, [dispatch]);
+    
 
     return (
         <section className="movies-route">
@@ -68,7 +73,7 @@ const Movies = () => {
                                   </div>
                               </div>
                           ))
-                        : <div>There is no movies to show!</div>}
+                        : <div>There are no movies to show!</div>}
                 </div>
             </div>
             <Footer />

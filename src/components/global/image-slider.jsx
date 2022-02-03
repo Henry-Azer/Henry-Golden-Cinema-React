@@ -1,11 +1,21 @@
 import React, { useEffect } from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+import { moviesList } from "../../store/actions";
+
 import Slider from "react-slick";
 
 const Home = () => {
+    const dispatch = useDispatch();
+    const movies = useSelector((state) => state.movies.movies);
+
     useEffect(() => {
         document.title = "Home | Henry Golden Cinema";
     });
+
+    useEffect(() => {
+        dispatch(moviesList());
+    }, [dispatch]);
 
     var settings = {
         dots: false,
@@ -50,49 +60,19 @@ const Home = () => {
 
     return (
         <Slider className="slick-slider" {...settings}>
-            <div>
-                <img
-                    className="slider-img"
-                    src="https://cdn.europosters.eu/image/750/posters/avengers-endgame-journey-s-end-i73600.jpg"
-                    alt="slider-img"
-                />
-            </div>
-            <div>
-                <img
-                    className="slider-img"
-                    src="https://m.media-amazon.com/images/I/81LHuCYlgEL._AC_SY679_.jpg"
-                    alt="slider-img"
-                />
-            </div>
-            <div>
-                <img
-                    className="slider-img"
-                    src="https://m.media-amazon.com/images/I/A1PaCX4oXjL._AC_SY679_.jpg"
-                    alt="slider-img"
-                />
-            </div>
-            <div>
-                <img
-                    className="slider-img"
-                    src="https://m.media-amazon.com/images/I/51BtS7ehWTL._AC_.jpg"
-                    alt="slider-img"
-                />
-            </div>
-
-            <div>
-                <img
-                    className="slider-img"
-                    src="https://i.ebayimg.com/images/g/dAYAAOSwTxhfxK3x/s-l1600.jpg"
-                    alt="slider-img"
-                />
-            </div>
-            <div>
-                <img
-                    className="slider-img"
-                    src="https://assets.voxcinemas.com/posters/P_HO00006784.jpg"
-                    alt="slider-img"
-                />
-            </div>
+            {movies ? (
+                movies.map((movie) => (
+                    <div key={movie.id}>
+                        <img
+                            className="slider-img"
+                            src={movie.imgUrl}
+                            alt="slider-img"
+                        />
+                    </div>
+                ))
+            ) : (
+                <div>There are no movies to show!</div>
+            )}
         </Slider>
     );
 };
