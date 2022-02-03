@@ -24,6 +24,8 @@ const Home = () => {
         width: "480",
         playerVars: {
             autoplay: 0,
+            origin: "https://mywebsite.com",
+            enablejsapi: "1",
         },
     };
 
