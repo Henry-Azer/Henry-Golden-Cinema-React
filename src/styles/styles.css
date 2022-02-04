@@ -46,6 +46,7 @@ body {
 .content-fit {
     padding: 10px 0;
     margin: 0 180px;
+    min-height: 60vh;
 }
 
 .prevent-drag {
@@ -152,12 +153,12 @@ body {
     opacity: 0.5;
 }
 
-.slick-slider .slick-slide:nth-child(odd) .slider-img {
+/* .slick-slider .slick-slide:nth-child(odd) .slider-img {
     width: 100px;
     height: 150px;
     margin: 190px 0 0 50px;
     opacity: 0.2;
-}
+} */
 
 .slick-slider .slick-center .slider-img {
     width: 200px !important;
@@ -443,66 +444,49 @@ body {
 
 /* ----- MOVIE ROUTE START ----- */
 .movie-route .movie-wrapper {
-    gap: 20px;
-    padding: 30px 40px;
-}
-
-.movie-wrapper .movie-details {
-    flex: 30%;
-}
-
-.movie-details div {
-    justify-content: flex-start;
-}
-
-.movie-details .movie-title {
-    font-weight: bold;
+    margin: 0 22px;
+    display: grid;
+    margin: 0 70px;
+    grid-template-columns: 430px 520px;
 }
 
 .movie-details .movie-img {
-    width: 230px;
-    height: 300px;
-    border-radius: 10px;
-    box-shadow: 15px 15px 12px -6px rgba(0, 0, 0, 0.47);
-    -webkit-box-shadow: 15px 15px 12px -6px rgba(0, 0, 0, 0.47);
+    width: 240px;
+    height: 350px;
+    border: 2px solid var(--fontColor);
 }
 
-.movie-details .movie-title {
-    padding-top: 10px;
-    color: var(--fontColor);
+.movie-details .movie-data {
+    display: grid;
+    margin: 0 8px;
+}
+
+.movie-data .movie-title {
     font-size: 30px;
     font-weight: 900;
-}
-
-.movie-details .movie-info-text {
-    font-size: 16px;
-    padding-left: 40px;
-}
-
-.movie-details .rate-wrapper {
-    gap: 10px;
+    margin: 15px 0;
+    width: 250px;
 }
 
 .movie-details .details-wrapper {
-    padding: 25px 0;
+    display: grid;
+    margin: 10px 0;
+    grid-template-columns: 120px 150px;
 }
 
-.movie-details .rate-wrapper .imdb-img {
-    width: 30px;
-    height: 20px;
-    box-shadow: none;
+.details-wrapper .movie-attrib {
+    font-size: 20px;
 }
 
-.movie-wrapper .movie-booking {
-    flex: 60%;
-    gap: 50px;
+.details-wrapper .movie-info {
+    font-size: 17px;
 }
 
-.movie-booking .booking-form .btn-1 {
-    margin-top: 50px;
+.movie-details .movie-description {
+    width: 250px;
 }
 
-.movie-booking .movie-trailer .MuiTypography-h5 {
+.movie-trailer .movie-attrib {
     font-size: 28px;
 }
 

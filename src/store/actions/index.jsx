@@ -34,7 +34,7 @@ export const movieDetails = (id) => (dispatch) => {
     dispatch({ type: MOVIE_LOADING });
 
     api.get(`${URL}/api/movie/id/${id}`, {
-        delay: 2000,
+        delay: 0,
     })
         .then((response) =>
             dispatch({

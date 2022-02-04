@@ -10,7 +10,7 @@ import { FaCaretRight } from "react-icons/fa";
 import Header from "./global/header";
 import Footer from "./global/footer";
 import ChatBot from "./global/chatbot";
-import ImageSlider from "./global/image-slider";
+import ImageSlider from "./home/image-slider";
 
 const Home = () => {
     const navigate = useNavigate();
