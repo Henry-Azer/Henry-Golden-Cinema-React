@@ -93,7 +93,11 @@ const Movies = () => {
                     ) : (
                         <>
                             {[...Array(3)].map((e, i) => (
-                                <div className="movie-card" key={i}>
+                                <div
+                                    className="movie-card"
+                                    key={i}
+                                    onClick={() => navigate(`/movies/...`)}
+                                >
                                     <img
                                         className="movie-card-img"
                                         src={LoadingImgURL}

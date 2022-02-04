@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { movieDetails, clearMovieDetails } from "../store/actions";
@@ -28,15 +28,13 @@ const Movie = () => {
     const [movieTime, setMovieTime] = useState("");
     const [ticketsNumber, setTicketsNumber] = useState("");
 
-    const navigate = useNavigate();
+    const params = useParams();
     const location = useLocation();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const movie = useSelector((state) => state.movies.movieData);
     const loading = useSelector((state) => state.movies.movieLoading);
-
-    useEffect(() => {
-        if (location.state === null) return navigate("/");
-    }, [navigate, location]);
+    const locationState = location.state;
 
     useEffect(() => {
         document.title = movie
@@ -45,12 +43,14 @@ const Movie = () => {
     }, [movie]);
 
     useEffect(() => {
-        location.state == null
-            ? navigate("/movies")
-            : dispatch(movieDetails(location.state.movie.id));
+        if (locationState == null && params.title !== "...") {
+            navigate("/error", { state: { movieTitle: params.title } });
+        } else if (params.title !== "...") {
+            dispatch(movieDetails(locationState.movie.id));
+        }
 
         return dispatch(clearMovieDetails());
-    }, [dispatch, location, navigate]);
+    }, [dispatch, navigate, locationState, params]);
 
     const handleMovieDateChange = (event) => {
         setMovieDate(event.target.value);
@@ -368,7 +368,250 @@ const Movie = () => {
                         </div>
                     </div>
                 </div>
-            ) : null}
+            ) : (
+                <div className="movie-route-wrapper  content-fit">
+                    <div className="heading-wrapper display-flex flex-row">
+                        <FaCaretRight className="heading-icon" />
+                        <Typography
+                            className="heading-title"
+                            variant="h4"
+                            component="div"
+                        >
+                            Movie Title
+                        </Typography>
+                    </div>
+                    <div className="movie-wrapper display-flex flex-row">
+                        <div className="movie-details">
+                            <img
+                                className="movie-img"
+                                src={LoadingImgURL}
+                                alt="movie-img"
+                            />
+
+                            <Box sx={{ width: "100%", maxWidth: 260 }}>
+                                <Typography
+                                    className="movie-title"
+                                    variant="h4"
+                                    component="div"
+                                >
+                                    Movie Title
+                                </Typography>
+
+                                <div className="rate-wrapper display-flex flex-row">
+                                    <div className="display-flex flex-row">
+                                        <Typography
+                                            className="info-text"
+                                            variant="subtitle1"
+                                            gutterBottom
+                                            component="div"
+                                        >
+                                            Rate
+                                        </Typography>
+                                        <Typography
+                                            className="movie-info-text"
+                                            variant="subtitle1"
+                                            gutterBottom
+                                            component="div"
+                                        >
+                                            ~/10
+                                        </Typography>
+                                    </div>
+                                    <img
+                                        className="imdb-img"
+                                        src="https://akwam.in/style/assets/images/imdb.png"
+                                        alt="imdb-img"
+                                    />
+                                </div>
+
+                                <div className="display-flex flex-row">
+                                    <Typography
+                                        className="info-text"
+                                        variant="subtitle1"
+                                        gutterBottom
+                                        component="div"
+                                    >
+                                        Duration
+                                    </Typography>
+                                    <Typography
+                                        className="movie-info-text"
+                                        variant="subtitle1"
+                                        gutterBottom
+                                        component="div"
+                                    >
+                                        0 min
+                                    </Typography>
+                                </div>
+
+                                <div className="details-wrapper">
+                                    <div className="display-flex flex-row">
+                                        <Typography
+                                            className="info-text"
+                                            variant="subtitle1"
+                                            gutterBottom
+                                            component="div"
+                                        >
+                                            Stars
+                                        </Typography>
+                                        <Typography
+                                            className="movie-info-text"
+                                            variant="subtitle1"
+                                            gutterBottom
+                                            component="div"
+                                        >
+                                            <Typography
+                                                className="info-text"
+                                                variant="subtitle1"
+                                                gutterBottom
+                                                component="div"
+                                            >
+                                                ...
+                                            </Typography>
+                                        </Typography>
+                                    </div>
+                                    <div className="display-flex flex-row">
+                                        <Typography
+                                            className="info-text"
+                                            variant="subtitle1"
+                                            gutterBottom
+                                            component="div"
+                                        >
+                                            Writer
+                                        </Typography>
+                                        <Typography
+                                            className="movie-info-text"
+                                            variant="subtitle1"
+                                            gutterBottom
+                                            component="div"
+                                        >
+                                            <Typography
+                                                className="info-text"
+                                                variant="subtitle1"
+                                                gutterBottom
+                                                component="div"
+                                            >
+                                                ...
+                                            </Typography>
+                                        </Typography>
+                                    </div>
+                                    <div className="display-flex flex-row">
+                                        <Typography
+                                            className="info-text"
+                                            variant="subtitle1"
+                                            gutterBottom
+                                            component="div"
+                                        >
+                                            Director
+                                        </Typography>
+                                        <Typography
+                                            className="movie-info-text"
+                                            variant="subtitle1"
+                                            gutterBottom
+                                            component="div"
+                                        >
+                                            ...
+                                        </Typography>
+                                    </div>
+                                </div>
+
+                                <Typography
+                                    variant="body2"
+                                    gutterBottom
+                                    component="div"
+                                >
+                                    <Typography variant="h5" component="div">
+                                        Movie Description
+                                    </Typography>
+                                    ...
+                                </Typography>
+                            </Box>
+                        </div>
+                        <div className="movie-booking display-flex">
+                            <div className="booking-form display-flex">
+                                <FormControl
+                                    variant="standard"
+                                    sx={{ m: 1, minWidth: 500 }}
+                                >
+                                    <InputLabel id="demo-simple-select-standard-label">
+                                        Date
+                                    </InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-standard-label"
+                                        id="demo-simple-select-standard"
+                                        value={movieDate}
+                                        onChange={handleMovieDateChange}
+                                        label="Date"
+                                    >
+                                        <MenuItem value="">
+                                            <em>None</em>
+                                        </MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <FormControl
+                                    variant="standard"
+                                    sx={{ m: 1, minWidth: 500 }}
+                                >
+                                    <InputLabel id="demo-simple-select-standard-label">
+                                        Time
+                                    </InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-standard-label"
+                                        id="demo-simple-select-standard"
+                                        value={movieTime}
+                                        onChange={handleMovieTimeChange}
+                                        label="Time"
+                                    >
+                                        <MenuItem value="">
+                                            <em>None</em>
+                                        </MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <FormControl
+                                    variant="standard"
+                                    sx={{ m: 1, minWidth: 500 }}
+                                >
+                                    <InputLabel id="demo-simple-select-standard-label">
+                                        Tickets Number
+                                    </InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-standard-label"
+                                        id="demo-simple-select-standard"
+                                        value={ticketsNumber}
+                                        onChange={handleTicketsNumberChange}
+                                        label="Tickets Number"
+                                    >
+                                        <MenuItem value="">
+                                            <em>None</em>
+                                        </MenuItem>
+                                    </Select>
+                                </FormControl>
+
+                                <button className="btn-1">Book Now</button>
+                                <Typography
+                                    variant="subtitle1"
+                                    gutterBottom
+                                    component="div"
+                                >
+                                    <b>Price:</b> &emsp; 0$
+                                </Typography>
+                            </div>
+                            <div className="movie-trailer">
+                                <Typography
+                                    variant="h5"
+                                    gutterBottom
+                                    component="div"
+                                >
+                                    <b>Watch Trailer</b>
+                                </Typography>
+                                <img
+                                    className="movie-img"
+                                    src={LoadingImgURL}
+                                    alt="movie-img"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
             <Footer />
         </section>
     );

@@ -24,8 +24,8 @@ const Home = () => {
         width: "480",
         playerVars: {
             autoplay: 0,
-            origin: "https://mywebsite.com",
             enablejsapi: "1",
+            origin: "http://localhost:3000",
         },
     };
 
@@ -34,6 +34,16 @@ const Home = () => {
             <Header />
             <ChatBot />
             <div className="home-wrapper content-fit">
+                <div className="heading-wrapper display-flex flex-row">
+                    <FaCaretRight className="heading-icon" />
+                    <Typography
+                        className="heading-title"
+                        variant="h4"
+                        component="div"
+                    >
+                        Now Playing
+                    </Typography>
+                </div>
                 <ImageSlider />
 
                 <button

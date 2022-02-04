@@ -152,12 +152,12 @@ body {
     opacity: 0.5;
 }
 
-/* .slick-slider .slick-slide:nth-child(odd) .slider-img {
+.slick-slider .slick-slide:nth-child(odd) .slider-img {
     width: 100px;
     height: 150px;
     margin: 190px 0 0 50px;
     opacity: 0.2;
-} */
+}
 
 .slick-slider .slick-center .slider-img {
     width: 200px !important;
@@ -373,10 +373,6 @@ body {
 /* -------------------------------------------------------- */
 
 /* ----- HOME ROUTE START ----- */
-.home-wrapper {
-    padding-top: 120px;
-}
-
 .home-wrapper .slick-slider {
     position: relative;
     left: -25px;
