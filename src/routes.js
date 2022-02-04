@@ -14,13 +14,20 @@ const routes = () => {
     return (
         <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route exact path="/movies" element={<Movies />} />
-            <Route exact path="/movie/:title" element={<Movie />} />
-            <Route exact path="/bookings" element={<Bookings />} />
-            <Route exact path="/about-us" element={<AboutUs />} />
-            <Route exact path="/register" element={<Register />} />
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/error" element={<ErrorPage />} />
+
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/movies/:title" element={<Movie />} />
+
+            <Route path="/bookings" element={<Bookings />} />
+            <Route path="/about-us" element={<AboutUs />} />
+
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/error" element={<ErrorPage />} />
+
+            <Route path="" element={<ErrorPage />} />
+            <Route path="*" element={<ErrorPage />} />
+            <Route element={<ErrorPage />} />
         </Routes>
     );
 };

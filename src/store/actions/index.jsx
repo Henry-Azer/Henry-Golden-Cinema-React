@@ -1,29 +1,51 @@
 import axios from "axios";
-import { MOVIES_LIST, MOVIE_DETAILS, CLEAR_MOVIE_DETAILS } from "../types";
+import delayAdapterEnhancer from "axios-delay";
+import {
+    MOVIES_LIST,
+    MOVIES_LOADING,
+    MOVIE_DETAILS,
+    MOVIE_LOADING,
+    CLEAR_MOVIE_DETAILS,
+} from "../types";
 
 const URL = "http://localhost:8080";
 
-export function moviesList() {
-    const request = axios
-        .get(`${URL}/api/movie/all`)
-        .then((response) => response.data);
+const api = axios.create({
+    adapter: delayAdapterEnhancer(axios.defaults.adapter),
+});
 
-    return {
-        type: MOVIES_LIST,
-        payload: request,
-    };
-}
+export const moviesList = () => (dispatch) => {
+    dispatch({ type: MOVIES_LOADING });
+    api.get(`${URL}/api/movie/all`, {
+        delay: 0,
+    })
+        .then((response) =>
+            dispatch({
+                type: MOVIES_LIST,
+                payload: response.data,
+            })
+        )
+        .catch((error) => {
+            console.log(error);
+        });
+};
 
-export function movieDetails(id) {
-    const request = axios
-        .get(`${URL}/api/movie/id/${id}`)
-        .then((response) => response.data);
+export const movieDetails = (id) => (dispatch) => {
+    dispatch({ type: MOVIE_LOADING });
 
-    return {
-        type: MOVIE_DETAILS,
-        payload: request,
-    };
-}
+    api.get(`${URL}/api/movie/id/${id}`, {
+        delay: 0,
+    })
+        .then((response) =>
+            dispatch({
+                type: MOVIE_DETAILS,
+                payload: response.data,
+            })
+        )
+        .catch((error) => {
+            console.log(error);
+        });
+};
 
 export function clearMovieDetails() {
     return {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { movieDetails, clearMovieDetails } from "../store/actions";
@@ -20,23 +20,37 @@ import Header from "./global/header";
 import Footer from "./global/footer";
 import Chatbot from "./global/chatbot";
 
-const Movie = (props) => {
+const LoadingImgURL =
+    "https://camo.githubusercontent.com/3bec5c0c93180a4bfaaabe7a2cdcefb6cada4bb47fa19f6e43cc9498ba79efe0/687474703a2f2f692e696d6775722e636f6d2f637873543772532e676966";
+
+const Movie = () => {
     const [movieDate, setMovieDate] = useState("");
     const [movieTime, setMovieTime] = useState("");
     const [ticketsNumber, setTicketsNumber] = useState("");
 
+    const navigate = useNavigate();
     const location = useLocation();
     const dispatch = useDispatch();
     const movie = useSelector((state) => state.movies.movieData);
+    const loading = useSelector((state) => state.movies.movieLoading);
 
     useEffect(() => {
-        document.title = "Movie | Henry Golden Cinema";
-    });
+        if (location.state === null) return navigate("/");
+    }, [navigate, location]);
 
     useEffect(() => {
-        dispatch(movieDetails(location.state.movieId));
+        document.title = movie
+            ? `${movie.title} | Henry Golden Cinema`
+            : "Movie | Henry Golden Cinema";
+    }, [movie]);
+
+    useEffect(() => {
+        location.state == null
+            ? navigate("/movies")
+            : dispatch(movieDetails(location.state.movie.id));
+
         return dispatch(clearMovieDetails());
-    }, [dispatch, location.state.movieId]);
+    }, [dispatch, location, navigate]);
 
     const handleMovieDateChange = (event) => {
         setMovieDate(event.target.value);
@@ -97,7 +111,7 @@ const Movie = (props) => {
                         <div className="movie-details">
                             <img
                                 className="movie-img"
-                                src={movie.imgURL}
+                                src={loading ? LoadingImgURL : movie.imgURL}
                                 alt="movie-img"
                             />
 
@@ -354,9 +368,7 @@ const Movie = (props) => {
                         </div>
                     </div>
                 </div>
-            ) : (
-                <div>There is no movie to show!</div>
-            )}
+            ) : null}
             <Footer />
         </section>
     );

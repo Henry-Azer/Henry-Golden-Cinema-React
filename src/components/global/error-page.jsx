@@ -4,7 +4,7 @@ const ErrorPage = () => {
     useEffect(() => {
         document.title = "Error | Henry Golden Cinema";
     });
-    return <section className="error-section"></section>;
+    return <section className="error-section">Error</section>;
 };
 
 export default ErrorPage;

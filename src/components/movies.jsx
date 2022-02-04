@@ -12,10 +12,14 @@ import Header from "./global/header";
 import Footer from "./global/footer";
 import Chatbot from "./global/chatbot";
 
+const LoadingImgURL =
+    "https://camo.githubusercontent.com/3bec5c0c93180a4bfaaabe7a2cdcefb6cada4bb47fa19f6e43cc9498ba79efe0/687474703a2f2f692e696d6775722e636f6d2f637873543772532e676966";
+
 const Movies = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const movies = useSelector((state) => state.movies.movies);
+    const loading = useSelector((state) => state.movies.moviesLoading);
 
     useEffect(() => {
         document.title = "Movies | Henry Golden Cinema";
@@ -48,17 +52,17 @@ const Movies = () => {
                                 className="movie-card"
                                 onClick={() =>
                                     navigate(
-                                        `/movie/` +
+                                        `/movies/` +
                                             movie.title
                                                 .replace(/\s+/g, "-")
                                                 .toLowerCase(),
-                                        { state: { movieId: movie.id } }
+                                        { state: { movie: movie } }
                                     )
                                 }
                             >
                                 <img
                                     className="movie-card-img"
-                                    src={movie.imgURL}
+                                    src={loading ? LoadingImgURL : movie.imgURL}
                                     alt="movie-img"
                                 />
                                 <Typography
@@ -87,7 +91,40 @@ const Movies = () => {
                             </div>
                         ))
                     ) : (
-                        <div>There are no movies to show!</div>
+                        <>
+                            {[...Array(3)].map((e, i) => (
+                                <div className="movie-card" key={i}>
+                                    <img
+                                        className="movie-card-img"
+                                        src={LoadingImgURL}
+                                        alt="movie-img"
+                                    />
+                                    <Typography
+                                        className="movie-name"
+                                        variant="h6"
+                                        component="div"
+                                    >
+                                        ...
+                                    </Typography>
+                                    <div className="movie-card-info">
+                                        <div className="rate-wrapper display-flex flex-row">
+                                            <Typography
+                                                className="rate-number"
+                                                variant="subtitle1"
+                                                component="div"
+                                            >
+                                                ~/10
+                                            </Typography>
+                                            <img
+                                                className="imdb-img"
+                                                src="https://akwam.in/style/assets/images/imdb.png"
+                                                alt="imdb"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </>
                     )}
                 </div>
             </div>

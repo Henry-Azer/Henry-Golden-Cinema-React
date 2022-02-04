@@ -5,13 +5,13 @@ import { moviesList } from "../../store/actions";
 
 import Slider from "react-slick";
 
+const LoadingImgURL =
+    "https://camo.githubusercontent.com/3bec5c0c93180a4bfaaabe7a2cdcefb6cada4bb47fa19f6e43cc9498ba79efe0/687474703a2f2f692e696d6775722e636f6d2f637873543772532e676966";
+
 const Home = () => {
     const dispatch = useDispatch();
     const movies = useSelector((state) => state.movies.movies);
-
-    useEffect(() => {
-        document.title = "Home | Henry Golden Cinema";
-    });
+    const loading = useSelector((state) => state.movies.moviesLoading);
 
     useEffect(() => {
         dispatch(moviesList());
@@ -26,7 +26,7 @@ const Home = () => {
         centerMode: true,
         autoplay: true,
         autoplaySpeed: 2500,
-        centerPadding: "-10px",
+        centerPadding: "-20px",
         speed: 500,
         slidesToShow: 5,
         slidesToScroll: 1,
@@ -37,7 +37,7 @@ const Home = () => {
                     slidesToShow: 3,
                     slidesToScroll: 3,
                     infinite: true,
-                    dots: true,
+                    dots: false,
                 },
             },
             {
@@ -53,27 +53,73 @@ const Home = () => {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
+                    initialSlide: 1,
                 },
             },
         ],
     };
 
     return (
-        <Slider className="slick-slider" {...settings}>
+        <div>
             {movies ? (
-                movies.map((movie) => (
-                    <div key={movie.id}>
+                <Slider className="slick-slider" {...settings}>
+                    {movies.map((movie) => (
+                        <div key={movie.id}>
+                            <img
+                                className="slider-img"
+                                src={loading ? LoadingImgURL : movie.imgURL}
+                                alt="slider-img"
+                            />
+                        </div>
+                    ))}
+                </Slider>
+            ) : (
+                <Slider className="slick-slider" {...settings}>
+                    <div>
                         <img
                             className="slider-img"
-                            src={movie.imgURL}
+                            src={LoadingImgURL}
                             alt="slider-img"
                         />
                     </div>
-                ))
-            ) : (
-                <div>There are no movies to show!</div>
+                    <div>
+                        <img
+                            className="slider-img"
+                            src={LoadingImgURL}
+                            alt="slider-img"
+                        />
+                    </div>
+                    <div>
+                        <img
+                            className="slider-img"
+                            src={LoadingImgURL}
+                            alt="slider-img"
+                        />
+                    </div>
+                    <div>
+                        <img
+                            className="slider-img"
+                            src={LoadingImgURL}
+                            alt="slider-img"
+                        />
+                    </div>
+                    <div>
+                        <img
+                            className="slider-img"
+                            src={LoadingImgURL}
+                            alt="slider-img"
+                        />
+                    </div>
+                    <div>
+                        <img
+                            className="slider-img"
+                            src={LoadingImgURL}
+                            alt="slider-img"
+                        />
+                    </div>
+                </Slider>
             )}
-        </Slider>
+        </div>
     );
 };
 
