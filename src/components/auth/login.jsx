@@ -16,7 +16,6 @@ import { FaFacebookF } from "react-icons/fa";
 
 const Login = () => {
     const navigate = useNavigate();
-
     const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
     useEffect(() => {
@@ -75,7 +74,7 @@ const Login = () => {
                         setTimeout(() => {
                             alert(JSON.stringify(values, null, 2));
                             setSubmitting(false);
-                        }, 400);
+                        }, 4000);
                     }}
                 >
                     {({

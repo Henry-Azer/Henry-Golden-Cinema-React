@@ -309,14 +309,19 @@ body {
 /* -------------------------------------------------------- */
 
 /* ----- REGISTER ROUTE START ----- */
-.register-route {
-    background: url("/src/resources/backgrounds/Requirements-04.png") no-repeat
-        center;
-    height: 100vh;
-}
 /* ----- REGISTER ROUTE END ----- */
 
 /* ----- REGISTER AND LOGIN ROUTE START ----- */
+.login-route,
+.register-route {
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-image: url("/src/resources/backgrounds/Requirements-04.png");
+}
+
 .reg-log-wrapper {
     padding: auto 0;
     padding-top: 20px;
@@ -337,7 +342,7 @@ body {
     border-radius: 50px;
     border: none;
     outline: none;
-    padding-left: 40px;
+    padding: 0 40px;
     font-size: 18px;
 }
 
@@ -352,15 +357,15 @@ body {
     height: 42px;
 }
 
+.reg-log-form .result-img {
+    width: 50px;
+    height: 50px;
+    padding-bottom: 10px;
+    transition: 0.6s all;
+}
 /* ----- REGISTER AND LOGIN ROUTE END ----- */
 
 /* ----- LOGIN ROUTE START ----- */
-.login-route {
-    background: url("/src/resources/backgrounds/Requirements-04.png") fixed
-        no-repeat center;
-    height: 100vh;
-}
-
 .login-route .login-contact-us {
     margin-top: 10px;
 }
@@ -443,6 +448,10 @@ body {
 /* -------------------------------------------------------- */
 
 /* ----- MOVIE ROUTE START ----- */
+.movie-route-wrapper .movie-loader {
+    margin: 0 50px;
+}
+
 .movie-route .movie-wrapper {
     margin: 0 22px;
     display: grid;

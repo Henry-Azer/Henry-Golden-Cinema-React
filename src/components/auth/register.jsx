@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useSelector, useDispatch } from "react-redux";
+import { userRegistration, usersList } from "../../store/actions";
+
 import { Formik } from "formik";
 
 import logoName from "../../resources/images/Requirements-02.png";
@@ -8,12 +11,33 @@ import logoName from "../../resources/images/Requirements-02.png";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
+const LoadingImgURL = "https://i.gifer.com/ZZ5H.gif";
+
+const succeededImgURL =
+    "https://www.pinclipart.com/picdir/big/412-4121138_how-do-i-get-security-deposit-back-gif.png";
+
 const Register = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const users = useSelector((state) => state.users.users);
+    const loading = useSelector((state) => state.users.registerLoading);
+    const registrationSucceeded = useSelector(
+        (state) => state.users.userRegistered
+    );
 
     useEffect(() => {
         document.title = "Register | Henry Golden Cinema";
     });
+
+    useEffect(() => {
+        dispatch(usersList());
+    }, [dispatch]);
+
+    const checkEmailExists = (email) => {
+        for (const user of users) if (user.email === email) return true;
+
+        return false;
+    };
 
     return (
         <section className="register-route">
@@ -54,6 +78,13 @@ const Register = () => {
                             errors.email = "Invalid email address.";
                         }
 
+                        if (
+                            values.email !== "" &&
+                            checkEmailExists(values.email)
+                        ) {
+                            errors.email = "Email already exist.";
+                        }
+
                         // Username Validation
                         const usernameRegex = /^[a-zA-Z0-9]+$/;
                         if (!values.username) {
@@ -84,11 +115,14 @@ const Register = () => {
 
                         return errors;
                     }}
-                    onSubmit={(values, { setSubmitting }) => {
+                    onSubmit={(values, { setSubmitting, resetForm }) => {
+                        dispatch(userRegistration(values));
+                        dispatch(usersList());
+
                         setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2));
                             setSubmitting(false);
-                        }, 400);
+                            resetForm();
+                        }, 2000);
                     }}
                 >
                     {({
@@ -119,7 +153,6 @@ const Register = () => {
                                     touched.username &&
                                     errors.username}
                             </span>
-
                             <input
                                 placeholder="Email"
                                 autoComplete="off"
@@ -133,7 +166,6 @@ const Register = () => {
                             <span>
                                 {errors.email && touched.email && errors.email}
                             </span>
-
                             <input
                                 placeholder="Password"
                                 autoComplete="off"
@@ -149,7 +181,6 @@ const Register = () => {
                                     touched.password &&
                                     errors.password}
                             </span>
-
                             <input
                                 placeholder="Confirm Password"
                                 autoComplete="off"
@@ -165,6 +196,22 @@ const Register = () => {
                                     touched.confirmPassword &&
                                     errors.confirmPassword}
                             </span>
+
+                            {loading ? (
+                                <img
+                                    className="result-img"
+                                    src={LoadingImgURL}
+                                    alt="saving-account"
+                                />
+                            ) : null}
+
+                            {registrationSucceeded && loading === false ? (
+                                <img
+                                    className="result-img"
+                                    src={succeededImgURL}
+                                    alt="saving-account"
+                                />
+                            ) : null}
 
                             <button
                                 className="btn-1"

@@ -4,7 +4,7 @@ import {
     MOVIE_DETAILS,
     MOVIE_LOADING,
     CLEAR_MOVIE_DETAILS,
-} from "../types";
+} from "../actions/types";
 
 export default function movies_reducer(state = {}, action) {
     switch (action.type) {
