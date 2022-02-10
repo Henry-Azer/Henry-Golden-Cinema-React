@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { moviesList } from "../store/actions";
+import { nowPlayingMoviesList } from "../store/actions";
 
 import Typography from "@mui/material/Typography";
 
@@ -18,15 +18,17 @@ const LoadingImgURL =
 const Movies = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const movies = useSelector((state) => state.movies.movies);
     const loading = useSelector((state) => state.movies.moviesLoading);
+    const nowPlayingMovies = useSelector(
+        (state) => state.movies.nowPlayingMovies
+    );
 
     useEffect(() => {
         document.title = "Movies | Henry Golden Cinema";
     });
 
     useEffect(() => {
-        dispatch(moviesList());
+        dispatch(nowPlayingMoviesList());
     }, [dispatch]);
 
     return (
@@ -45,8 +47,8 @@ const Movies = () => {
                     </Typography>
                 </div>
                 <div className="movies-cards display-flex flex-row">
-                    {movies ? (
-                        movies.map((movie) => (
+                    {nowPlayingMovies ? (
+                        nowPlayingMovies.map((movie) => (
                             <div
                                 key={movie.id}
                                 className="movie-card"

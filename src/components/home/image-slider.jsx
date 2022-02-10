@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { moviesList } from "../../store/actions";
+import { nowPlayingMoviesList } from "../../store/actions";
 
 import Slider from "react-slick";
 
@@ -10,11 +10,13 @@ const LoadingImgURL =
 
 const Home = () => {
     const dispatch = useDispatch();
-    const movies = useSelector((state) => state.movies.movies);
     const loading = useSelector((state) => state.movies.moviesLoading);
+    const nowPlayingMovies = useSelector(
+        (state) => state.movies.nowPlayingMovies
+    );
 
     useEffect(() => {
-        dispatch(moviesList());
+        dispatch(nowPlayingMoviesList());
     }, [dispatch]);
 
     var settings = {
@@ -61,9 +63,9 @@ const Home = () => {
 
     return (
         <div>
-            {movies ? (
+            {nowPlayingMovies ? (
                 <Slider className="slick-slider" {...settings}>
-                    {movies.map((movie) => (
+                    {nowPlayingMovies.map((movie) => (
                         <div key={movie.id}>
                             <img
                                 className="slider-img"

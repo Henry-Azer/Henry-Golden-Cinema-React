@@ -7,6 +7,8 @@ import {
     MOVIE_DETAILS,
     MOVIE_LOADING,
     CLEAR_MOVIE_DETAILS,
+    NOW_PLAYING_MOVIES_LIST,
+    NOW_PLAYING_MOVIES_LOADING,
 } from "../types";
 
 const URL = "http://localhost:8080/api/movie";
@@ -14,6 +16,22 @@ const URL = "http://localhost:8080/api/movie";
 const api = axios.create({
     adapter: delayAdapterEnhancer(axios.defaults.adapter),
 });
+
+export const nowPlayingMoviesList = () => (dispatch) => {
+    dispatch({ type: NOW_PLAYING_MOVIES_LOADING });
+    api.get(`${URL}/now-play`, {
+        delay: 0,
+    })
+        .then((response) =>
+            dispatch({
+                type: NOW_PLAYING_MOVIES_LIST,
+                payload: response.data,
+            })
+        )
+        .catch((error) => {
+            console.log(error);
+        });
+};
 
 export const moviesList = () => (dispatch) => {
     dispatch({ type: MOVIES_LOADING });
