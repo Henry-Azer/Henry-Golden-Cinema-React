@@ -1,9 +1,10 @@
 import {
-    USER_REGISTERED,
-    REGISTER_LOADING,
-    REGISTER_ERROR,
-    USER_EXIST,
     USERS_LIST,
+    USER_EXIST,
+    USER_REGISTERED,
+    REGISTER_ERROR,
+    REGISTER_LOADING,
+    CLEAR_REGISTRATION_DETAILS,
 } from "../actions/types";
 
 export default function users_reducer(state = {}, action) {
@@ -16,6 +17,11 @@ export default function users_reducer(state = {}, action) {
                 registeredUser: action.payload,
                 registerLoading: false,
                 userRegistered: true,
+            };
+        case CLEAR_REGISTRATION_DETAILS:
+            return {
+                ...state,
+                userRegistered: false,
             };
         case REGISTER_ERROR:
             return {

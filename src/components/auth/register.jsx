@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { userRegistration, usersList } from "../../store/actions";
+import {
+    usersList,
+    userRegistration,
+    clearRegistrationDetails,
+} from "../../store/actions";
 
 import { Formik } from "formik";
 
@@ -31,6 +35,8 @@ const Register = () => {
 
     useEffect(() => {
         dispatch(usersList());
+
+        return dispatch(clearRegistrationDetails());
     }, [dispatch]);
 
     const checkEmailExists = (email) => {

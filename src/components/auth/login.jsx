@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+
+import { authenticateUser } from "../../store/actions";
+
 import { Formik } from "formik";
 
 import logoName from "../../resources/images/Requirements-02.png";
@@ -14,9 +18,11 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
+
 const Login = () => {
     const navigate = useNavigate();
-    const label = { inputProps: { "aria-label": "Checkbox demo" } };
+    const dispatch = useDispatch();
 
     useEffect(() => {
         document.title = "Login | Henry Golden Cinema";
@@ -70,11 +76,13 @@ const Login = () => {
 
                         return errors;
                     }}
-                    onSubmit={(values, { setSubmitting }) => {
+                    onSubmit={(values, { setSubmitting, resetForm }) => {
+                        dispatch(authenticateUser(values));
+
                         setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2));
                             setSubmitting(false);
-                        }, 4000);
+                            resetForm();
+                        }, 2000);
                     }}
                 >
                     {({

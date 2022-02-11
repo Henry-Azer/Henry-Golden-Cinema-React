@@ -2,11 +2,12 @@ import axios from "axios";
 import delayAdapterEnhancer from "axios-delay";
 
 import {
-    REGISTER_LOADING,
+    USERS_LIST,
+    USER_EXIST,
     USER_REGISTERED,
     REGISTER_ERROR,
-    USER_EXIST,
-    USERS_LIST,
+    REGISTER_LOADING,
+    CLEAR_REGISTRATION_DETAILS,
 } from "../types";
 
 const URL = "http://localhost:8080/api/user";
@@ -49,6 +50,13 @@ export const userRegistration = (user) => (dispatch) => {
             });
         });
 };
+
+export function clearRegistrationDetails() {
+    return {
+        type: CLEAR_REGISTRATION_DETAILS,
+        payload: null,
+    };
+}
 
 export const userExistCheck = (user) => (dispatch) => {
     console.log(user.email);
