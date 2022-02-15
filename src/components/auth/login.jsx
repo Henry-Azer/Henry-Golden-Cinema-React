@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { authenticateUser } from "../../store/actions";
 
@@ -20,12 +20,23 @@ import { FaFacebookF } from "react-icons/fa";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
+const LoadingImgURL = "https://i.gifer.com/ZZ5H.gif";
+
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const loading = useSelector((state) => state.auth.authRequest);
+    // const authenticatedUser = useSelector((state) => state.auth.authenticatedUser);
+    const isUserAuthenticated = useSelector(
+        (state) => state.auth.isUserAuthenticated
+    );
 
     useEffect(() => {
         document.title = "Login | Henry Golden Cinema";
+
+        console.log(isUserAuthenticated);
+
+        if (isUserAuthenticated) navigate("/");
     });
 
     return (
@@ -126,6 +137,14 @@ const Login = () => {
                                     touched.password &&
                                     errors.password}
                             </span>
+
+                            {loading ? (
+                                <img
+                                    className="result-img"
+                                    src={LoadingImgURL}
+                                    alt="saving-account"
+                                />
+                            ) : null}
 
                             <div className="keep-logged display-flex flex-row">
                                 <Checkbox {...label} />

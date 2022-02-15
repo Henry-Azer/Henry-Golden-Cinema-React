@@ -3,7 +3,7 @@ import delayAdapterEnhancer from "axios-delay";
 
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from "../types";
 
-const URL = "http://localhost:8080/api/auth";
+const URL = "http://localhost:8080/api/user";
 
 const api = axios.create({
     adapter: delayAdapterEnhancer(axios.defaults.adapter),
@@ -17,11 +17,14 @@ export const authenticateUser = (values) => (dispatch) => {
 
     console.log(values);
 
-    axios
-        .post(`${URL}/process-login`, {
-            username: values.email,
+    api.post(
+        `${URL}/auth`,
+        {
+            email: values.email,
             password: values.password,
-        })
+        },
+        { delay: 2000 }
+    )
         .then(function(response) {
             console.log(response);
             dispatch({

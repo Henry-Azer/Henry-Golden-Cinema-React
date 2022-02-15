@@ -13,20 +13,20 @@ export default function auth_reducer(state = {}, action) {
             return {
                 ...state,
                 authenticatedUser: action.payload,
-                userAuthenticated: true,
+                isUserAuthenticated: true,
                 authRequest: false,
             };
         case LOGIN_FAILURE:
             return {
                 ...state,
-                userAuthenticated: false,
+                isUserAuthenticated: false,
                 authRequest: false,
             };
         case LOGOUT:
             return {
                 ...state,
                 authenticatedUser: action.payload,
-                userAuthenticated: false,
+                isUserAuthenticated: false,
                 authRequest: false,
             };
         default:
