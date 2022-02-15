@@ -723,6 +723,10 @@ body {
         animation: fade-in 3s;
     }
 
+    .header-section .logo-wrapper {
+        float: left;
+    }
+
     .header-section .header-wrapper {
         flex-direction: column;
         margin: 10px 0;

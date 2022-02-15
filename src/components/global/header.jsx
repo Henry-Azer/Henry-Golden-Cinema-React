@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import AOS from "aos";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -22,10 +20,6 @@ const Header = () => {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
-    useEffect(() => {
-        AOS.init();
-    });
 
     const handleClose = () => {
         setAnchorEl(null);
@@ -60,9 +54,6 @@ const Header = () => {
                 <Box
                     className="logo-wrapper display-flex flex-row"
                     onClick={() => navigate("/")}
-                    data-aos-delay="50"
-                    data-aos-duration="1500"
-                    data-aos="fade-down-right"
                 >
                     <img src={logoImg} className="logo-img" alt="logo-img" />
                     <img src={logoName} className="logo-name" alt="logo-name" />
@@ -71,9 +62,6 @@ const Header = () => {
                 <div
                     className="routes-wrapper display-flex flex-row"
                     id="routes-wrapper"
-                    data-aos-delay="50"
-                    data-aos-duration="1500"
-                    data-aos="fade-down"
                 >
                     <Typography
                         variant="h6"
@@ -101,9 +89,6 @@ const Header = () => {
                 <div
                     className="user-wrapper display-flex flex-row"
                     id="user-wrapper"
-                     data-aos-delay="50"
-                    data-aos-duration="1500"
-                    data-aos="fade-down-left"
                 >
                     <img
                         src="https://cdn-icons-png.flaticon.com/512/848/848006.png"
