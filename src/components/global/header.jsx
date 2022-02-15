@@ -1,29 +1,61 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
+import AOS from "aos";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
+import { Divide as Hamburger } from "hamburger-react";
+
 import logoName from "../../resources/images/Requirements-02.png";
 import logoImg from "../../resources/images/Requirements-03.png";
 
 const Header = () => {
-    const navigate = useNavigate();
+    const [isHamburgerOpen, setHamburgerOpen] = useState(false);
 
+    const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
 
+    useEffect(() => {
+        AOS.init();
+    });
+
     const handleClose = () => {
         setAnchorEl(null);
     };
 
+    const toggleHamburger = (toggled) => {
+        var header = document.getElementById("header-section");
+        var user = document.getElementById("user-wrapper");
+        var routes = document.getElementById("routes-wrapper");
+
+        if (toggled) {
+            header.classList.add("header-toggle");
+            user.classList.add("user-wrapper-toggle");
+            routes.classList.add("routes-wrapper-toggle");
+        } else {
+            header.classList.remove("header-toggle");
+            user.classList.remove("user-wrapper-toggle");
+            routes.classList.remove("routes-wrapper-toggle");
+        }
+    };
+
     return (
-        <section className="header-section">
+        <section className="header-section" id="header-section">
+            <Hamburger
+                size={28}
+                toggled={isHamburgerOpen}
+                toggle={setHamburgerOpen}
+                onToggle={toggleHamburger}
+            />
+
             <div className="header-wrapper display-flex flex-row">
                 <Box
                     className="logo-wrapper display-flex flex-row"
@@ -33,7 +65,13 @@ const Header = () => {
                     <img src={logoName} className="logo-name" alt="logo-name" />
                 </Box>
 
-                <div className="routes-wrapper display-flex flex-row">
+                <div
+                    className="routes-wrapper display-flex flex-row"
+                    id="routes-wrapper"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos="fade-up"
+                >
                     <Typography
                         variant="h6"
                         component="span"
@@ -57,7 +95,13 @@ const Header = () => {
                     </Typography>
                 </div>
 
-                <div className="user-wrapper display-flex flex-row">
+                <div
+                    className="user-wrapper display-flex flex-row"
+                    id="user-wrapper"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos="fade-up"
+                >
                     <img
                         src="https://cdn-icons-png.flaticon.com/512/848/848006.png"
                         alt="user-icon"

@@ -10,6 +10,7 @@ import reducers from "./store/reducers";
 import Routes from "./routes";
 import { BrowserRouter } from "react-router-dom";
 
+import "aos/dist/aos.css";
 import "./styles/styles.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

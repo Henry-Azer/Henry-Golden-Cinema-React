@@ -186,6 +186,11 @@ body {
     width: 100%;
     background-color: var(--main3rdColor);
     z-index: 99;
+    transition: 0.6s all;
+}
+
+.header-section .hamburger-react {
+    display: none;
 }
 
 .header-section .header-wrapper {
@@ -344,6 +349,7 @@ body {
     outline: none;
     padding: 0 40px;
     font-size: 18px;
+    transition: 0.6s all;
 }
 
 .reg-log-form span {
@@ -355,6 +361,7 @@ body {
 .reg-login-link .btn-1 {
     width: 530px;
     height: 42px;
+    transition: 0.6s all;
 }
 
 .reg-log-form .result-img {
@@ -685,14 +692,91 @@ body {
 /* ----- CHAT-BOT END ----- */
 
 /* -------------------------------------------------------- */
-@media only screen and (max-width: 990px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
 }
 
-@media only screen and (max-width: 767.5px) {
+@media only screen and (max-width: 1088px) {
+    /* HEADER ROUTE */
+    .header-section {
+        height: 8vh;
+    }
+
+    .header-section .hamburger-react {
+        position: absolute !important;
+        display: block;
+        right: 20px;
+        top: 8px;
+    }
+
+    .header-toggle {
+        height: 20vh;
+    }
+
+    .header-section .user-wrapper,
+    .header-section .routes-wrapper {
+        display: none;
+    }
+
+    .header-section .user-wrapper-toggle,
+    .header-section .routes-wrapper-toggle {
+        display: block;
+        animation: fade-in 3s;
+    }
+
+    .header-section .header-wrapper {
+        flex-direction: column;
+        margin: 10px 0;
+    }
+
+    .header-wrapper .routes-wrapper {
+        justify-content: center;
+        margin: 12px 0;
+    }
+
+    .header-wrapper .routes-wrapper span {
+        margin: 0 10px;
+    }
+    /* ------------ */
+}
+
+@media only screen and (max-width: 768px) {
+    /* LOGIN AND REGISTER ROUTE */
+    .reg-log-form input {
+        width: 280px;
+    }
+
+    .reg-login-link .btn-1 {
+        width: 360px;
+    }
+
+    /* ------------------------ */
 }
 
 @media only screen and (max-width: 577px) {
     .content-fit {
         margin: 0;
     }
+
+    /* LOGIN AND REGISTER ROUTE */
+    .reg-log-form input {
+        width: 250px;
+    }
+
+    .reg-login-link .btn-1 {
+        width: 330px;
+    }
+
+    /* ------------------------ */
 }
+
+/* ANIMATIONS START */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ---------------- */
