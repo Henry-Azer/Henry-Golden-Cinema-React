@@ -1,14 +1,18 @@
 /* ----- GLOBAL PROPS START ----- */
-::-webkit-scrollbar {
-    display: none;
-}
-
 :root {
     --fontColor: #f2f2f2;
     --font2ndColor: #999999;
     --mainColor: #e5890a;
     --main2ndColor: #9d5c0d;
     --main3rdColor: #3a3a3a;
+}
+
+::selection {
+    background: var(--main2ndColor);
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 * {
@@ -182,21 +186,26 @@ body {
 /* ----- Header SECTION START ----- */
 .header-section {
     position: fixed;
-    height: fit-content;
     width: 100%;
+    max-height: 18vh;
+    min-height: 9vh;
+    height: fit-content;
+    transition: max-height 0.6s ease-in;
     background-color: var(--main3rdColor);
+    overflow: hidden;
     z-index: 99;
-    transition: 0.6s all;
 }
 
 .header-section .hamburger-react {
     display: none;
+    position: absolute !important;
+    right: 20px;
+    top: 13px;
 }
 
 .header-section .header-wrapper {
     justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 7px 130px;
+    margin: 15px 120px;
 }
 
 .header-wrapper .logo-wrapper .logo-img {
@@ -213,12 +222,13 @@ body {
 }
 
 .header-wrapper .routes-wrapper span {
-    margin: 0 20px;
+    margin: 0 15px;
     font-size: 17px;
     cursor: pointer;
 }
 
 .header-wrapper .user-wrapper img {
+    position: relative;
     width: 28px;
 }
 
@@ -241,7 +251,7 @@ body {
 
 .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
     width: 115px;
-    height: 85px;
+    min-height: 100px;
     margin-top: 10px;
     background: url("/src/resources/backgrounds/Requirements-01.png") fixed
         no-repeat cover;
@@ -692,24 +702,19 @@ body {
 /* ----- CHAT-BOT END ----- */
 
 /* -------------------------------------------------------- */
+
+/* ------------------- MEDIA START------------------------- */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
 }
 
 @media only screen and (max-width: 1088px) {
-    /* HEADER ROUTE */
-    .header-section {
-        height: 8vh;
-    }
-
-    .header-section .hamburger-react {
-        position: absolute !important;
-        display: block;
-        right: 20px;
-        top: 8px;
-    }
-
+    /* ----- HEADER ROUTE START ----- */
     .header-toggle {
-        height: 20vh;
+        max-height: 40vh;
+    }
+
+    .header-section .header-wrapper {
+        margin: 15px 0;
     }
 
     .header-section .user-wrapper,
@@ -717,34 +722,46 @@ body {
         display: none;
     }
 
-    .header-section .user-wrapper-toggle,
-    .header-section .routes-wrapper-toggle {
+    .header-section .hamburger-react {
+        display: block;
+    }
+
+    .header-toggle .user-wrapper,
+    .header-toggle .routes-wrapper {
         display: block;
         animation: fade-in 3s;
     }
 
-    .header-section .logo-wrapper {
-        float: left;
-    }
-
     .header-section .header-wrapper {
         flex-direction: column;
-        margin: 10px 0;
     }
 
     .header-wrapper .routes-wrapper {
-        justify-content: center;
         margin: 12px 0;
     }
 
-    .header-wrapper .routes-wrapper span {
-        margin: 0 10px;
+    .header-wrapper .user-wrapper img {
+        top: 7px;
     }
-    /* ------------ */
+
+    .header-wrapper .logo-wrapper {
+        margin-right: 25px;
+    }
+
+    .header-wrapper .logo-wrapper-collapsed .logo-name {
+        display: none;
+        transition: 0.6s all;
+    }
+
+    .header-wrapper .logo-wrapper-collapsed {
+        position: absolute;
+        left: 20px;
+    }
+    /* ------------------------------ */
 }
 
 @media only screen and (max-width: 768px) {
-    /* LOGIN AND REGISTER ROUTE */
+    /* ----- LOGIN AND REGISTER ROUTE START ----- */
     .reg-log-form input {
         width: 280px;
     }
@@ -752,16 +769,18 @@ body {
     .reg-login-link .btn-1 {
         width: 360px;
     }
-
-    /* ------------------------ */
+    /* ------------------------------------------ */
 }
 
 @media only screen and (max-width: 577px) {
+    /* ----- GLOBAL START ----- */
+
     .content-fit {
         margin: 0;
     }
+    /* ----- GLOBAL END ----- */
 
-    /* LOGIN AND REGISTER ROUTE */
+    /* ----- LOGIN AND REGISTER ROUTE START ----- */
     .reg-log-form input {
         width: 250px;
     }
@@ -769,11 +788,11 @@ body {
     .reg-login-link .btn-1 {
         width: 330px;
     }
-
-    /* ------------------------ */
+    /* ------------------------------------------ */
 }
+/* -------------------------------------------------------- */
 
-/* ANIMATIONS START */
+/* -------------- ANIMATIONS START------------------------- */
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -783,4 +802,12 @@ body {
     }
 }
 
-/* ---------------- */
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+/* -------------------------------------------------------- */

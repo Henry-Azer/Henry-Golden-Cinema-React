@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
@@ -20,25 +20,28 @@ const Header = () => {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+    let screenWidth = window.screen.width;
 
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+    useEffect(() => {
+        if (screenWidth < 1088) {
+            window.onscroll = () => {
+                const logoWrapper = document.getElementById("logo-wrapper");
+                if (window.scrollY > 100)
+                    logoWrapper.classList.add("logo-wrapper-collapsed");
+                else logoWrapper.classList.remove("logo-wrapper-collapsed");
+            };
+        }
+    }, [screenWidth]);
 
     const toggleHamburger = (toggled) => {
         var header = document.getElementById("header-section");
-        var user = document.getElementById("user-wrapper");
-        var routes = document.getElementById("routes-wrapper");
 
-        if (toggled) {
-            header.classList.add("header-toggle");
-            user.classList.add("user-wrapper-toggle");
-            routes.classList.add("routes-wrapper-toggle");
-        } else {
-            header.classList.remove("header-toggle");
-            user.classList.remove("user-wrapper-toggle");
-            routes.classList.remove("routes-wrapper-toggle");
-        }
+        if (toggled) header.classList.add("header-toggle");
+        else header.classList.remove("header-toggle");
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
     };
 
     return (
@@ -52,6 +55,7 @@ const Header = () => {
 
             <div className="header-wrapper display-flex flex-row">
                 <Box
+                    id="logo-wrapper"
                     className="logo-wrapper display-flex flex-row"
                     onClick={() => navigate("/")}
                 >
