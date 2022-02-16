@@ -200,12 +200,12 @@ body {
     display: none;
     position: absolute !important;
     right: 20px;
-    top: 13px;
+    top: 10px;
 }
 
 .header-section .header-wrapper {
     justify-content: space-between;
-    margin: 15px 120px;
+    margin: 10px 120px;
 }
 
 .header-wrapper .logo-wrapper .logo-img {
@@ -714,7 +714,7 @@ body {
     }
 
     .header-section .header-wrapper {
-        margin: 15px 0;
+        margin: 8px 0;
     }
 
     .header-section .user-wrapper,

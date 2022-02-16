@@ -31,7 +31,7 @@ const Header = () => {
                 else logoWrapper.classList.remove("logo-wrapper-collapsed");
             };
         }
-    }, [screenWidth]);
+    });
 
     const toggleHamburger = (toggled) => {
         var header = document.getElementById("header-section");
