@@ -20,8 +20,6 @@ const Home = () => {
     });
 
     const opts = {
-        height: "280",
-        width: "480",
         playerVars: {
             autoplay: 0,
             enablejsapi: "1",
@@ -65,8 +63,12 @@ const Home = () => {
                     </Typography>
                 </div>
                 <div className="services-wrapper">
-                    <div className="services-container display-flex flex-row">
-                        <YouTube videoId="zlcJlMpgAks" opts={opts} />
+                    <div className="services-container">
+                        <YouTube
+                            className="services-video"
+                            videoId="zlcJlMpgAks"
+                            opts={opts}
+                        />
                         <div className="services">
                             <div className="service display-flex">
                                 <img

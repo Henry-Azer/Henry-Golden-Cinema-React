@@ -7,7 +7,7 @@ import { movieDetails, clearMovieDetails } from "../store/actions";
 
 import YouTube from "react-youtube";
 
-import { Facebook } from "react-content-loader";
+import { Facebook as ContentLoader } from "react-content-loader";
 
 import Typography from "@mui/material/Typography";
 
@@ -241,8 +241,8 @@ const Movie = () => {
                             Move Title
                         </Typography>
                     </div>
-                    <div className="movie-loader">
-                        <Facebook speed={2} foregroundColor={"#999999"} />
+                    <div className="content-loader">
+                        <ContentLoader speed={2} foregroundColor={"#999999"} />
                     </div>
                 </div>
             )}

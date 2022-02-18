@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import Collapsible from "react-collapsible";
 
@@ -6,14 +7,20 @@ import Typography from "@mui/material/Typography";
 
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
+import { Facebook as ContentLoader } from "react-content-loader";
+
 import Header from "./global/header";
 import Footer from "./global/footer";
 import ChatBot from "./global/chatbot";
 
-import Ticket from "../resources/images/Requirements-07.png";
 import TicketInfo from "../resources/images/Requirements-06.png";
 
 const Bookings = () => {
+    const navigate = useNavigate();
+
+    const tickets = null;
+    const loading = true;
+
     return (
         <section className="bookings-route">
             <Header />
@@ -32,55 +39,64 @@ const Bookings = () => {
                 </div>
 
                 <div className="bookings">
-                    <Collapsible
-                        trigger={["Spider Man Far From Home", <FaCaretLeft />]}
-                    >
-                        <div className="ticket-wrapper display-flex flex-row">
-                            <img
-                                src={Ticket}
-                                alt="ticket"
-                                className="prevent-drag"
-                            />
-                            <img
-                                src={TicketInfo}
-                                alt="ticket"
-                                className="prevent-drag"
-                            />
-                        </div>
+                    {tickets ? (
+                        tickets.map((ticket) => (
+                            <Collapsible
+                                trigger={[
+                                    "Spider Man Far From Home",
+                                    <FaCaretLeft />,
+                                ]}
+                            >
+                                <div className="ticket-wrapper display-flex flex-row">
+                                    <img
+                                        src={TicketInfo}
+                                        alt="ticket"
+                                        className="prevent-drag"
+                                    />
+                                </div>
 
-                        <div className="ticket-operations display-flex flex-row">
-                            <button className="btn-1">Save</button>
-                            <a href="underDiv.com" className="prevent-drag">
-                                Cancel ticket
-                            </a>
-                        </div>
-                    </Collapsible>
-                    <Collapsible
-                        trigger={["Spider Man Far From Home", <FaCaretLeft />]}
-                    >
-                        <div className="ticket-wrapper display-flex flex-row">
-                            <img
-                                src={Ticket}
-                                alt="ticket"
-                                className="prevent-drag"
-                            />
-                            <img
-                                src={TicketInfo}
-                                alt="ticket"
-                                className="prevent-drag"
-                            />
-                        </div>
-
-                        <div className="ticket-operations display-flex flex-row">
-                            <button className="btn-1">Save</button>
-                            <a href="underDiv.com" className="prevent-drag">
-                                Cancel ticket
-                            </a>
-                        </div>
-                    </Collapsible>
+                                <div className="ticket-operations display-flex">
+                                    <button className="btn-1">Save</button>
+                                    <a
+                                        href="underDiv.com"
+                                        className="prevent-drag"
+                                    >
+                                        Cancel ticket
+                                    </a>
+                                </div>
+                            </Collapsible>
+                        ))
+                    ) : (
+                        <>
+                            {loading ? (
+                                <div className="content-loader">
+                                    <ContentLoader
+                                        speed={2}
+                                        foregroundColor={"#999999"}
+                                    />
+                                </div>
+                            ) : (
+                                <div className="empty-collapsible">
+                                    <Typography
+                                        variant="h4"
+                                        component="div"
+                                        gutterBottom
+                                    >
+                                        You didn't book any tickets until now!
+                                    </Typography>
+                                    <button
+                                        className="btn-1"
+                                        onClick={() => navigate("/movies")}
+                                        type="submit"
+                                    >
+                                        Book Now
+                                    </button>
+                                </div>
+                            )}
+                        </>
+                    )}
                 </div>
             </div>
-
             <Footer />
         </section>
     );

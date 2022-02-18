@@ -32,7 +32,7 @@ const Footer = () => {
                             alt="logo-name"
                         />
                     </Box>
-                    <div className="social-container">
+                    <div className="social-container display-flex flex-row">
                         <FaFacebookF
                             className="social-icon"
                             onClick={() =>
@@ -109,9 +109,14 @@ const Footer = () => {
                     <Typography variant="h7" component="span">
                         Copyright ©2022 All rights reserved
                     </Typography>
-                    <Typography variant="h7" component="span">
-                        Developed by: Henry Azer | Designed by: Bavly Ashraf
-                    </Typography>
+                    <div className="dev-wrapper display-flex flex-row">
+                        <Typography variant="h7" component="span">
+                            Developed by: Henry Azer
+                        </Typography>
+                        <Typography variant="h7" component="span">
+                            Designed by: Bavly Ashraf
+                        </Typography>
+                    </div>
                 </div>
             </div>
         </section>

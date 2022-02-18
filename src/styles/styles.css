@@ -49,8 +49,13 @@ body {
 
 .content-fit {
     padding: 10px 0;
-    margin: 0 180px;
+    margin: 0 160px;
     min-height: 60vh;
+}
+
+.content-loader {
+    margin: 0 50px;
+    transition: 0.6s all;
 }
 
 .prevent-drag {
@@ -141,33 +146,27 @@ body {
 /* -------------------------------------------------------- */
 
 /* ----- SLICK SLIDER START ----- */
+.slick-slider {
+    margin-bottom: 50px;
+}
+
 .slick-slider .slider-img {
-    width: 200px;
-    height: 300px;
-    margin: 40px 0;
+    height: 350px;
+    margin: 20px 0;
     cursor: pointer;
     border: 3px solid var(--fontColor);
 }
 
 .slick-slider .slick-slide:nth-child(odd) .slider-img,
 .slick-slider .slick-slide:nth-child(even) .slider-img {
-    width: 140px;
-    height: 220px;
-    margin: 120px 0 0 50px;
-    opacity: 0.5;
+    opacity: 0.25;
 }
 
-/* .slick-slider .slick-slide:nth-child(odd) .slider-img {
-    width: 100px;
-    height: 150px;
-    margin: 190px 0 0 50px;
-    opacity: 0.2;
-} */
+.slick-dots li button:before {
+    color: var(--fontColor) !important;
+}
 
 .slick-slider .slick-center .slider-img {
-    width: 200px !important;
-    height: 300px !important;
-    margin: 40px 20px !important;
     opacity: 1 !important;
     box-shadow: 2px 2px 15px 6px var(--mainColor);
     -webkit-box-shadow: 2px 2px 15px 6px var(--mainColor);
@@ -198,14 +197,15 @@ body {
 
 .header-section .hamburger-react {
     display: none;
-    position: absolute !important;
-    right: 20px;
-    top: 10px;
 }
 
 .header-section .header-wrapper {
     justify-content: space-between;
     margin: 10px 120px;
+}
+
+.header-wrapper .logo-wrapper {
+    padding-top: 3px;
 }
 
 .header-wrapper .logo-wrapper .logo-img {
@@ -292,14 +292,19 @@ body {
     border-radius: 50%;
     padding: 10px;
     font-size: 16px;
-    margin: 0 8px;
     cursor: pointer;
+    flex-wrap: wrap;
 }
 
 .footer-wrapper .social-wrapper .social-icon:hover {
     border: 1px solid var(--mainColor);
     box-shadow: var(--mainColor) 0 0 15px;
     transition: 0.6s all;
+}
+
+.social-wrapper .social-container {
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .footer-wrapper .policies-wrapper {
@@ -312,6 +317,10 @@ body {
 .footer-wrapper .copyright-wrapper {
     font-size: 15px;
     cursor: pointer;
+}
+
+.copyright-wrapper .dev-wrapper span {
+    margin: 0 5px;
 }
 
 .footer-wrapper .policies-wrapper span:hover,
@@ -396,25 +405,27 @@ body {
 /* -------------------------------------------------------- */
 
 /* ----- HOME ROUTE START ----- */
-.home-wrapper .slick-slider {
-    position: relative;
-    left: -25px;
-}
-
 .home-wrapper .btn-1 {
     display: block;
     margin: 0 auto;
 }
 
 .services-wrapper .services-container {
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 58% 30%;
 }
 
+.services-container .services-video {
+    width: 500px;
+    height: 280px;
+    transition: 0.6s all;
+}
 .services-container .services {
     display: grid;
-    grid-auto-flow: column;
     grid-gap: 30px;
+    grid-auto-flow: column;
     grid-template-rows: 120px 120px;
     grid-template-columns: 150px 150px;
     cursor: pointer;
@@ -465,10 +476,6 @@ body {
 /* -------------------------------------------------------- */
 
 /* ----- MOVIE ROUTE START ----- */
-.movie-route-wrapper .movie-loader {
-    margin: 0 50px;
-}
-
 .movie-route .movie-wrapper {
     margin: 0 22px;
     display: grid;
@@ -618,12 +625,15 @@ body {
 /* -------------------------------------------------------- */
 
 /* ----- BOOKINGS ROUTE START ----- */
-.bookings-wrapper .bookings {
-    margin-top: 40px;
+.bookings {
+    text-align: center;
 }
 
-.bookings-wrapper .bookings .Collapsible {
-    margin-top: 20px;
+.bookings .Collapsible {
+    width: auto;
+    min-width: 350px;
+    margin: 20px 120px;
+    transition: 0.6s all;
 }
 
 .bookings .Collapsible span {
@@ -641,29 +651,24 @@ body {
 
 .bookings .Collapsible__trigger svg {
     color: var(--mainColor);
-    transition: all 0.5s;
+    transition: 0.6s all;
     float: right;
 }
 
 .bookings .Collapsible__trigger.is-open svg {
     transform: rotate(-90deg);
     color: var(--mainColor);
-    transition: all 0.5s;
+    transition: 0.6s all;
 }
 
 .bookings .ticket-wrapper img {
     width: 450px;
     height: 230px;
+    transition: 0.6s all;
 }
 
 .bookings .ticket-operations a {
     color: var(--font2ndColor);
-}
-
-/* Isn't flexible */
-.bookings-wrapper .ticket-operations {
-    justify-content: space-between;
-    margin: 0 250px;
 }
 /* ----- BOOKINGS ROUTE END ----- */
 
@@ -677,14 +682,14 @@ body {
 
 .chat-bot .bot-wrapper {
     position: fixed;
-    bottom: 120px;
-    right: 140px;
+    bottom: 13%;
+    right: 10%;
 }
 
 .chat-bot .bot-btn-container {
     position: fixed;
-    bottom: 70px;
-    right: 90px;
+    bottom: 5%;
+    right: 5%;
 }
 
 .bot-btn-container .bot-btn {
@@ -703,18 +708,39 @@ body {
 
 /* -------------------------------------------------------- */
 
-/* ------------------- MEDIA START------------------------- */
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+/* ---------- MEDIA QUERIES START -------------------- */
+@media only screen and (max-width: 1280px) {
+    /* -------------------------------------------------------- */
+
+    /* ----- HOME ROUTE START ----- */
+    .services-wrapper .services-container {
+        gap: 50px;
+        grid-template-rows: 60% 30%;
+        grid-template-columns: 100%;
+    }
+
+    .services-wrapper .services-container div:nth-child(1) {
+        order: 2;
+    }
+    /* ----- HOME ROUTE END ------- */
+
+    /* -------------------------------------------------------- */
 }
 
 @media only screen and (max-width: 1088px) {
+    /* -------------------------------------------------------- */
+
+    /* ----- GLOBAL START ----- */
+    .content-fit {
+        margin: 0 120px;
+    }
+    /* ----- GLOBAL END ------- */
+
+    /* -------------------------------------------------------- */
+
     /* ----- HEADER ROUTE START ----- */
     .header-toggle {
         max-height: 40vh;
-    }
-
-    .header-section .header-wrapper {
-        margin: 8px 0;
     }
 
     .header-section .user-wrapper,
@@ -724,16 +750,26 @@ body {
 
     .header-section .hamburger-react {
         display: block;
+        top: 8px;
+        right: 10px;
+        float: right;
+        padding: 8px 0;
     }
 
     .header-toggle .user-wrapper,
     .header-toggle .routes-wrapper {
         display: block;
         animation: fade-in 3s;
+        padding-left: 30px;
     }
 
     .header-section .header-wrapper {
         flex-direction: column;
+        margin: 10px 20px;
+    }
+
+    .header-wrapper .logo-wrapper {
+        padding-top: 0;
     }
 
     .header-wrapper .routes-wrapper {
@@ -757,10 +793,59 @@ body {
         position: absolute;
         left: 20px;
     }
-    /* ------------------------------ */
+    /* ----- HEADER ROUTE END ------- */
+
+    /* -------------------------------------------------------- */
+
+    /* ----- BOOKINGS ROUTE START ----- */
+    .bookings .Collapsible {
+        margin: 20px 120px;
+    }
+    /* ----- BOOKINGS ROUTE END ------- */
+
+    /* -------------------------------------------------------- */
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    /* -------------------------------------------------------- */
+
+    /* ----- GLOBAL START ----- */
+    .content-fit {
+        margin: 0 100px;
+    }
+    /* ----- GLOBAL END ------- */
+
+    /* -------------------------------------------------------- */
+
+    /* ----- BOOKINGS ROUTE START ----- */
+    .bookings .Collapsible {
+        margin: 20px 60px;
+    }
+    /* ----- BOOKINGS ROUTE END ------- */
+
+    /* -------------------------------------------------------- */
 }
 
 @media only screen and (max-width: 768px) {
+    /* -------------------------------------------------------- */
+
+    /* ----- GLOBAL START ----- */
+    .content-fit {
+        margin: 0 50px;
+    }
+    /* ----- GLOBAL END ------- */
+
+    /* -------------------------------------------------------- */
+
+    /* ----- HOME ROUTE START ----- */
+    .services-container .services-video {
+        width: 400px;
+        height: 300px;
+    }
+    /* ----- HOME ROUTE END ------- */
+
+    /* -------------------------------------------------------- */
+
     /* ----- LOGIN AND REGISTER ROUTE START ----- */
     .reg-log-form input {
         width: 280px;
@@ -769,16 +854,33 @@ body {
     .reg-login-link .btn-1 {
         width: 360px;
     }
-    /* ------------------------------------------ */
+    /* ----- LOGIN AND REGISTER ROUTE END ------- */
+
+    /* -------------------------------------------------------- */
+
+    /* ----- BOOKINGS ROUTE START ----- */
+    .bookings .Collapsible {
+        margin: 20px 0;
+    }
+    /* ----- BOOKINGS ROUTE END ------- */
+
+    /* -------------------------------------------------------- */
 }
 
 @media only screen and (max-width: 577px) {
-    /* ----- GLOBAL START ----- */
+    /* -------------------------------------------------------- */
 
+    /* ----- GLOBAL START ----- */
     .content-fit {
-        margin: 0;
+        margin: 0 25px;
     }
-    /* ----- GLOBAL END ----- */
+
+    .content-loader {
+        margin: 0 10px;
+    }
+    /* ----- GLOBAL END ------- */
+
+    /* -------------------------------------------------------- */
 
     /* ----- LOGIN AND REGISTER ROUTE START ----- */
     .reg-log-form input {
@@ -788,8 +890,72 @@ body {
     .reg-login-link .btn-1 {
         width: 330px;
     }
+    /* ----- LOGIN AND REGISTER ROUTE END ------- */
+
+    /* -------------------------------------------------------- */
+
+    /* ---------- FOOTER START ------------------ */
+    .footer-wrapper .copyright-wrapper,
+    .footer-wrapper .policies-wrapper,
+    .footer-wrapper .social-wrapper,
+    .footer-wrapper .dev-wrapper {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .footer-wrapper .social-wrapper {
+        width: 200px;
+    }
+
+    .footer-wrapper .social-wrapper,
+    .footer-wrapper .policies-wrapper,
+    .social-wrapper .logo-wrapper {
+        margin-right: 0;
+        padding-bottom: 20px;
+    }
+
+    .social-wrapper .logo-wrapper .logo-name {
+        width: 95px;
+    }
+    /* ---------- FOOTER END -------------------- */
+
+    /* -------------------------------------------------------- */
+
+    /* ----- HOME ROUTE START ----- */
+    .services-container .services-video {
+        width: 300px;
+        height: 200px;
+    }
+    /* ----- HOME ROUTE END ------- */
+
+    /* -------------------------------------------------------- */
+
+    /* ----------- MOVIES ROUTE START ----------- */
+    .movies-cards .movie-card {
+        height: 465px;
+        width: 250px;
+        min-width: 250px;
+    }
+
+    .movie-card .movie-card-img {
+        height: 300px;
+        width: 210px;
+    }
     /* ------------------------------------------ */
+
+    /* -------------------------------------------------------- */
+
+    /* ----- BOOKINGS ROUTE START ----- */
+    .bookings .ticket-wrapper img {
+        width: 300px;
+        height: 200px;
+    }
+    /* ----- BOOKINGS ROUTE END ------- */
+
+    /* -------------------------------------------------------- */
 }
+/* ---------- MEDIA QUERIES END -------------------- */
+
 /* -------------------------------------------------------- */
 
 /* -------------- ANIMATIONS START------------------------- */

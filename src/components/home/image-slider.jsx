@@ -20,7 +20,7 @@ const Home = () => {
     }, [dispatch]);
 
     var settings = {
-        dots: false,
+        dots: true,
         arrows: false,
         draggable: false,
         infinite: true,
@@ -28,34 +28,26 @@ const Home = () => {
         centerMode: true,
         autoplay: true,
         autoplaySpeed: 2500,
-        centerPadding: "-20px",
         speed: 500,
         slidesToShow: 5,
         slidesToScroll: 1,
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 1080,
                 settings: {
                     slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: false,
                 },
             },
             {
-                breakpoint: 600,
+                breakpoint: 720,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2,
                 },
             },
             {
                 breakpoint: 480,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1,
-                    initialSlide: 1,
                 },
             },
         ],
@@ -66,59 +58,46 @@ const Home = () => {
             {nowPlayingMovies ? (
                 <Slider className="slick-slider" {...settings}>
                     {nowPlayingMovies.map((movie) => (
-                        <div key={movie.id}>
-                            <img
-                                className="slider-img"
-                                src={loading ? LoadingImgURL : movie.imgURL}
-                                alt="slider-img"
-                            />
-                        </div>
+                        <img
+                            key={movie.id}
+                            className="slider-img"
+                            src={loading ? LoadingImgURL : movie.imgURL}
+                            alt="slider-img"
+                        />
                     ))}
                 </Slider>
             ) : (
                 <Slider className="slick-slider" {...settings}>
-                    <div>
-                        <img
-                            className="slider-img"
-                            src={LoadingImgURL}
-                            alt="slider-img"
-                        />
-                    </div>
-                    <div>
-                        <img
-                            className="slider-img"
-                            src={LoadingImgURL}
-                            alt="slider-img"
-                        />
-                    </div>
-                    <div>
-                        <img
-                            className="slider-img"
-                            src={LoadingImgURL}
-                            alt="slider-img"
-                        />
-                    </div>
-                    <div>
-                        <img
-                            className="slider-img"
-                            src={LoadingImgURL}
-                            alt="slider-img"
-                        />
-                    </div>
-                    <div>
-                        <img
-                            className="slider-img"
-                            src={LoadingImgURL}
-                            alt="slider-img"
-                        />
-                    </div>
-                    <div>
-                        <img
-                            className="slider-img"
-                            src={LoadingImgURL}
-                            alt="slider-img"
-                        />
-                    </div>
+                    <img
+                        className="slider-img"
+                        src={LoadingImgURL}
+                        alt="slider-img"
+                    />
+                    <img
+                        className="slider-img"
+                        src={LoadingImgURL}
+                        alt="slider-img"
+                    />
+                    <img
+                        className="slider-img"
+                        src={LoadingImgURL}
+                        alt="slider-img"
+                    />
+                    <img
+                        className="slider-img"
+                        src={LoadingImgURL}
+                        alt="slider-img"
+                    />
+                    <img
+                        className="slider-img"
+                        src={LoadingImgURL}
+                        alt="slider-img"
+                    />
+                    <img
+                        className="slider-img"
+                        src={LoadingImgURL}
+                        alt="slider-img"
+                    />
                 </Slider>
             )}
         </div>

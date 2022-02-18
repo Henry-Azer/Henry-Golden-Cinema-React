@@ -24,11 +24,16 @@ const Header = () => {
 
     useEffect(() => {
         if (screenWidth < 1088) {
+            var logo = document.getElementById("logo-wrapper");
             window.onscroll = () => {
                 const logoWrapper = document.getElementById("logo-wrapper");
-                if (window.scrollY > 100)
+                if (window.scrollY > 100) {
                     logoWrapper.classList.add("logo-wrapper-collapsed");
-                else logoWrapper.classList.remove("logo-wrapper-collapsed");
+                    logo.style.paddingLeft = "0";
+                } else {
+                    logoWrapper.classList.remove("logo-wrapper-collapsed");
+                    logo.style.paddingLeft = "35px";
+                }
             };
         }
     });
@@ -36,8 +41,11 @@ const Header = () => {
     const toggleHamburger = (toggled) => {
         var header = document.getElementById("header-section");
 
-        if (toggled) header.classList.add("header-toggle");
-        else header.classList.remove("header-toggle");
+        if (toggled) {
+            header.classList.add("header-toggle");
+        } else {
+            header.classList.remove("header-toggle");
+        }
     };
 
     const handleClose = () => {
@@ -65,7 +73,6 @@ const Header = () => {
 
                 <div
                     className="routes-wrapper display-flex flex-row"
-                    id="routes-wrapper"
                 >
                     <Typography
                         variant="h6"
@@ -92,7 +99,6 @@ const Header = () => {
 
                 <div
                     className="user-wrapper display-flex flex-row"
-                    id="user-wrapper"
                 >
                     <img
                         src="https://cdn-icons-png.flaticon.com/512/848/848006.png"
