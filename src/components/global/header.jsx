@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useSelector } from "react-redux";
+
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
@@ -13,6 +15,10 @@ import logoImg from "../../resources/images/Requirements-03.png";
 
 const Header = () => {
     const navigate = useNavigate();
+
+    const isUserAuthenticated = useSelector(
+        (state) => state.auth.isUserAuthenticated
+    );
 
     const [isHamburgerOpen, setHamburgerOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -134,7 +140,11 @@ const Header = () => {
                         variant="h6"
                         component="span"
                     >
-                        Welcome, Guest!
+                        {isUserAuthenticated ? (
+                            <>Welcome, User!</>
+                        ) : (
+                            <>Welcome, Guest!</>
+                        )}
                     </Typography>
                     <Menu
                         id="basic-menu"
@@ -145,12 +155,20 @@ const Header = () => {
                             "aria-labelledby": "basic-button",
                         }}
                     >
-                        <MenuItem onClick={() => navigate("/login")}>
-                            Log in
-                        </MenuItem>
-                        <MenuItem onClick={() => navigate("/register")}>
-                            Register
-                        </MenuItem>
+                        {isUserAuthenticated ? (
+                            <>
+                                <MenuItem>Log out</MenuItem>
+                            </>
+                        ) : (
+                            <>
+                                <MenuItem onClick={() => navigate("/login")}>
+                                    Log in
+                                </MenuItem>
+                                <MenuItem onClick={() => navigate("/register")}>
+                                    Register
+                                </MenuItem>{" "}
+                            </>
+                        )}
                     </Menu>
                 </div>
             </div>
