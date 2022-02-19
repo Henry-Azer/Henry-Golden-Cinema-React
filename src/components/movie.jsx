@@ -38,7 +38,12 @@ const Movie = () => {
 
     useEffect(() => {
         if (locationState == null && params.title !== "...") {
-            navigate("/error", { state: { movieTitle: params.title } });
+            navigate("/error", {
+                state: {
+                    movieTitle: params.title,
+                    elementScroll: "error-scroll",
+                },
+            });
         } else if (params.title !== "...") {
             dispatch(movieDetails(locationState.movie.id));
         }

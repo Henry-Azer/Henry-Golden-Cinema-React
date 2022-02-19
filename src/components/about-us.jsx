@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import {
     FaGithub,
@@ -41,18 +41,23 @@ const AboutUs = () => {
         document.title = "About Us | Henry Golden Cinema";
 
         if (locationState !== null)
-        document.getElementById(locationState.elementScroll).scrollIntoView({
-            behavior: "smooth",
-            block: locationState.elementPosition,
-        });
+            document
+                .getElementById(locationState.elementScroll)
+                .scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                });
     }, [locationState]);
 
     return (
-        <section className="about-us-route" id="about-us-wrapper">
+        <section className="about-us-route">
             <Header />
             <ChatBot />
             <div className="about-us-wrapper content-fit">
-                <div className="heading-wrapper display-flex flex-row">
+                <div
+                    className="heading-wrapper display-flex flex-row"
+                    id="about-us-scroll"
+                >
                     <FaCaretRight className="heading-icon" />
                     <Typography
                         className="heading-title"
@@ -63,157 +68,159 @@ const AboutUs = () => {
                     </Typography>
                 </div>
 
-                <Formik
-                    initialValues={{
-                        name: "",
-                        email: "",
-                        subject: "",
-                        message: "",
-                    }}
-                    validate={(values) => {
-                        const errors = {};
+                <div className="contact-container">
+                    <Formik
+                        initialValues={{
+                            name: "",
+                            email: "",
+                            subject: "",
+                            message: "",
+                        }}
+                        validate={(values) => {
+                            const errors = {};
 
-                        // Name Validation
-                        if (!values.name) errors.name = "Required";
+                            // Name Validation
+                            if (!values.name) errors.name = "Required";
 
-                        // Subject Validation
-                        if (!values.subject) errors.subject = "Required";
+                            // Subject Validation
+                            if (!values.subject) errors.subject = "Required";
 
-                        // Message Validation
-                        if (!values.message) errors.message = "Required";
+                            // Message Validation
+                            if (!values.message) errors.message = "Required";
 
-                        // Email Validation
-                        if (!values.email) {
-                            errors.email = "Required";
-                        } else if (
-                            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
-                                values.email
-                            )
-                        ) {
-                            errors.email = "Invalid email address.";
-                        }
+                            // Email Validation
+                            if (!values.email) {
+                                errors.email = "Required";
+                            } else if (
+                                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
+                                    values.email
+                                )
+                            ) {
+                                errors.email = "Invalid email address.";
+                            }
 
-                        return errors;
-                    }}
-                    onSubmit={(values, { setSubmitting, resetForm }) => {
-                        // dispatch(userRegistration(values));
-                        // dispatch(usersList());
+                            return errors;
+                        }}
+                        onSubmit={(values, { setSubmitting, resetForm }) => {
+                            // dispatch(userRegistration(values));
+                            // dispatch(usersList());
 
-                        setTimeout(() => {
-                            setSubmitting(false);
-                            resetForm();
-                        }, 2000);
-                    }}
-                >
-                    {({
-                        values,
-                        errors,
-                        touched,
-                        handleChange,
-                        handleBlur,
-                        handleSubmit,
-                        isSubmitting,
-                    }) => (
-                        <form onSubmit={handleSubmit} className="form-1">
-                            <div className="form-wrapper display-flex flex-row">
-                                <div className="form-data display-flex">
-                                    <input
-                                        placeholder="Name"
-                                        autoComplete="off"
-                                        type="text"
-                                        name="name"
-                                        required
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={values.name}
-                                    />
-                                    <span>
-                                        {errors.name &&
-                                            touched.name &&
-                                            errors.name}
-                                    </span>
+                            setTimeout(() => {
+                                setSubmitting(false);
+                                resetForm();
+                            }, 2000);
+                        }}
+                    >
+                        {({
+                            values,
+                            errors,
+                            touched,
+                            handleChange,
+                            handleBlur,
+                            handleSubmit,
+                            isSubmitting,
+                        }) => (
+                            <form onSubmit={handleSubmit} className="form-1">
+                                <div className="form-wrapper display-flex flex-row">
+                                    <div className="form-data display-flex">
+                                        <input
+                                            placeholder="Name"
+                                            autoComplete="off"
+                                            type="text"
+                                            name="name"
+                                            required
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.name}
+                                        />
+                                        <span>
+                                            {errors.name &&
+                                                touched.name &&
+                                                errors.name}
+                                        </span>
 
-                                    <input
-                                        placeholder="Email"
-                                        autoComplete="off"
-                                        type="text"
-                                        name="email"
-                                        required
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={values.email}
-                                    />
-                                    <span>
-                                        {errors.email &&
-                                            touched.email &&
-                                            errors.email}
-                                    </span>
+                                        <input
+                                            placeholder="Email"
+                                            autoComplete="off"
+                                            type="text"
+                                            name="email"
+                                            required
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.email}
+                                        />
+                                        <span>
+                                            {errors.email &&
+                                                touched.email &&
+                                                errors.email}
+                                        </span>
 
-                                    <input
-                                        placeholder="Subject"
-                                        autoComplete="off"
-                                        type="text"
-                                        name="subject"
-                                        required
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={values.subject}
-                                    />
-                                    <span>
-                                        {errors.subject &&
-                                            touched.subject &&
-                                            errors.subject}
-                                    </span>
+                                        <input
+                                            placeholder="Subject"
+                                            autoComplete="off"
+                                            type="text"
+                                            name="subject"
+                                            required
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.subject}
+                                        />
+                                        <span>
+                                            {errors.subject &&
+                                                touched.subject &&
+                                                errors.subject}
+                                        </span>
+                                    </div>
+
+                                    <div className="form-message display-flex">
+                                        <textarea
+                                            placeholder="Message"
+                                            autoComplete="off"
+                                            type="text"
+                                            name="message"
+                                            required
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.message}
+                                        />
+                                        <span>
+                                            {errors.message &&
+                                                touched.message &&
+                                                errors.message}
+                                        </span>
+                                    </div>
                                 </div>
 
-                                <div className="form-message display-flex">
-                                    <textarea
-                                        placeholder="Message"
-                                        autoComplete="off"
-                                        type="text"
-                                        name="message"
-                                        required
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={values.message}
-                                    />
-                                    <span>
-                                        {errors.message &&
-                                            touched.message &&
-                                            errors.message}
-                                    </span>
+                                <div className="form-submission display-flex">
+                                    {loading ? (
+                                        <img
+                                            className="process-img"
+                                            src={LoadingImgURL}
+                                            alt="saving-account"
+                                        />
+                                    ) : null}
+
+                                    {submissionSucceeded &&
+                                    loading === false ? (
+                                        <img
+                                            className="process-img"
+                                            src={SucceededImgURL}
+                                            alt="saving-account"
+                                        />
+                                    ) : null}
+
+                                    <button
+                                        className="btn-1"
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                    >
+                                        Submit
+                                    </button>
                                 </div>
-                            </div>
-
-                            <div className="form-submission display-flex">
-                                {loading ? (
-                                    <img
-                                        className="process-img"
-                                        src={LoadingImgURL}
-                                        alt="saving-account"
-                                    />
-                                ) : null}
-
-                                {submissionSucceeded && loading === false ? (
-                                    <img
-                                        className="process-img"
-                                        src={SucceededImgURL}
-                                        alt="saving-account"
-                                    />
-                                ) : null}
-
-                                <button
-                                    className="btn-1"
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                >
-                                    Submit
-                                </button>
-                            </div>
-                        </form>
-                    )}
-                </Formik>
-
+                            </form>
+                        )}
+                    </Formik>
+                </div>
                 <div className="heading-wrapper display-flex flex-row">
                     <FaCaretRight className="heading-icon" />
                     <Typography

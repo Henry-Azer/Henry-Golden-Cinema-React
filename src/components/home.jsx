@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import YouTube from "react-youtube";
 
@@ -14,9 +14,24 @@ import ImageSlider from "./home/image-slider";
 
 const Home = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const locationState = location.state;
 
     useEffect(() => {
         document.title = "Home | Henry Golden Cinema";
+
+        if (locationState !== null)
+            document
+                .getElementById(locationState.elementScroll)
+                .scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                });
+
+        return () => {
+            locationState.elementPosition = null;
+            locationState.elementScroll = null;
+        };
     });
 
     const opts = {
@@ -32,7 +47,10 @@ const Home = () => {
             <Header />
             <ChatBot />
             <div className="home-wrapper content-fit">
-                <div className="heading-wrapper display-flex flex-row">
+                <div
+                    className="heading-wrapper display-flex flex-row"
+                    id="home-scroll"
+                >
                     <FaCaretRight className="heading-icon" />
                     <Typography
                         className="heading-title"
@@ -46,7 +64,13 @@ const Home = () => {
 
                 <button
                     className="btn-1"
-                    onClick={() => navigate("/movies")}
+                    onClick={() =>
+                        navigate("/movies", {
+                            state: {
+                                elementScroll: "movies",
+                            },
+                        })
+                    }
                     type="submit"
                 >
                     Book Now

@@ -51,7 +51,13 @@ const Register = () => {
             <div className="reg-log-wrapper display-flex">
                 <Box
                     className="logo-wrapper display-flex flex-row"
-                    onClick={() => navigate("/")}
+                    onClick={() =>
+                        navigate("/", {
+                            state: {
+                                elementScroll: "home-scroll",
+                            },
+                        })
+                    }
                 >
                     <img src={logoImg} className="logo-img" alt="logo-img" />
                     <img src={logoName} className="logo-name" alt="logo-name" />

@@ -37,7 +37,12 @@ const Login = () => {
 
         console.log(isUserAuthenticated);
 
-        if (isUserAuthenticated) navigate("/");
+        if (isUserAuthenticated)
+            navigate("/", {
+                state: {
+                    elementScroll: "home-scroll",
+                },
+            });
     });
 
     return (
@@ -45,7 +50,13 @@ const Login = () => {
             <div className="reg-log-wrapper display-flex">
                 <Box
                     className="logo-wrapper display-flex flex-row"
-                    onClick={() => navigate("/")}
+                    onClick={() =>
+                        navigate("/", {
+                            state: {
+                                elementScroll: "home-scroll",
+                            },
+                        })
+                    }
                 >
                     <img src={logoImg} className="logo-img" alt="logo-img" />
                     <img src={logoName} className="logo-name" alt="logo-name" />

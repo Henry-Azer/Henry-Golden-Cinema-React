@@ -78,7 +78,13 @@ const GoldenChatbot = (props) => {
                                     {
                                         label: "Movies",
                                         value: "movies",
-                                        trigger: () => navigate("/movies"),
+                                        trigger: () =>
+                                            navigate("/movies", {
+                                                state: {
+                                                    elementScroll:
+                                                        "movies-scroll",
+                                                },
+                                            }),
                                     },
                                     {
                                         label: "Bookings",

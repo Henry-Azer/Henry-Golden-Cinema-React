@@ -66,7 +66,13 @@ const Header = () => {
                 <Box
                     id="logo-wrapper"
                     className="logo-wrapper display-flex flex-row"
-                    onClick={() => navigate("/")}
+                    onClick={() =>
+                        navigate("/", {
+                            state: {
+                                elementScroll: "home-scroll",
+                            },
+                        })
+                    }
                 >
                     <img src={logoImg} className="logo-img" alt="logo-img" />
                     <img src={logoName} className="logo-name" alt="logo-name" />
@@ -76,21 +82,39 @@ const Header = () => {
                     <Typography
                         variant="h6"
                         component="span"
-                        onClick={() => navigate("/movies")}
+                        onClick={() =>
+                            navigate("/movies", {
+                                state: {
+                                    elementScroll: "movies-scroll",
+                                },
+                            })
+                        }
                     >
                         Movies
                     </Typography>
                     <Typography
                         variant="h6"
                         component="span"
-                        onClick={() => navigate("/bookings")}
+                        onClick={() =>
+                            navigate("/bookings", {
+                                state: {
+                                    elementScroll: "bookings-scroll",
+                                },
+                            })
+                        }
                     >
                         Bookings
                     </Typography>
                     <Typography
                         variant="h6"
                         component="span"
-                        onClick={() => navigate("/about-us")}
+                        onClick={() =>
+                            navigate("/about-us", {
+                                state: {
+                                    elementScroll: "about-us-scroll",
+                                },
+                            })
+                        }
                     >
                         About us
                     </Typography>

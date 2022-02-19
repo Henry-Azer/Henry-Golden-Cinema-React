@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -24,7 +24,13 @@ const Footer = () => {
                 <div className="navigation-wrapper display-flex flex-row">
                     <Box
                         className="logo-wrapper display-flex flex-row"
-                        onClick={() => navigate("/")}
+                        onClick={() =>
+                            navigate("/", {
+                                state: {
+                                    elementScroll: "home-scroll",
+                                },
+                            })
+                        }
                     >
                         <img
                             src={logoName}
@@ -94,30 +100,79 @@ const Footer = () => {
                         onClick={() =>
                             navigate("/about-us", {
                                 state: {
-                                    elementScroll: "about-us-wrapper",
-                                    elementPosition: "start",
+                                    elementScroll: "about-us-scroll",
                                 },
                             })
                         }
                     >
                         About Us
                     </Typography>
-                    <Typography variant="h7" component="span">
+                    <Typography
+                        variant="h7"
+                        component="span"
+                        onClick={() =>
+                            navigate("/terms", {
+                                state: {
+                                    elementScroll: "terms-conditions",
+                                },
+                            })
+                        }
+                    >
                         Terms & Conditions
                     </Typography>
-                    <Typography variant="h7" component="span">
+                    <Typography
+                        variant="h7"
+                        component="span"
+                        onClick={() =>
+                            navigate("/terms", {
+                                state: {
+                                    elementScroll: "privacy-policy",
+                                },
+                            })
+                        }
+                    >
                         Privacy policy
                     </Typography>
-                    <Typography variant="h7" component="span">
+                    <Typography
+                        variant="h7"
+                        component="span"
+                        onClick={() =>
+                            navigate("/terms", {
+                                state: {
+                                    elementScroll: "cookies-policy",
+                                },
+                            })
+                        }
+                    >
                         Cookies policy
                     </Typography>
-                    <Typography variant="h7" component="span">
+                    <Typography
+                        variant="h7"
+                        component="span"
+                        onClick={() =>
+                            navigate("/terms", {
+                                state: {
+                                    elementScroll: "copyrights",
+                                },
+                            })
+                        }
+                    >
                         Copyrights
                     </Typography>
                 </div>
 
                 <div className="copyright-wrapper display-flex">
-                    <Typography variant="h7" component="span">
+                    <Typography
+                        variant="h7"
+                        component="span"
+                        onClick={() =>
+                            navigate("/terms", {
+                                state: {
+                                    elementScroll: "copyrights",
+                                },
+                            })
+                        }
+                    >
                         Copyright ©2022 All rights reserved
                     </Typography>
                     <div className="dev-wrapper display-flex flex-row">
@@ -128,7 +183,6 @@ const Footer = () => {
                                 navigate("/about-us", {
                                     state: {
                                         elementScroll: "henry-profile",
-                                        elementPosition: "center",
                                     },
                                 })
                             }
@@ -142,7 +196,6 @@ const Footer = () => {
                                 navigate("/about-us", {
                                     state: {
                                         elementScroll: "bavly-profile",
-                                        elementPosition: "center",
                                     },
                                 })
                             }

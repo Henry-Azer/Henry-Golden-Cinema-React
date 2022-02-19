@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { nowPlayingMoviesList } from "../store/actions";
@@ -16,8 +16,10 @@ const LoadingImgURL =
     "https://camo.githubusercontent.com/3bec5c0c93180a4bfaaabe7a2cdcefb6cada4bb47fa19f6e43cc9498ba79efe0/687474703a2f2f692e696d6775722e636f6d2f637873543772532e676966";
 
 const Movies = () => {
+    const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const locationState = location.state;
     const loading = useSelector((state) => state.movies.moviesLoading);
     const nowPlayingMovies = useSelector(
         (state) => state.movies.nowPlayingMovies
@@ -25,7 +27,15 @@ const Movies = () => {
 
     useEffect(() => {
         document.title = "Movies | Henry Golden Cinema";
-    });
+
+        if (locationState !== null)
+            document
+                .getElementById(locationState.elementScroll)
+                .scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                });
+    }, [locationState]);
 
     useEffect(() => {
         dispatch(nowPlayingMoviesList());
@@ -36,7 +46,10 @@ const Movies = () => {
             <Header />
             <Chatbot />
             <div className="movies-wrapper content-fit">
-                <div className="heading-wrapper display-flex flex-row">
+                <div
+                    className="heading-wrapper display-flex flex-row"
+                    id="movies-scroll"
+                >
                     <FaCaretRight className="heading-icon" />
                     <Typography
                         className="heading-title"

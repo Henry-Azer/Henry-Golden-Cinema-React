@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import Collapsible from "react-collapsible";
 
@@ -17,9 +17,23 @@ import TicketInfo from "../resources/images/Requirements-06.png";
 
 const Bookings = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const locationState = location.state;
 
     const tickets = null;
-    const loading = true;
+    const loading = null;
+
+    useEffect(() => {
+        document.title = "Bookings | Henry Golden Cinema";
+
+        if (locationState !== null)
+            document
+                .getElementById(locationState.elementScroll)
+                .scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                });
+    }, [locationState]);
 
     return (
         <section className="bookings-route">
@@ -27,7 +41,10 @@ const Bookings = () => {
             <ChatBot />
 
             <div className="bookings-wrapper content-fit">
-                <div className="heading-wrapper display-flex flex-row">
+                <div
+                    className="heading-wrapper display-flex flex-row"
+                    id="bookings-scroll"
+                >
                     <FaCaretRight className="heading-icon" />
                     <Typography
                         className="heading-title"
@@ -86,8 +103,14 @@ const Bookings = () => {
                                     </Typography>
                                     <button
                                         className="btn-1"
-                                        onClick={() => navigate("/movies")}
-                                        type="submit"
+                                        onClick={() =>
+                                            navigate("/movies", {
+                                                state: {
+                                                    elementScroll:
+                                                        "movies-scroll",
+                                                },
+                                            })
+                                        }
                                     >
                                         Book Now
                                     </button>

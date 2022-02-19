@@ -742,6 +742,14 @@ body {
 
 /* -------------------------------------------------------- */
 
+/* ----- TERMS ROUTE START ------- */
+.terms-wrapper .terms-text {
+    margin:  0 40px;
+}
+/* ----- TERMS ROUTE END --------- */
+
+/* -------------------------------------------------------- */
+
 /* ----- CHAT-BOT START ----- */
 .chat-bot {
     position: fixed;
