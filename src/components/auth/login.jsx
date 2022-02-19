@@ -8,6 +8,7 @@ import { authenticateUser } from "../../store/actions";
 import { Formik } from "formik";
 
 import logoName from "../../resources/images/Requirements-02.png";
+import logoImg from "../../resources/images/Requirements-03.png";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -46,6 +47,7 @@ const Login = () => {
                     className="logo-wrapper display-flex flex-row"
                     onClick={() => navigate("/")}
                 >
+                    <img src={logoImg} className="logo-img" alt="logo-img" />
                     <img src={logoName} className="logo-name" alt="logo-name" />
                 </Box>
 
@@ -105,66 +107,68 @@ const Login = () => {
                         handleSubmit,
                         isSubmitting,
                     }) => (
-                        <form
-                            onSubmit={handleSubmit}
-                            className="reg-log-form display-flex"
-                        >
-                            <input
-                                placeholder="Email"
-                                autoComplete="off"
-                                type="text"
-                                name="email"
-                                required
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.email}
-                            />
-                            <span>
-                                {errors.email && touched.email && errors.email}
-                            </span>
-                            <input
-                                placeholder="Password"
-                                autoComplete="off"
-                                name="password"
-                                required
-                                type="password"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.password}
-                            />
-                            <span>
-                                {errors.password &&
-                                    touched.password &&
-                                    errors.password}
-                            </span>
-
-                            {loading ? (
-                                <img
-                                    className="result-img"
-                                    src={LoadingImgURL}
-                                    alt="saving-account"
+                        <form onSubmit={handleSubmit} className="form-1">
+                            <div className="form-wrapper display-flex">
+                                <input
+                                    placeholder="Email"
+                                    autoComplete="off"
+                                    type="text"
+                                    name="email"
+                                    required
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.email}
                                 />
-                            ) : null}
-
-                            <div className="keep-logged display-flex flex-row">
-                                <Checkbox {...label} />
-                                <Typography
-                                    variant="h7"
-                                    gutterBottom
-                                    component="span"
-                                >
-                                    <b>Keep me Logged in</b>
-                                </Typography>
+                                <span>
+                                    {errors.email &&
+                                        touched.email &&
+                                        errors.email}
+                                </span>
+                                <input
+                                    placeholder="Password"
+                                    autoComplete="off"
+                                    name="password"
+                                    required
+                                    type="password"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.password}
+                                />
+                                <span>
+                                    {errors.password &&
+                                        touched.password &&
+                                        errors.password}
+                                </span>
                             </div>
 
-                            <button
-                                className="btn-1"
-                                href="underDev.com"
-                                type="submit"
-                                disabled={isSubmitting}
-                            >
-                                Log In
-                            </button>
+                            <div className="form-submission display-flex">
+                                {loading ? (
+                                    <img
+                                        className="result-img"
+                                        src={LoadingImgURL}
+                                        alt="saving-account"
+                                    />
+                                ) : null}
+
+                                <div className="keep-logged display-flex flex-row">
+                                    <Checkbox {...label} />
+                                    <Typography
+                                        variant="h7"
+                                        gutterBottom
+                                        component="span"
+                                    >
+                                        <b>Keep me Logged in</b>
+                                    </Typography>
+                                </div>
+
+                                <button
+                                    className="btn-1"
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                >
+                                    Log In
+                                </button>
+                            </div>
                         </form>
                     )}
                 </Formik>
@@ -211,7 +215,7 @@ const Login = () => {
                     </div>
                 </div>
 
-                <div className="reg-login-link">
+                <div className="reg-log-navigation">
                     <Typography variant="h7" component="div">
                         <b>Don't have account?</b>
                     </Typography>

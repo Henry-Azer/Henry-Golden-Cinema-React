@@ -11,6 +11,7 @@ import {
 import { Formik } from "formik";
 
 import logoName from "../../resources/images/Requirements-02.png";
+import logoImg from "../../resources/images/Requirements-03.png";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -52,6 +53,7 @@ const Register = () => {
                     className="logo-wrapper display-flex flex-row"
                     onClick={() => navigate("/")}
                 >
+                    <img src={logoImg} className="logo-img" alt="logo-img" />
                     <img src={logoName} className="logo-name" alt="logo-name" />
                 </Box>
 
@@ -140,98 +142,100 @@ const Register = () => {
                         handleSubmit,
                         isSubmitting,
                     }) => (
-                        <form
-                            onSubmit={handleSubmit}
-                            className="reg-log-form display-flex"
-                        >
-                            <input
-                                placeholder="Username"
-                                autoComplete="off"
-                                type="text"
-                                name="username"
-                                required
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.username}
-                            />
-                            <span>
-                                {errors.username &&
-                                    touched.username &&
-                                    errors.username}
-                            </span>
-                            <input
-                                placeholder="Email"
-                                autoComplete="off"
-                                type="text"
-                                name="email"
-                                required
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.email}
-                            />
-                            <span>
-                                {errors.email && touched.email && errors.email}
-                            </span>
-                            <input
-                                placeholder="Password"
-                                autoComplete="off"
-                                name="password"
-                                required
-                                type="password"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.password}
-                            />
-                            <span>
-                                {errors.password &&
-                                    touched.password &&
-                                    errors.password}
-                            </span>
-                            <input
-                                placeholder="Confirm Password"
-                                autoComplete="off"
-                                name="confirmPassword"
-                                required
-                                type="password"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.confirmPassword}
-                            />
-                            <span>
-                                {errors.confirmPassword &&
-                                    touched.confirmPassword &&
-                                    errors.confirmPassword}
-                            </span>
-
-                            {loading ? (
-                                <img
-                                    className="result-img"
-                                    src={LoadingImgURL}
-                                    alt="saving-account"
+                        <form onSubmit={handleSubmit} className="form-1">
+                            <div className="form-wrapper display-flex">
+                                <input
+                                    placeholder="Username"
+                                    autoComplete="off"
+                                    type="text"
+                                    name="username"
+                                    required
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.username}
                                 />
-                            ) : null}
-
-                            {registrationSucceeded && loading === false ? (
-                                <img
-                                    className="result-img"
-                                    src={succeededImgURL}
-                                    alt="saving-account"
+                                <span>
+                                    {errors.username &&
+                                        touched.username &&
+                                        errors.username}
+                                </span>
+                                <input
+                                    placeholder="Email"
+                                    autoComplete="off"
+                                    type="text"
+                                    name="email"
+                                    required
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.email}
                                 />
-                            ) : null}
+                                <span>
+                                    {errors.email &&
+                                        touched.email &&
+                                        errors.email}
+                                </span>
+                                <input
+                                    placeholder="Password"
+                                    autoComplete="off"
+                                    name="password"
+                                    required
+                                    type="password"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.password}
+                                />
+                                <span>
+                                    {errors.password &&
+                                        touched.password &&
+                                        errors.password}
+                                </span>
+                                <input
+                                    placeholder="Confirm Password"
+                                    autoComplete="off"
+                                    name="confirmPassword"
+                                    required
+                                    type="password"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.confirmPassword}
+                                />
+                                <span>
+                                    {errors.confirmPassword &&
+                                        touched.confirmPassword &&
+                                        errors.confirmPassword}
+                                </span>
+                            </div>
 
-                            <button
-                                className="btn-1"
-                                href="underDev.com"
-                                type="submit"
-                                disabled={isSubmitting}
-                            >
-                                Register
-                            </button>
+                            <div className="form-submission display-flex">
+                                {loading ? (
+                                    <img
+                                        className="process-img"
+                                        src={LoadingImgURL}
+                                        alt="loading-process"
+                                    />
+                                ) : null}
+
+                                {registrationSucceeded && loading === false ? (
+                                    <img
+                                        className="process-img"
+                                        src={succeededImgURL}
+                                        alt="saving-account"
+                                    />
+                                ) : null}
+
+                                <button
+                                    className="btn-1"
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                >
+                                    Register
+                                </button>
+                            </div>
                         </form>
                     )}
                 </Formik>
 
-                <div className="reg-login-link">
+                <div className="reg-log-navigation">
                     <Typography variant="h7" component="div">
                         <b>Have account?</b>
                     </Typography>

@@ -12,11 +12,12 @@ import logoName from "../../resources/images/Requirements-02.png";
 import logoImg from "../../resources/images/Requirements-03.png";
 
 const Header = () => {
-    const [isHamburgerOpen, setHamburgerOpen] = useState(false);
-
     const navigate = useNavigate();
-    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const [isHamburgerOpen, setHamburgerOpen] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -71,9 +72,7 @@ const Header = () => {
                     <img src={logoName} className="logo-name" alt="logo-name" />
                 </Box>
 
-                <div
-                    className="routes-wrapper display-flex flex-row"
-                >
+                <div className="routes-wrapper display-flex flex-row">
                     <Typography
                         variant="h6"
                         component="span"
@@ -97,9 +96,7 @@ const Header = () => {
                     </Typography>
                 </div>
 
-                <div
-                    className="user-wrapper display-flex flex-row"
-                >
+                <div className="user-wrapper display-flex flex-row">
                     <img
                         src="https://cdn-icons-png.flaticon.com/512/848/848006.png"
                         alt="user-icon"

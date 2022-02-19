@@ -82,7 +82,7 @@ body {
 .btn-1:hover,
 .btn-hover:hover,
 .social-btn:hover,
-.footer-wrapper .social-wrapper .social-icon:hover {
+.footer-wrapper .navigation-wrapper .social-icon:hover {
     opacity: 0.8;
     transition: 0.4s all;
 }
@@ -142,6 +142,71 @@ body {
 }
 
 /* ----- GLOBAL PROPS END ----- */
+
+/* -------------------------------------------------------- */
+
+/* ------ SOCIAL ICONS START ------ */
+.social-container {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.social-container .social-icon {
+    color: var(--fontColor);
+    border: 1px solid var(--fontColor);
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    flex-wrap: wrap;
+}
+
+.social-container .social-icon:hover {
+    border: 1px solid var(--mainColor);
+    box-shadow: var(--mainColor) 0 0 15px;
+    transition: 0.6s all;
+}
+/* ------ SOCIAL ICONS END -------- */
+
+/* -------------------------------------------------------- */
+
+/* ------ FORM START ------ */
+.form-1 input,
+.form-1 textarea {
+    width: 450px;
+    height: 40px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    padding: 0 40px;
+    font-size: 18px;
+    transition: 0.6s all;
+}
+
+.form-1 textarea {
+    resize: none;
+    height: 140px;
+    border-radius: 30px;
+    padding: 20px 40px;
+}
+
+.form-1 span {
+    margin-top: 8px;
+    margin-bottom: 20px;
+    color: var(--font2ndColor);
+}
+
+.form-1 .process-img {
+    width: 50px;
+    height: 50px;
+    padding-bottom: 10px;
+    transition: 0.6s all;
+}
+
+.form-1 .css-i4bv87-MuiSvgIcon-root {
+    color: var(--mainColor);
+}
+/* ------- FORM END ------- */
 
 /* -------------------------------------------------------- */
 
@@ -274,37 +339,17 @@ body {
     padding: 50px 0;
 }
 
-.social-wrapper .logo-wrapper {
+.navigation-wrapper .logo-wrapper {
     margin-right: 30px;
 }
 
-.social-wrapper .logo-wrapper .logo-name {
+.navigation-wrapper .logo-wrapper .logo-name {
     width: 85px;
 }
 
-.social-wrapper .logo-wrapper .logo-name:hover {
+.navigation-wrapper .logo-wrapper .logo-name:hover {
     transform: translateY(-3px);
     transition: 0.6s all;
-}
-
-.footer-wrapper .social-wrapper .social-icon {
-    border: 1px solid var(--fontColor);
-    border-radius: 50%;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    flex-wrap: wrap;
-}
-
-.footer-wrapper .social-wrapper .social-icon:hover {
-    border: 1px solid var(--mainColor);
-    box-shadow: var(--mainColor) 0 0 15px;
-    transition: 0.6s all;
-}
-
-.social-wrapper .social-container {
-    flex-wrap: wrap;
-    gap: 10px;
 }
 
 .footer-wrapper .policies-wrapper {
@@ -352,50 +397,30 @@ body {
     gap: 20px;
 }
 
+.reg-log-wrapper .logo-wrapper {
+    margin-right: 40px;
+}
+
+.reg-log-wrapper .logo-wrapper .logo-img {
+    width: 75px;
+}
+
 .reg-log-wrapper .logo-wrapper .logo-name {
-    width: 150px;
+    width: 85px;
 }
 
 .reg-log-wrapper .reg-log-header {
     font-size: 40px;
 }
 
-.reg-log-form input {
-    width: 450px;
-    height: 40px;
-    border-radius: 50px;
-    border: none;
-    outline: none;
-    padding: 0 40px;
-    font-size: 18px;
-    transition: 0.6s all;
-}
-
-.reg-log-form span {
-    margin-top: 8px;
-    margin-bottom: 20px;
-    color: var(--font2ndColor);
-}
-
-.reg-login-link .btn-1 {
+.reg-log-navigation .btn-1 {
     width: 530px;
     height: 42px;
-    transition: 0.6s all;
-}
-
-.reg-log-form .result-img {
-    width: 50px;
-    height: 50px;
-    padding-bottom: 10px;
     transition: 0.6s all;
 }
 /* ----- REGISTER AND LOGIN ROUTE END ----- */
 
 /* ----- LOGIN ROUTE START ----- */
-.login-route .login-contact-us {
-    margin-top: 10px;
-}
-
 .login-route .keep-logged span {
     color: var(--fontColor);
     margin: 0;
@@ -422,6 +447,7 @@ body {
     height: 280px;
     transition: 0.6s all;
 }
+
 .services-container .services {
     display: grid;
     grid-gap: 30px;
@@ -674,6 +700,48 @@ body {
 
 /* -------------------------------------------------------- */
 
+/* ----- ABOUT US ROUTE START ----- */
+.about-us-wrapper .form-wrapper {
+    gap: 30px;
+}
+
+.about-us-wrapper .profile {
+    margin: 40px 0;
+    flex-wrap: wrap;
+    cursor: pointer;
+    transition: 0.6 all;
+    box-shadow: 1px 1px 10px 3px var(--fontColor);
+    -webkit-box-shadow: 1px 1px 10px 3px var(--fontColor);
+    -moz-box-shadow: 1px 1px 10px 3px var(--fontColor);
+}
+
+.profiles-container .profile {
+    padding: 34px;
+    background-color: var(--main3rdColor);
+    color: var(--fontColor);
+}
+
+.profile .profile-content {
+    max-width: 400px;
+    min-width: 150px;
+}
+
+.profile .profile-img {
+    width: 200px;
+    transition: 0.6s all;
+    cursor: pointer;
+    border: 2px solid var(--fontColor);
+}
+
+.profile .profile-img:hover {
+    box-shadow: 2px 2px 15px 6px var(--mainColor);
+    -webkit-box-shadow: 2px 2px 15px 6px var(--mainColor);
+    -moz-box-shadow: 2px 2px 15px 6px var(--mainColor);
+}
+/* ----- ABOUT US ROUTE END ------- */
+
+/* -------------------------------------------------------- */
+
 /* ----- CHAT-BOT START ----- */
 .chat-bot {
     position: fixed;
@@ -710,6 +778,14 @@ body {
 
 /* ---------- MEDIA QUERIES START -------------------- */
 @media only screen and (max-width: 1280px) {
+    /* -------------------------------------------------------- */
+
+    /* ----- FORM START ----- */
+    .about-us-wrapper .form-wrapper {
+        flex-direction: column;
+    }
+    /* ----- FORM END ------- */
+
     /* -------------------------------------------------------- */
 
     /* ----- HOME ROUTE START ----- */
@@ -846,15 +922,16 @@ body {
 
     /* -------------------------------------------------------- */
 
-    /* ----- LOGIN AND REGISTER ROUTE START ----- */
-    .reg-log-form input {
+    /* ----- FORM START ----- */
+    .form-1 input,
+    .form-1 textarea {
         width: 280px;
     }
 
-    .reg-login-link .btn-1 {
+    .form-link .btn-1 {
         width: 360px;
     }
-    /* ----- LOGIN AND REGISTER ROUTE END ------- */
+    /* ----- FORM END ------- */
 
     /* -------------------------------------------------------- */
 
@@ -882,39 +959,40 @@ body {
 
     /* -------------------------------------------------------- */
 
-    /* ----- LOGIN AND REGISTER ROUTE START ----- */
-    .reg-log-form input {
+    /* ----- FORM START ----- */
+    .form-1 input,
+    .form-1 textarea {
         width: 250px;
     }
 
-    .reg-login-link .btn-1 {
+    .form-link .btn-1 {
         width: 330px;
     }
-    /* ----- LOGIN AND REGISTER ROUTE END ------- */
+    /* ----- FORM END ------- */
 
     /* -------------------------------------------------------- */
 
     /* ---------- FOOTER START ------------------ */
     .footer-wrapper .copyright-wrapper,
     .footer-wrapper .policies-wrapper,
-    .footer-wrapper .social-wrapper,
+    .footer-wrapper .navigation-wrapper,
     .footer-wrapper .dev-wrapper {
         flex-direction: column;
         gap: 8px;
     }
 
-    .footer-wrapper .social-wrapper {
+    .footer-wrapper .navigation-wrapper {
         width: 200px;
     }
 
-    .footer-wrapper .social-wrapper,
+    .footer-wrapper .navigation-wrapper,
     .footer-wrapper .policies-wrapper,
-    .social-wrapper .logo-wrapper {
+    .navigation-wrapper .logo-wrapper {
         margin-right: 0;
         padding-bottom: 20px;
     }
 
-    .social-wrapper .logo-wrapper .logo-name {
+    .navigation-wrapper .logo-wrapper .logo-name {
         width: 95px;
     }
     /* ---------- FOOTER END -------------------- */

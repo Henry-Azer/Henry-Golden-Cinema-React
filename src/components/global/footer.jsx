@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -21,7 +21,7 @@ const Footer = () => {
     return (
         <section className="footer-section">
             <div className="footer-wrapper display-flex">
-                <div className="social-wrapper display-flex flex-row">
+                <div className="navigation-wrapper display-flex flex-row">
                     <Box
                         className="logo-wrapper display-flex flex-row"
                         onClick={() => navigate("/")}
@@ -88,8 +88,19 @@ const Footer = () => {
                 </div>
 
                 <div className="policies-wrapper display-flex flex-row">
-                    <Typography variant="h7" component="span">
-                        About
+                    <Typography
+                        variant="h7"
+                        component="span"
+                        onClick={() =>
+                            navigate("/about-us", {
+                                state: {
+                                    elementScroll: "about-us-wrapper",
+                                    elementPosition: "start",
+                                },
+                            })
+                        }
+                    >
+                        About Us
                     </Typography>
                     <Typography variant="h7" component="span">
                         Terms & Conditions
@@ -110,10 +121,32 @@ const Footer = () => {
                         Copyright ©2022 All rights reserved
                     </Typography>
                     <div className="dev-wrapper display-flex flex-row">
-                        <Typography variant="h7" component="span">
+                        <Typography
+                            variant="h7"
+                            component="span"
+                            onClick={() =>
+                                navigate("/about-us", {
+                                    state: {
+                                        elementScroll: "henry-profile",
+                                        elementPosition: "center",
+                                    },
+                                })
+                            }
+                        >
                             Developed by: Henry Azer
                         </Typography>
-                        <Typography variant="h7" component="span">
+                        <Typography
+                            variant="h7"
+                            component="span"
+                            onClick={() =>
+                                navigate("/about-us", {
+                                    state: {
+                                        elementScroll: "bavly-profile",
+                                        elementPosition: "center",
+                                    },
+                                })
+                            }
+                        >
                             Designed by: Bavly Ashraf
                         </Typography>
                     </div>
