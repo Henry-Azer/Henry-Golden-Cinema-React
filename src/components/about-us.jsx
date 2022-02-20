@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
+
 import { useLocation } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
+import { submitMessage } from "../store/actions";
 
 import {
     FaGithub,
@@ -33,9 +37,17 @@ const SucceededImgURL =
 const AboutUs = () => {
     const location = useLocation();
     const locationState = location.state;
+    const dispatch = useDispatch();
 
-    const loading = false;
-    const submissionSucceeded = false;
+    const state = useSelector((state) => state);
+    const submissionLoading = useSelector(
+        (state) => state.reviews.submissionLoading
+    );
+    const submissionSucceeded = useSelector(
+        (state) => state.reviews.submissionSucceeded
+    );
+
+    console.log(state);
 
     useEffect(() => {
         document.title = "About Us | Henry Golden Cinema";
@@ -102,8 +114,7 @@ const AboutUs = () => {
                             return errors;
                         }}
                         onSubmit={(values, { setSubmitting, resetForm }) => {
-                            // dispatch(userRegistration(values));
-                            // dispatch(usersList());
+                            dispatch(submitMessage(values));
 
                             setTimeout(() => {
                                 setSubmitting(false);
@@ -192,7 +203,7 @@ const AboutUs = () => {
                                 </div>
 
                                 <div className="form-submission display-flex">
-                                    {loading ? (
+                                    {submissionLoading ? (
                                         <img
                                             className="process-img"
                                             src={LoadingImgURL}
@@ -201,7 +212,7 @@ const AboutUs = () => {
                                     ) : null}
 
                                     {submissionSucceeded &&
-                                    loading === false ? (
+                                    submissionLoading === false ? (
                                         <img
                                             className="process-img"
                                             src={SucceededImgURL}

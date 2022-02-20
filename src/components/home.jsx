@@ -67,7 +67,7 @@ const Home = () => {
                     onClick={() =>
                         navigate("/movies", {
                             state: {
-                                elementScroll: "movies",
+                                elementScroll: "movies-scroll",
                             },
                         })
                     }

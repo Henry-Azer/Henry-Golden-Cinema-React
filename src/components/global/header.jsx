@@ -132,44 +132,60 @@ const Header = () => {
                         alt="user-icon"
                     />
 
-                    <Typography
-                        aria-controls="basic-menu"
-                        aria-haspopup="true"
-                        aria-expanded={open ? "true" : undefined}
-                        onClick={handleClick}
-                        variant="h6"
-                        component="span"
-                    >
-                        {isUserAuthenticated ? (
-                            <>Welcome, User!</>
-                        ) : (
-                            <>Welcome, Guest!</>
-                        )}
-                    </Typography>
-                    <Menu
-                        id="basic-menu"
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                        MenuListProps={{
-                            "aria-labelledby": "basic-button",
-                        }}
-                    >
-                        {isUserAuthenticated ? (
-                            <>
-                                <MenuItem>Log out</MenuItem>
-                            </>
-                        ) : (
-                            <>
-                                <MenuItem onClick={() => navigate("/login")}>
-                                    Log in
-                                </MenuItem>
-                                <MenuItem onClick={() => navigate("/register")}>
-                                    Register
-                                </MenuItem>{" "}
-                            </>
-                        )}
-                    </Menu>
+                    {isUserAuthenticated ? (
+                        <Typography
+                            aria-controls="basic-menu"
+                            aria-haspopup="true"
+                            aria-expanded={open ? "true" : undefined}
+                            onClick={handleClick}
+                            variant="h6"
+                            component="span"
+                        >
+                            Welcome, User!
+                        </Typography>
+                    ) : (
+                        <Typography
+                            aria-controls="basic-menu"
+                            aria-haspopup="true"
+                            aria-expanded={open ? "true" : undefined}
+                            onClick={handleClick}
+                            variant="h6"
+                            component="span"
+                        >
+                            Welcome, Guest!
+                        </Typography>
+                    )}
+
+                    {isUserAuthenticated ? (
+                        <Menu
+                            id="basic-menu"
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleClose}
+                            MenuListProps={{
+                                "aria-labelledby": "basic-button",
+                            }}
+                        >
+                            <MenuItem>Log out</MenuItem>
+                        </Menu>
+                    ) : (
+                        <Menu
+                            id="basic-menu"
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleClose}
+                            MenuListProps={{
+                                "aria-labelledby": "basic-button",
+                            }}
+                        >
+                            <MenuItem onClick={() => navigate("/login")}>
+                                Log in
+                            </MenuItem>
+                            <MenuItem onClick={() => navigate("/register")}>
+                                Register
+                            </MenuItem>
+                        </Menu>
+                    )}
                 </div>
             </div>
         </section>

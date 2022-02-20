@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+import { submitRate } from "../../store/actions";
+
 import ChatBot from "react-simple-chatbot";
+
+import PropTypes from "prop-types";
 
 import { FaComments } from "react-icons/fa";
 import { ThemeProvider } from "styled-components";
@@ -28,7 +33,34 @@ const config = {
     headerTitle: "Golden Chatbot",
 };
 
-const GoldenChatbot = (props) => {
+let submitted = false;
+
+const Rate = (props) => {
+    const dispatch = useDispatch();
+
+    let rate = {
+        firstTime: props.steps.firstTime.value,
+        rate: props.steps.rate.value,
+        review: props.steps.review.value,
+    };
+
+    if (!submitted) {
+        dispatch(submitRate(rate));
+        submitted = true;
+    }
+
+    return "Rate Submitted.";
+};
+
+Rate.propTypes = {
+    steps: PropTypes.object,
+};
+
+Rate.defaultProps = {
+    steps: undefined,
+};
+
+const GoldenChatbot = () => {
     const navigate = useNavigate();
     const [showChat, setShowChat] = useState(true);
 
@@ -46,6 +78,7 @@ const GoldenChatbot = (props) => {
                     <ChatBot
                         className="bot-wrapper"
                         recognitionEnable={true}
+                        {...config}
                         steps={[
                             {
                                 id: "start",
@@ -113,10 +146,10 @@ const GoldenChatbot = (props) => {
                                 id: "4",
                                 message:
                                     "Is this your first time in our website?",
-                                trigger: "5",
+                                trigger: "firstTime",
                             },
                             {
-                                id: "5",
+                                id: "firstTime",
                                 options: [
                                     {
                                         label: "Yes",
@@ -143,10 +176,10 @@ const GoldenChatbot = (props) => {
                             {
                                 id: "6",
                                 message: "How you rate our website? (1 to 10):",
-                                trigger: "7",
+                                trigger: "rate",
                             },
                             {
-                                id: "7",
+                                id: "rate",
                                 user: true,
                                 trigger: "8",
                                 validator: (value) => {
@@ -174,6 +207,12 @@ const GoldenChatbot = (props) => {
                             {
                                 id: "review",
                                 user: true,
+                                trigger: "submit",
+                            },
+                            {
+                                id: "submit",
+                                component: <Rate />,
+                                asMessage: true,
                                 trigger: "10",
                             },
                             {
@@ -208,7 +247,6 @@ const GoldenChatbot = (props) => {
                                 end: true,
                             },
                         ]}
-                        {...config}
                     />
                 </div>
                 <div className="bot-btn-container">

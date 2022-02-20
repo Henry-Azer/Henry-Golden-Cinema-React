@@ -398,7 +398,7 @@ body {
 }
 
 .reg-log-wrapper .logo-wrapper {
-    margin-right: 40px;
+    margin-right: 20px;
 }
 
 .reg-log-wrapper .logo-wrapper .logo-img {
@@ -744,7 +744,7 @@ body {
 
 /* ----- TERMS ROUTE START ------- */
 .terms-wrapper .terms-text {
-    margin:  0 40px;
+    margin: 0 40px;
 }
 /* ----- TERMS ROUTE END --------- */
 
@@ -932,8 +932,9 @@ body {
 
     /* ----- FORM START ----- */
     .form-1 input,
-    .form-1 textarea {
-        width: 280px;
+    .form-1 textarea,
+    .reg-log-navigation .btn-1 {
+        width: 330px;
     }
 
     .form-link .btn-1 {
