@@ -12,8 +12,8 @@ import Header from "./global/header";
 import Footer from "./global/footer";
 import Chatbot from "./global/chatbot";
 
-const LoadingImgURL =
-    "https://camo.githubusercontent.com/3bec5c0c93180a4bfaaabe7a2cdcefb6cada4bb47fa19f6e43cc9498ba79efe0/687474703a2f2f692e696d6775722e636f6d2f637873543772532e676966";
+const LoaderImgURL =
+    "https://i.pinimg.com/originals/94/20/5e/94205e1ed8ea69428c3fd9b81d22ac4b.gif";
 
 const Movies = () => {
     const location = useLocation();
@@ -77,7 +77,7 @@ const Movies = () => {
                             >
                                 <img
                                     className="movie-card-img"
-                                    src={loading ? LoadingImgURL : movie.imgURL}
+                                    src={loading ? LoaderImgURL : movie.imgURL}
                                     alt="movie-img"
                                 />
                                 <Typography
@@ -115,7 +115,7 @@ const Movies = () => {
                                 >
                                     <img
                                         className="movie-card-img"
-                                        src={LoadingImgURL}
+                                        src={LoaderImgURL}
                                         alt="movie-img"
                                     />
                                     <Typography

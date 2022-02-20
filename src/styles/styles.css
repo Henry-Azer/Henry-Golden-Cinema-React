@@ -600,7 +600,7 @@ body {
 }
 
 .movies-cards .movie-card:hover {
-    background-color: #3a3a3a;
+    background-color: var(--main3rdColor);
     transform: scale(1.05) translateY(-4px);
     box-shadow: var(--mainColor) 0 0 15px;
     transition: 0.6s all;

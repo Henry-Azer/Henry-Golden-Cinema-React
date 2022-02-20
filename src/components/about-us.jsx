@@ -30,9 +30,10 @@ import ChatBot from "./global/chatbot";
 import HenryImg from "../resources/images/Requirements-09.jpg";
 import BavlyImg from "../resources/images/Requirements-08.jpg";
 
-const LoadingImgURL = "https://i.gifer.com/ZZ5H.gif";
-const SucceededImgURL =
-    "https://www.pinclipart.com/picdir/big/412-4121138_how-do-i-get-security-deposit-back-gif.png";
+const SubmitLoaderImgURL = "https://s10.gifyu.com/images/loadereaee97066b222624.gif";
+
+const SubmitSucceededImgURL =
+    "https://i.postimg.cc/jqm5G62G/88-886120-png-file-button-arrow-right-png-clipart-removebg-preview.png";
 
 const AboutUs = () => {
     const location = useLocation();
@@ -206,7 +207,7 @@ const AboutUs = () => {
                                     {submissionLoading ? (
                                         <img
                                             className="process-img"
-                                            src={LoadingImgURL}
+                                            src={SubmitLoaderImgURL}
                                             alt="saving-account"
                                         />
                                     ) : null}
@@ -215,7 +216,7 @@ const AboutUs = () => {
                                     submissionLoading === false ? (
                                         <img
                                             className="process-img"
-                                            src={SucceededImgURL}
+                                            src={SubmitSucceededImgURL}
                                             alt="saving-account"
                                         />
                                     ) : null}

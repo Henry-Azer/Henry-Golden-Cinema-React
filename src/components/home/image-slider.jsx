@@ -5,8 +5,8 @@ import { nowPlayingMoviesList } from "../../store/actions";
 
 import Slider from "react-slick";
 
-const LoadingImgURL =
-    "https://camo.githubusercontent.com/3bec5c0c93180a4bfaaabe7a2cdcefb6cada4bb47fa19f6e43cc9498ba79efe0/687474703a2f2f692e696d6775722e636f6d2f637873543772532e676966";
+const LoaderImgURL =
+    "https://i.pinimg.com/originals/94/20/5e/94205e1ed8ea69428c3fd9b81d22ac4b.gif";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -61,43 +61,21 @@ const Home = () => {
                         <img
                             key={movie.id}
                             className="slider-img"
-                            src={loading ? LoadingImgURL : movie.imgURL}
+                            src={loading ? LoaderImgURL : movie.imgURL}
                             alt="slider-img"
                         />
                     ))}
                 </Slider>
             ) : (
                 <Slider className="slick-slider" {...settings}>
-                    <img
-                        className="slider-img"
-                        src={LoadingImgURL}
-                        alt="slider-img"
-                    />
-                    <img
-                        className="slider-img"
-                        src={LoadingImgURL}
-                        alt="slider-img"
-                    />
-                    <img
-                        className="slider-img"
-                        src={LoadingImgURL}
-                        alt="slider-img"
-                    />
-                    <img
-                        className="slider-img"
-                        src={LoadingImgURL}
-                        alt="slider-img"
-                    />
-                    <img
-                        className="slider-img"
-                        src={LoadingImgURL}
-                        alt="slider-img"
-                    />
-                    <img
-                        className="slider-img"
-                        src={LoadingImgURL}
-                        alt="slider-img"
-                    />
+                    {[...Array(6)].map((e, i) => (
+                        <img
+                            key={i}
+                            className="slider-img"
+                            src={LoaderImgURL}
+                            alt="slider-img"
+                        />
+                    ))}
                 </Slider>
             )}
         </div>

@@ -21,7 +21,10 @@ import { FaFacebookF } from "react-icons/fa";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-const LoadingImgURL = "https://i.gifer.com/ZZ5H.gif";
+const SubmitLoaderImgURL = "https://s10.gifyu.com/images/loadereaee97066b222624.gif";
+
+// const SubmitSucceededImgURL =
+//     "https://i.postimg.cc/jqm5G62G/88-886120-png-file-button-arrow-right-png-clipart-removebg-preview.png";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -156,7 +159,7 @@ const Login = () => {
                                 {loading ? (
                                     <img
                                         className="result-img"
-                                        src={LoadingImgURL}
+                                        src={SubmitLoaderImgURL}
                                         alt="saving-account"
                                     />
                                 ) : null}

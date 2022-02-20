@@ -18,7 +18,12 @@ import Footer from "./global/footer";
 import Chatbot from "./global/chatbot";
 import BookingForm from "./movie/booking-form";
 
-const LoadingImgURL =
+// const SubmitLoaderImgURL = "https://s10.gifyu.com/images/loadereaee97066b222624.gif";
+
+// const SubmitSucceededImgURL =
+//     "https://i.postimg.cc/jqm5G62G/88-886120-png-file-button-arrow-right-png-clipart-removebg-preview.png";
+
+const ImgLoaderURL =
     "https://camo.githubusercontent.com/3bec5c0c93180a4bfaaabe7a2cdcefb6cada4bb47fa19f6e43cc9498ba79efe0/687474703a2f2f692e696d6775722e636f6d2f637873543772532e676966";
 
 const Movie = () => {
@@ -82,7 +87,7 @@ const Movie = () => {
                         <div className="movie-details">
                             <img
                                 className="movie-img"
-                                src={loading ? LoadingImgURL : movie.imgURL}
+                                src={loading ? ImgLoaderURL : movie.imgURL}
                                 alt="movie-img"
                             />
                             <div className="movie-data">

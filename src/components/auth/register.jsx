@@ -16,10 +16,11 @@ import logoImg from "../../resources/images/Requirements-03.png";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-const LoadingImgURL = "https://i.gifer.com/ZZ5H.gif";
+const SubmitLoaderImgURL =
+    "https://s10.gifyu.com/images/loadereaee97066b222624.gif";
 
-const succeededImgURL =
-    "https://www.pinclipart.com/picdir/big/412-4121138_how-do-i-get-security-deposit-back-gif.png";
+const SubmitSucceededImgURL =
+    "https://i.postimg.cc/jqm5G62G/88-886120-png-file-button-arrow-right-png-clipart-removebg-preview.png";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -216,7 +217,7 @@ const Register = () => {
                                 {loading ? (
                                     <img
                                         className="process-img"
-                                        src={LoadingImgURL}
+                                        src={SubmitLoaderImgURL}
                                         alt="loading-process"
                                     />
                                 ) : null}
@@ -224,7 +225,7 @@ const Register = () => {
                                 {registrationSucceeded && loading === false ? (
                                     <img
                                         className="process-img"
-                                        src={succeededImgURL}
+                                        src={SubmitSucceededImgURL}
                                         alt="saving-account"
                                     />
                                 ) : null}
