@@ -1,7 +1,14 @@
 import axios from "axios";
 import delayAdapterEnhancer from "axios-delay";
 
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from "../types";
+import {
+    LOGIN_REQUEST,
+    LOGIN_FAILURE,
+    LOGIN_SUCCEEDED,
+    LOGOUT_REQUEST,
+    LOGOUT_FAILURE,
+    LOGOUT_SUCCEEDED,
+} from "../types";
 
 const URL = "http://localhost:8080/api/user";
 
@@ -10,12 +17,7 @@ const api = axios.create({
 });
 
 export const authenticateUser = (values) => (dispatch) => {
-    dispatch({
-        type: LOGIN_REQUEST,
-        payload: null,
-    });
-
-    console.log(values);
+    dispatch({ type: LOGIN_REQUEST });
 
     api.post(
         `${URL}/auth`,
@@ -26,32 +28,35 @@ export const authenticateUser = (values) => (dispatch) => {
         { delay: 2000 }
     )
         .then(function(response) {
-            console.log(response);
             dispatch({
-                type: LOGIN_SUCCESS,
+                type: LOGIN_SUCCEEDED,
                 payload: response.data,
             });
         })
         .catch(function(error) {
-            console.log(error);
             dispatch({
                 type: LOGIN_FAILURE,
-                payload: error,
+                payload: error.data,
             });
         });
 };
 
 export const unauthenticatedUser = () => (dispatch) => {
+    dispatch({ type: LOGOUT_REQUEST });
+
     api.post(`${URL}/process-logout`, {
         delay: 0,
     })
         .then((response) => {
             dispatch({
-                type: LOGOUT,
+                type: LOGOUT_SUCCEEDED,
                 payload: response.data,
             });
         })
         .catch((error) => {
-            console.log(error);
+            dispatch({
+                type: LOGOUT_FAILURE,
+                payload: error.data,
+            });
         });
 };

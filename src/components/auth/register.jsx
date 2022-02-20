@@ -8,10 +8,10 @@ import {
     clearRegistrationDetails,
 } from "../../store/actions";
 
-import { Formik } from "formik";
-
 import logoName from "../../resources/images/Requirements-02.png";
 import logoImg from "../../resources/images/Requirements-03.png";
+
+import { Formik } from "formik";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -25,10 +25,13 @@ const SubmitSucceededImgURL =
 const Register = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const users = useSelector((state) => state.users.users);
-    const loading = useSelector((state) => state.users.registerLoading);
+
+    const users = useSelector((state) => state.users.usersList);
+    const registrationRequest = useSelector(
+        (state) => state.users.registrationRequest
+    );
     const registrationSucceeded = useSelector(
-        (state) => state.users.userRegistered
+        (state) => state.users.registeredUser
     );
 
     useEffect(() => {
@@ -214,7 +217,7 @@ const Register = () => {
                             </div>
 
                             <div className="form-submission display-flex">
-                                {loading ? (
+                                {registrationRequest ? (
                                     <img
                                         className="process-img"
                                         src={SubmitLoaderImgURL}
@@ -222,7 +225,8 @@ const Register = () => {
                                     />
                                 ) : null}
 
-                                {registrationSucceeded && loading === false ? (
+                                {registrationSucceeded &&
+                                registrationRequest === false ? (
                                     <img
                                         className="process-img"
                                         src={SubmitSucceededImgURL}

@@ -2,13 +2,12 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-
 import { authenticateUser } from "../../store/actions";
-
-import { Formik } from "formik";
 
 import logoName from "../../resources/images/Requirements-02.png";
 import logoImg from "../../resources/images/Requirements-03.png";
+
+import { Formik } from "formik";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -19,18 +18,14 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
-
-const SubmitLoaderImgURL = "https://s10.gifyu.com/images/loadereaee97066b222624.gif";
-
-// const SubmitSucceededImgURL =
-//     "https://i.postimg.cc/jqm5G62G/88-886120-png-file-button-arrow-right-png-clipart-removebg-preview.png";
+const SubmitLoaderImgURL =
+    "https://s10.gifyu.com/images/loadereaee97066b222624.gif";
 
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const loading = useSelector((state) => state.auth.authRequest);
-    // const authenticatedUser = useSelector((state) => state.auth.authenticatedUser);
+
+    const loginRequest = useSelector((state) => state.auth.loginRequest);
     const isUserAuthenticated = useSelector(
         (state) => state.auth.isUserAuthenticated
     );
@@ -47,6 +42,8 @@ const Login = () => {
                 },
             });
     });
+
+    const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
     return (
         <section className="login-route">
@@ -156,7 +153,7 @@ const Login = () => {
                             </div>
 
                             <div className="form-submission display-flex">
-                                {loading ? (
+                                {loginRequest ? (
                                     <img
                                         className="result-img"
                                         src={SubmitLoaderImgURL}

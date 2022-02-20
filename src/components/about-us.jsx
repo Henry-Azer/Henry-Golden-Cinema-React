@@ -1,9 +1,15 @@
 import React, { useEffect } from "react";
-
 import { useLocation } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { submitMessage } from "../store/actions";
+
+import Header from "./global/header";
+import Footer from "./global/footer";
+import ChatBot from "./global/chatbot";
+
+import HenryImg from "../resources/images/Requirements-09.jpg";
+import BavlyImg from "../resources/images/Requirements-08.jpg";
 
 import {
     FaGithub,
@@ -23,32 +29,21 @@ import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 
-import Header from "./global/header";
-import Footer from "./global/footer";
-import ChatBot from "./global/chatbot";
-
-import HenryImg from "../resources/images/Requirements-09.jpg";
-import BavlyImg from "../resources/images/Requirements-08.jpg";
-
-const SubmitLoaderImgURL = "https://s10.gifyu.com/images/loadereaee97066b222624.gif";
+const SubmitLoaderImgURL =
+    "https://s10.gifyu.com/images/loadereaee97066b222624.gif";
 
 const SubmitSucceededImgURL =
     "https://i.postimg.cc/jqm5G62G/88-886120-png-file-button-arrow-right-png-clipart-removebg-preview.png";
 
 const AboutUs = () => {
+    const dispatch = useDispatch();
     const location = useLocation();
     const locationState = location.state;
-    const dispatch = useDispatch();
 
-    const state = useSelector((state) => state);
-    const submissionLoading = useSelector(
-        (state) => state.reviews.submissionLoading
+    const reviewRequest = useSelector((state) => state.reviews.reviewRequest);
+    const reviewSucceeded = useSelector(
+        (state) => state.reviews.reviewSucceeded
     );
-    const submissionSucceeded = useSelector(
-        (state) => state.reviews.submissionSucceeded
-    );
-
-    console.log(state);
 
     useEffect(() => {
         document.title = "About Us | Henry Golden Cinema";
@@ -204,7 +199,7 @@ const AboutUs = () => {
                                 </div>
 
                                 <div className="form-submission display-flex">
-                                    {submissionLoading ? (
+                                    {reviewRequest ? (
                                         <img
                                             className="process-img"
                                             src={SubmitLoaderImgURL}
@@ -212,8 +207,8 @@ const AboutUs = () => {
                                         />
                                     ) : null}
 
-                                    {submissionSucceeded &&
-                                    submissionLoading === false ? (
+                                    {reviewSucceeded &&
+                                    reviewRequest === false ? (
                                         <img
                                             className="process-img"
                                             src={SubmitSucceededImgURL}

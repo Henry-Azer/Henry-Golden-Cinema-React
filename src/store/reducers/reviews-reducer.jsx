@@ -1,25 +1,26 @@
 import {
-    REVIEW_SUBMITTED,
-    SUBMISSION_ERROR,
-    SUBMISSION_LOADING,
+    REVIEW_REQUEST,
+    REVIEW_SUCCEEDED,
+    REVIEW_ERROR,
 } from "../actions/types.jsx";
 
 export default function reviews_reducer(state = {}, action) {
     switch (action.type) {
-        case SUBMISSION_LOADING:
-            return { ...state, submissionLoading: true };
-        case REVIEW_SUBMITTED:
+        // RARE AND MESSAGE
+        case REVIEW_REQUEST:
+            return { ...state, reviewRequest: true };
+        case REVIEW_SUCCEEDED:
             return {
                 ...state,
-                submissionLoading: false,
-                submissionSucceeded: true,
+                reviewRequest: false,
+                reviewSucceeded: true,
             };
-        case SUBMISSION_ERROR:
+        case REVIEW_ERROR:
             return {
                 ...state,
                 submissionError: action.payload,
-                submissionSucceeded: false,
-                submissionLoading: false,
+                reviewRequest: false,
+                reviewSucceeded: false,
             };
         default:
             return state;

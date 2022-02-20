@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import YouTube from "react-youtube";
-
-import Typography from "@mui/material/Typography";
-
-import { FaCaretRight } from "react-icons/fa";
-
 import Header from "./global/header";
 import Footer from "./global/footer";
 import ChatBot from "./global/chatbot";
 import ImageSlider from "./home/image-slider";
+
+import YouTube from "react-youtube";
+
+import { FaCaretRight } from "react-icons/fa";
+
+import Typography from "@mui/material/Typography";
 
 const Home = () => {
     const navigate = useNavigate();
@@ -19,6 +19,10 @@ const Home = () => {
 
     useEffect(() => {
         document.title = "Home | Henry Golden Cinema";
+
+        // window.addEventListener("load", (event) => {
+        //     console.log("page is fully loaded");
+        // });
 
         if (locationState !== null)
             document

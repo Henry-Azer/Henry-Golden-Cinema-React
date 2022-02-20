@@ -1,33 +1,48 @@
 import {
     LOGIN_REQUEST,
-    LOGIN_SUCCESS,
     LOGIN_FAILURE,
-    LOGOUT,
+    LOGIN_SUCCEEDED,
+    LOGOUT_REQUEST,
+    LOGOUT_FAILURE,
+    LOGOUT_SUCCEEDED,
 } from "../actions/types";
 
 export default function auth_reducer(state = {}, action) {
     switch (action.type) {
+        // LOGIN
         case LOGIN_REQUEST:
-            return { ...state, authRequest: true };
-        case LOGIN_SUCCESS:
+            return { ...state, loginRequest: true };
+        case LOGIN_SUCCEEDED:
             return {
                 ...state,
                 authenticatedUser: action.payload,
                 isUserAuthenticated: true,
-                authRequest: false,
+                loginRequest: false,
             };
         case LOGIN_FAILURE:
             return {
                 ...state,
+                loginError: action.payload,
                 isUserAuthenticated: false,
-                authRequest: false,
+                loginRequest: false,
             };
-        case LOGOUT:
+
+        // LOGOUT
+        case LOGOUT_REQUEST:
+            return { ...state, logoutRequest: true };
+        case LOGOUT_SUCCEEDED:
             return {
                 ...state,
-                authenticatedUser: action.payload,
+                authenticatedUser: null,
                 isUserAuthenticated: false,
-                authRequest: false,
+                logoutRequest: false,
+            };
+        case LOGOUT_FAILURE:
+            return {
+                ...state,
+                logoutError: action.payload,
+                isUserAuthenticated: true,
+                logoutRequest: false,
             };
         default:
             return state;

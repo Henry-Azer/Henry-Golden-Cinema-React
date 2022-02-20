@@ -1,7 +1,12 @@
-export const USERS_LIST = "users_list";
-export const USER_EXIST = "user_exist";
-export const USER_REGISTERED = "user_registered";
+export const USERS_LIST_REQUEST = "users_list_request";
+export const USERS_LIST_SUCCEEDED = "users_list_succeeded";
+export const USERS_LIST_ERROR = "users_list_error";
 
-export const REGISTER_ERROR = "register_error";
-export const REGISTER_LOADING = "register_loading";
+export const USER_EXISTS_REQUEST = "user_exists_request";
+export const USER_EXISTS_SUCCEEDED = "user_exists_succeeded";
+export const USER_EXISTS_ERROR = "user_exists_error";
+
+export const REGISTRATION_REQUEST = "registration_request";
+export const REGISTRATION_SUCCEEDED = "registration_succeeded"
+export const REGISTRATION_ERROR = "registration_error";
 export const CLEAR_REGISTRATION_DETAILS = "clear_registration_details";

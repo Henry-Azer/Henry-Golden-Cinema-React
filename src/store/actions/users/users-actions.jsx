@@ -2,11 +2,15 @@ import axios from "axios";
 import delayAdapterEnhancer from "axios-delay";
 
 import {
-    USERS_LIST,
-    USER_EXIST,
-    USER_REGISTERED,
-    REGISTER_ERROR,
-    REGISTER_LOADING,
+    USERS_LIST_REQUEST,
+    USERS_LIST_SUCCEEDED,
+    USERS_LIST_ERROR,
+    USER_EXISTS_REQUEST,
+    USER_EXISTS_SUCCEEDED,
+    USER_EXISTS_ERROR,
+    REGISTRATION_REQUEST,
+    REGISTRATION_SUCCEEDED,
+    REGISTRATION_ERROR,
     CLEAR_REGISTRATION_DETAILS,
 } from "../types";
 
@@ -17,35 +21,60 @@ const api = axios.create({
 });
 
 export const usersList = () => (dispatch) => {
+    dispatch({ type: USERS_LIST_REQUEST });
+
     api.get(`${URL}/all`, {
         delay: 0,
     })
         .then((response) => {
             dispatch({
-                type: USERS_LIST,
+                type: USERS_LIST_SUCCEEDED,
                 payload: response.data,
             });
         })
         .catch((error) => {
-            console.log(error);
+            dispatch({
+                type: USERS_LIST_ERROR,
+                payload: error.data,
+            });
+        });
+};
+
+export const userExistsCheck = (user) => (dispatch) => {
+    dispatch({ type: USER_EXISTS_REQUEST });
+
+    api.post(`${URL}/${user.email}`, {
+        delay: 0,
+    })
+        .then((response) => {
+            dispatch({
+                type: USER_EXISTS_SUCCEEDED,
+                payload: true,
+            });
+        })
+        .catch((error) => {
+            dispatch({
+                type: USER_EXISTS_ERROR,
+                payload: false,
+            });
         });
 };
 
 export const userRegistration = (user) => (dispatch) => {
-    dispatch({ type: REGISTER_LOADING });
+    dispatch({ type: REGISTRATION_REQUEST });
+
     api.post(`${URL}`, user, {
         delay: 2000,
     })
         .then((response) =>
             dispatch({
-                type: USER_REGISTERED,
+                type: REGISTRATION_SUCCEEDED,
                 payload: response.data,
             })
         )
         .catch((error) => {
-            console.log(error);
             dispatch({
-                type: REGISTER_ERROR,
+                type: REGISTRATION_ERROR,
                 payload: error.data,
             });
         });
@@ -57,24 +86,3 @@ export function clearRegistrationDetails() {
         payload: null,
     };
 }
-
-export const userExistCheck = (user) => (dispatch) => {
-    console.log(user.email);
-    api.post(`${URL}/${user.email}`, {
-        delay: 0,
-    })
-        .then((response) => {
-            console.log(response);
-            dispatch({
-                type: USER_EXIST,
-                payload: true,
-            });
-        })
-        .catch((error) => {
-            console.log(error);
-            dispatch({
-                type: USER_EXIST,
-                payload: false,
-            });
-        });
-};

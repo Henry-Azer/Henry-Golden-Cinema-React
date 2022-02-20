@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import Collapsible from "react-collapsible";
-
-import Typography from "@mui/material/Typography";
-
-import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
-
-import { Facebook as ContentLoader } from "react-content-loader";
-
 import Header from "./global/header";
 import Footer from "./global/footer";
 import ChatBot from "./global/chatbot";
 
 import TicketInfo from "../resources/images/Requirements-06.png";
+
+import Collapsible from "react-collapsible";
+
+import { Facebook as ContentLoader } from "react-content-loader";
+
+import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
+
+import Typography from "@mui/material/Typography";
 
 const Bookings = () => {
     const navigate = useNavigate();

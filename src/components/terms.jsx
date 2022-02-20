@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import Typography from "@mui/material/Typography";
-
-import { FaCaretRight } from "react-icons/fa";
-
 import Header from "./global/header";
 import Footer from "./global/footer";
 import ChatBot from "./global/chatbot";
+
+import { FaCaretRight } from "react-icons/fa";
+
+import Typography from "@mui/material/Typography";
 
 const Terms = () => {
     const location = useLocation();

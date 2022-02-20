@@ -1,22 +1,21 @@
 import React, { useEffect } from "react";
-
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { movieDetails, clearMovieDetails } from "../store/actions";
 
-import YouTube from "react-youtube";
-
-import { Facebook as ContentLoader } from "react-content-loader";
-
-import Typography from "@mui/material/Typography";
-
-import { FaCaretRight } from "react-icons/fa";
-
 import Header from "./global/header";
 import Footer from "./global/footer";
 import Chatbot from "./global/chatbot";
 import BookingForm from "./movie/booking-form";
+
+import YouTube from "react-youtube";
+
+import { Facebook as ContentLoader } from "react-content-loader";
+
+import { FaCaretRight } from "react-icons/fa";
+
+import Typography from "@mui/material/Typography";
 
 // const SubmitLoaderImgURL = "https://s10.gifyu.com/images/loadereaee97066b222624.gif";
 
@@ -28,12 +27,13 @@ const ImgLoaderURL =
 
 const Movie = () => {
     const params = useParams();
-    const location = useLocation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const movie = useSelector((state) => state.movies.movieData);
-    const loading = useSelector((state) => state.movies.movieLoading);
+    const location = useLocation();
     const locationState = location.state;
+
+    const movie = useSelector((state) => state.movies.movieDetails);
+    const movieRequest = useSelector((state) => state.movies.movieRequest);
 
     useEffect(() => {
         document.title = movie
@@ -87,7 +87,7 @@ const Movie = () => {
                         <div className="movie-details">
                             <img
                                 className="movie-img"
-                                src={loading ? ImgLoaderURL : movie.imgURL}
+                                src={movieRequest ? ImgLoaderURL : movie.imgURL}
                                 alt="movie-img"
                             />
                             <div className="movie-data">

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { nowPlayingMoviesList } from "../store/actions";
+import { nowPlayingMovies } from "../store/actions";
 
 import Typography from "@mui/material/Typography";
 
@@ -16,13 +16,16 @@ const LoaderImgURL =
     "https://i.pinimg.com/originals/94/20/5e/94205e1ed8ea69428c3fd9b81d22ac4b.gif";
 
 const Movies = () => {
-    const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const location = useLocation();
     const locationState = location.state;
-    const loading = useSelector((state) => state.movies.moviesLoading);
-    const nowPlayingMovies = useSelector(
-        (state) => state.movies.nowPlayingMovies
+
+    const nowPlayingMoviesRequest = useSelector(
+        (state) => state.movies.nowPlayingMoviesRequest
+    );
+    const nowPlayingMoviesList = useSelector(
+        (state) => state.movies.nowPlayingMoviesList
     );
 
     useEffect(() => {
@@ -38,7 +41,7 @@ const Movies = () => {
     }, [locationState]);
 
     useEffect(() => {
-        dispatch(nowPlayingMoviesList());
+        dispatch(nowPlayingMovies());
     }, [dispatch]);
 
     return (
@@ -60,8 +63,8 @@ const Movies = () => {
                     </Typography>
                 </div>
                 <div className="movies-cards display-flex flex-row">
-                    {nowPlayingMovies ? (
-                        nowPlayingMovies.map((movie) => (
+                    {nowPlayingMoviesList ? (
+                        nowPlayingMoviesList.map((movie) => (
                             <div
                                 key={movie.id}
                                 className="movie-card"
@@ -77,7 +80,7 @@ const Movies = () => {
                             >
                                 <img
                                     className="movie-card-img"
-                                    src={loading ? LoaderImgURL : movie.imgURL}
+                                    src={nowPlayingMoviesRequest ? LoaderImgURL : movie.imgURL}
                                     alt="movie-img"
                                 />
                                 <Typography
