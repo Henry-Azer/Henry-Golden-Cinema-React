@@ -4,13 +4,13 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { nowPlayingMovies } from "../store/actions";
 
-import Typography from "@mui/material/Typography";
-
-import { FaCaretRight } from "react-icons/fa";
-
 import Header from "./global/header";
 import Footer from "./global/footer";
 import Chatbot from "./global/chatbot";
+
+import Typography from "@mui/material/Typography";
+
+import { FaCaretRight } from "react-icons/fa";
 
 const LoaderImgURL =
     "https://i.pinimg.com/originals/94/20/5e/94205e1ed8ea69428c3fd9b81d22ac4b.gif";
@@ -80,7 +80,11 @@ const Movies = () => {
                             >
                                 <img
                                     className="movie-card-img"
-                                    src={nowPlayingMoviesRequest ? LoaderImgURL : movie.imgURL}
+                                    src={
+                                        nowPlayingMoviesRequest
+                                            ? LoaderImgURL
+                                            : movie.imgURL
+                                    }
                                     alt="movie-img"
                                 />
                                 <Typography

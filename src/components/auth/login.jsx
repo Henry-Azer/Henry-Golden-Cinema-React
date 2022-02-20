@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { authenticateUser } from "../../store/actions";
 
+import { RequestLoader } from "../global/form-loader";
+
 import logoName from "../../resources/images/Requirements-02.png";
 import logoImg from "../../resources/images/Requirements-03.png";
 
@@ -17,9 +19,6 @@ import Typography from "@mui/material/Typography";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
-
-const SubmitLoaderImgURL =
-    "https://s10.gifyu.com/images/loadereaee97066b222624.gif";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -153,13 +152,7 @@ const Login = () => {
                             </div>
 
                             <div className="form-submission display-flex">
-                                {loginRequest ? (
-                                    <img
-                                        className="result-img"
-                                        src={SubmitLoaderImgURL}
-                                        alt="saving-account"
-                                    />
-                                ) : null}
+                                {loginRequest ? <RequestLoader /> : null}
 
                                 <div className="keep-logged display-flex flex-row">
                                     <Checkbox {...label} />

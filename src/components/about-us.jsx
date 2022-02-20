@@ -7,6 +7,7 @@ import { submitMessage } from "../store/actions";
 import Header from "./global/header";
 import Footer from "./global/footer";
 import ChatBot from "./global/chatbot";
+import { RequestLoader, RequestSucceeded } from "./global/form-loader";
 
 import HenryImg from "../resources/images/Requirements-09.jpg";
 import BavlyImg from "../resources/images/Requirements-08.jpg";
@@ -28,12 +29,6 @@ import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-
-const SubmitLoaderImgURL =
-    "https://s10.gifyu.com/images/loadereaee97066b222624.gif";
-
-const SubmitSucceededImgURL =
-    "https://i.postimg.cc/jqm5G62G/88-886120-png-file-button-arrow-right-png-clipart-removebg-preview.png";
 
 const AboutUs = () => {
     const dispatch = useDispatch();
@@ -199,21 +194,11 @@ const AboutUs = () => {
                                 </div>
 
                                 <div className="form-submission display-flex">
-                                    {reviewRequest ? (
-                                        <img
-                                            className="process-img"
-                                            src={SubmitLoaderImgURL}
-                                            alt="saving-account"
-                                        />
-                                    ) : null}
+                                    {reviewRequest ? <RequestLoader /> : null}
 
                                     {reviewSucceeded &&
                                     reviewRequest === false ? (
-                                        <img
-                                            className="process-img"
-                                            src={SubmitSucceededImgURL}
-                                            alt="saving-account"
-                                        />
+                                        <RequestSucceeded />
                                     ) : null}
 
                                     <button

@@ -8,6 +8,8 @@ import {
     clearRegistrationDetails,
 } from "../../store/actions";
 
+import { RequestLoader, RequestSucceeded } from "../global/form-loader";
+
 import logoName from "../../resources/images/Requirements-02.png";
 import logoImg from "../../resources/images/Requirements-03.png";
 
@@ -15,12 +17,6 @@ import { Formik } from "formik";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-
-const SubmitLoaderImgURL =
-    "https://s10.gifyu.com/images/loadereaee97066b222624.gif";
-
-const SubmitSucceededImgURL =
-    "https://i.postimg.cc/jqm5G62G/88-886120-png-file-button-arrow-right-png-clipart-removebg-preview.png";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -217,21 +213,11 @@ const Register = () => {
                             </div>
 
                             <div className="form-submission display-flex">
-                                {registrationRequest ? (
-                                    <img
-                                        className="process-img"
-                                        src={SubmitLoaderImgURL}
-                                        alt="loading-process"
-                                    />
-                                ) : null}
+                                {registrationRequest ? <RequestLoader /> : null}
 
                                 {registrationSucceeded &&
                                 registrationRequest === false ? (
-                                    <img
-                                        className="process-img"
-                                        src={SubmitSucceededImgURL}
-                                        alt="saving-account"
-                                    />
+                                    <RequestSucceeded />
                                 ) : null}
 
                                 <button
