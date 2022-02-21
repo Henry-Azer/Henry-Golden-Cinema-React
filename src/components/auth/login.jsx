@@ -187,6 +187,17 @@ const Login = () => {
                             className="social-btn"
                             onClick={() =>
                                 window.open(
+                                    "https://www.facebook.com/HeNaRyAzEr",
+                                    "_blank"
+                                )
+                            }
+                        >
+                            <FaFacebookF className="social-icon" />
+                        </Button>
+                        <Button
+                            className="social-btn"
+                            onClick={() =>
+                                window.open(
                                     "https://github.com/Henry-Azer",
                                     "_blank"
                                 )
@@ -204,17 +215,6 @@ const Login = () => {
                             }
                         >
                             <FaLinkedinIn className="social-icon" />
-                        </Button>
-                        <Button
-                            className="social-btn"
-                            onClick={() =>
-                                window.open(
-                                    "https://www.facebook.com/HeNaRyAzEr",
-                                    "_blank"
-                                )
-                            }
-                        >
-                            <FaFacebookF className="social-icon" />
                         </Button>
                     </div>
                 </div>

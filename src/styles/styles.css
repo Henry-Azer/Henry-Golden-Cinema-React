@@ -421,8 +421,15 @@ body {
 
 /* ----- LOGIN ROUTE START ----- */
 .login-route .keep-logged span {
-    color: var(--fontColor);
     margin: 0;
+    color: var(--fontColor);
+}
+
+.login-contact-us .social-container .social-icon {
+    font-size: 22px;
+    border: none;
+    box-shadow: none;
+    color: var(--main3rdColor);
 }
 /* ----- LOGIN ROUTE END ----- */
 
