@@ -563,6 +563,10 @@ body {
     font-size: 28px;
 }
 
+.movie-route-wrapper .empty-details {
+    text-align: center;
+}
+
 .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root,
 .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
     color: rgb(185, 185, 185) !important;
