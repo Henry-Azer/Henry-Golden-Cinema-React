@@ -17,7 +17,10 @@ const LoaderImgURL =
 
 const Movies = () => {
     const navigate = useNavigate();
+
     const dispatch = useDispatch();
+    dispatch(nowPlayingMovies());
+
     const location = useLocation();
     const locationState = location.state;
 
@@ -40,10 +43,6 @@ const Movies = () => {
                 });
     }, [locationState]);
 
-    useEffect(() => {
-        dispatch(nowPlayingMovies());
-    }, [dispatch]);
-
     return (
         <section className="movies-route">
             <Header />
@@ -63,7 +62,7 @@ const Movies = () => {
                     </Typography>
                 </div>
                 <div className="movies-cards display-flex flex-row">
-                    {nowPlayingMoviesList ? (
+                    {nowPlayingMoviesList && nowPlayingMoviesRequest ? (
                         nowPlayingMoviesList.map((movie) => (
                             <div
                                 key={movie.id}
@@ -80,11 +79,7 @@ const Movies = () => {
                             >
                                 <img
                                     className="movie-card-img"
-                                    src={
-                                        nowPlayingMoviesRequest
-                                            ? LoaderImgURL
-                                            : movie.imgURL
-                                    }
+                                    src={movie.imgURL}
                                     alt="movie-img"
                                 />
                                 <Typography

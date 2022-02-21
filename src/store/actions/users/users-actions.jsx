@@ -5,9 +5,6 @@ import {
     USERS_LIST_REQUEST,
     USERS_LIST_SUCCEEDED,
     USERS_LIST_ERROR,
-    USER_EXISTS_REQUEST,
-    USER_EXISTS_SUCCEEDED,
-    USER_EXISTS_ERROR,
     REGISTRATION_REQUEST,
     REGISTRATION_SUCCEEDED,
     REGISTRATION_ERROR,
@@ -36,26 +33,6 @@ export const usersList = () => (dispatch) => {
             dispatch({
                 type: USERS_LIST_ERROR,
                 payload: error.data,
-            });
-        });
-};
-
-export const userExistsCheck = (user) => (dispatch) => {
-    dispatch({ type: USER_EXISTS_REQUEST });
-
-    api.post(`${URL}/${user.email}`, {
-        delay: 0,
-    })
-        .then((response) => {
-            dispatch({
-                type: USER_EXISTS_SUCCEEDED,
-                payload: true,
-            });
-        })
-        .catch((error) => {
-            dispatch({
-                type: USER_EXISTS_ERROR,
-                payload: false,
             });
         });
 };

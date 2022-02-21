@@ -61,7 +61,7 @@ export default function movies_reducer(state = {}, action) {
                 movieRequest: false,
             };
         case CLEAR_MOVIE_DETAILS:
-            return { ...state, movieData: action.payload };
+            return { ...state, movieDetails: action.payload };
         default:
             return state;
     }

@@ -2,9 +2,6 @@ import {
     USERS_LIST_REQUEST,
     USERS_LIST_SUCCEEDED,
     USERS_LIST_ERROR,
-    USER_EXISTS_REQUEST,
-    USER_EXISTS_SUCCEEDED,
-    USER_EXISTS_ERROR,
     REGISTRATION_REQUEST,
     REGISTRATION_SUCCEEDED,
     REGISTRATION_ERROR,
@@ -27,22 +24,6 @@ export default function users_reducer(state = {}, action) {
                 ...state,
                 usersListError: action.payload,
                 usersListRequest: false,
-            };
-
-        // USER EXISTS
-        case USER_EXISTS_REQUEST:
-            return { ...state, isUserExistsRequest: true };
-        case USER_EXISTS_SUCCEEDED:
-            return {
-                ...state,
-                isUserExists: action.payload,
-                isUserExistsRequest: false,
-            };
-        case USER_EXISTS_ERROR:
-            return {
-                ...state,
-                isUserExistsError: action.payload,
-                isUserExistsRequest: false,
             };
 
         // REGISTRATION

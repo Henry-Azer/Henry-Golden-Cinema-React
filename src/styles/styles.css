@@ -55,7 +55,6 @@ body {
 
 .content-loader {
     margin: 0 50px;
-    transition: 0.6s all;
 }
 
 .prevent-drag {
@@ -512,7 +511,15 @@ body {
 .movie-details .movie-img {
     width: 240px;
     height: 350px;
+    cursor: pointer;
+    transition: 0.6s all;
     border: 2px solid var(--fontColor);
+}
+
+.movie-details .movie-img:hover {
+    box-shadow: 2px 2px 15px 6px var(--mainColor);
+    -webkit-box-shadow: 2px 2px 15px 6px var(--mainColor);
+    -moz-box-shadow: 2px 2px 15px 6px var(--mainColor);
 }
 
 .movie-details .movie-data {
