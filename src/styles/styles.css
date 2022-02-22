@@ -28,7 +28,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
-    background-image: url("/src/resources/backgrounds/Requirements-01.png");
+    background-image: url("/src/resources/backgrounds/bg-01.png");
 }
 
 @font-face {
@@ -317,8 +317,8 @@ body {
     width: 115px;
     min-height: 100px;
     margin-top: 10px;
-    background: url("/src/resources/backgrounds/Requirements-01.png") fixed
-        no-repeat cover;
+    background: url("/src/resources/backgrounds/bg-01.png") fixed no-repeat
+        cover;
 }
 /* ----- HEADER SECTION END ----- */
 
@@ -387,12 +387,12 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
-    background-image: url("/src/resources/backgrounds/Requirements-04.png");
+    background-image: url("/src/resources/backgrounds/bg-02.png");
 }
 
 .reg-log-wrapper {
+    padding-top: 40px;
     padding: auto 0;
-    padding-top: 20px;
     gap: 20px;
 }
 
@@ -503,7 +503,51 @@ body {
     transform: translateY(-3px);
     transition: 0.6s all;
 }
+
 /* ----- HOME ROUTE END ----- */
+
+/* ----- HOME LOADER START ----- */
+/* .home-loader {
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--main3rdColor);
+} */
+
+.page-loader .loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 22vh;
+}
+
+.loader-wrapper .camera-loader {
+    position: absolute;
+    width: 350px;
+    margin-top: -70px;
+}
+
+.loader-wrapper .load-line {
+    position: absolute;
+    left: 50%;
+    margin-bottom: -180px;
+    height: 4px;
+    width: 260px;
+    max-width: 85vw;
+    border-radius: 4px;
+    background: var(--font2ndColor);
+    transform: translate(-50%, -50%);
+}
+
+.loader-wrapper .load-line:after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 100%;
+    background-color: var(--fontColor);
+    animation: load-line 10s linear;
+}
+/* ----- HOME LOADER END ----- */
 
 /* -------------------------------------------------------- */
 
@@ -578,7 +622,7 @@ body {
 }
 
 .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
-    background: url("/src/resources/backgrounds/Requirements-01.png") !important;
+    background: url("/src/resources/backgrounds/bg-01.png") !important;
 }
 
 .css-1480iag-MuiInputBase-root-MuiInput-root,
@@ -1079,6 +1123,42 @@ body {
     }
     to {
         opacity: 0;
+    }
+}
+
+@keyframes load-line {
+    0% {
+        width: 0;
+    }
+    10% {
+        width: 5%;
+    }
+    20% {
+        width: 15%;
+    }
+    30% {
+        width: 25%;
+    }
+    40% {
+        width: 30%;
+    }
+    50% {
+        width: 44%;
+    }
+    60% {
+        width: 50%;
+    }
+    70% {
+        width: 72%;
+    }
+    80% {
+        width: 84%;
+    }
+    90% {
+        width: 92%;
+    }
+    100% {
+        width: 100%;
     }
 }
 /* -------------------------------------------------------- */

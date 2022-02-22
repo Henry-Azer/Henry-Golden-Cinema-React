@@ -10,8 +10,8 @@ import MenuItem from "@mui/material/MenuItem";
 
 import { Divide as Hamburger } from "hamburger-react";
 
-import logoName from "../../resources/images/Requirements-02.png";
-import logoImg from "../../resources/images/Requirements-03.png";
+import logoImg from "../../resources/icons/logo-01.png";
+import logoName from "../../resources/icons/logo-02.png";
 
 const Header = () => {
     const navigate = useNavigate();

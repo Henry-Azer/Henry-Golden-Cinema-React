@@ -9,8 +9,8 @@ import Footer from "./global/footer";
 import ChatBot from "./global/chatbot";
 import { RequestLoader, RequestSucceeded } from "./global/form-loader";
 
-import HenryImg from "../resources/images/Requirements-09.jpg";
-import BavlyImg from "../resources/images/Requirements-08.jpg";
+import HenryImg from "../resources/images/img-01.jpg";
+import BavlyImg from "../resources/images/img-02.jpg";
 
 import {
     FaGithub,

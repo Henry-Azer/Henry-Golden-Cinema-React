@@ -1,16 +1,13 @@
 import React from "react";
 
-const SubmitLoaderImgURL =
-    "https://s10.gifyu.com/images/loadereaee97066b222624.gif";
-
-const SubmitSucceededImgURL =
-    "https://i.postimg.cc/jqm5G62G/88-886120-png-file-button-arrow-right-png-clipart-removebg-preview.png";
+import SubmitLoaderImg from "../../resources/icons/loader-01.gif";
+import SubmitSucceededImg from "../../resources/icons/icon-01.png";
 
 export const RequestLoader = () => {
     return (
         <img
             className="process-img"
-            src={SubmitLoaderImgURL}
+            src={SubmitLoaderImg}
             alt="loading-process"
         />
     );
@@ -20,7 +17,7 @@ export const RequestSucceeded = () => {
     return (
         <img
             className="process-img"
-            src={SubmitSucceededImgURL}
+            src={SubmitSucceededImg}
             alt="succeeded-process"
         />
     );

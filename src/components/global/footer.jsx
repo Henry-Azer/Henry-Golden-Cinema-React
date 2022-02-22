@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-import logoName from "../../resources/images/Requirements-02.png";
+import logoName from "../../resources/icons/logo-02.png";
 
 import {
     FaGithub,

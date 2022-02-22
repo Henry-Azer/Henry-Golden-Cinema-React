@@ -5,7 +5,7 @@ import Header from "./global/header";
 import Footer from "./global/footer";
 import ChatBot from "./global/chatbot";
 
-import TicketInfo from "../resources/images/Requirements-06.png";
+import TicketInfo from "../resources/images/img-04.png";
 
 import Collapsible from "react-collapsible";
 

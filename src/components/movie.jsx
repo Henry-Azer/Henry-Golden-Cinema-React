@@ -18,6 +18,16 @@ import { FaCaretRight } from "react-icons/fa";
 
 import Typography from "@mui/material/Typography";
 
+const youtubeOpts = {
+    height: "300",
+    width: "500",
+    playerVars: {
+        autoplay: 0,
+        origin: "http:localhost:3000",
+        enablejsapi: "1",
+    },
+};
+
 const Movie = () => {
     const params = useParams();
     const dispatch = useDispatch();
@@ -48,16 +58,6 @@ const Movie = () => {
 
         return dispatch(clearMovieDetails());
     }, [dispatch, navigate, locationState, params]);
-
-    const opts = {
-        height: "300",
-        width: "500",
-        playerVars: {
-            autoplay: 0,
-            origin: "http:localhost:3000",
-            enablejsapi: "1",
-        },
-    };
 
     return (
         <section className="movie-route">
@@ -230,7 +230,7 @@ const Movie = () => {
                                     </Typography>
                                     <YouTube
                                         videoId={movie.ytTrailerId}
-                                        opts={opts}
+                                        opts={youtubeOpts}
                                     />
                                 </div>
                             </div>

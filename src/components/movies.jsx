@@ -17,7 +17,6 @@ const LoaderImgURL =
 
 const Movies = () => {
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
     dispatch(nowPlayingMovies());
 
