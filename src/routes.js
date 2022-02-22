@@ -13,7 +13,8 @@ import AboutUs from "./components/about-us";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 
-import ErrorPage from "./components/global/error-page";
+import Error from "./components/error";
+import PageNotFound from "./components/global/page-not-found";
 
 const routes = () => {
     return (
@@ -29,12 +30,12 @@ const routes = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
 
-            <Route path="/error" element={<ErrorPage />} />
+            <Route path="/error" element={<Error />} />
             <Route path="/terms" element={<Terms />} />
 
-            <Route path="" element={<ErrorPage />} />
-            <Route path="*" element={<ErrorPage />} />
-            <Route element={<ErrorPage />} />
+            <Route path="" element={<PageNotFound />} />
+            <Route path="*" element={<PageNotFound />} />
+            <Route element={<PageNotFound />} />
         </Routes>
     );
 };

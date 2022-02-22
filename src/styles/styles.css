@@ -209,6 +209,45 @@ body {
 
 /* -------------------------------------------------------- */
 
+/* ----- PAGE LOADER START ----- */
+.page-loader .loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 22vh;
+}
+
+.loader-wrapper .camera-loader {
+    position: absolute;
+    width: 350px;
+    margin-top: -70px;
+}
+
+.loader-wrapper .load-line {
+    position: absolute;
+    left: 50%;
+    margin-bottom: -180px;
+    height: 4px;
+    width: 260px;
+    max-width: 85vw;
+    border-radius: 4px;
+    background: var(--font2ndColor);
+    transform: translate(-50%, -50%);
+}
+
+.loader-wrapper .load-line:after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 100%;
+    background-color: var(--fontColor);
+    animation: load-line 10s linear;
+}
+/* ----- PAGE LOADER END ----- */
+
+/* -------------------------------------------------------- */
+
 /* ----- SLICK SLIDER START ----- */
 .slick-slider {
     margin-bottom: 50px;
@@ -243,6 +282,14 @@ body {
 /* ----- ERROR PAGE START ----- */
 
 /* ----- ERROR PAGE END ----- */
+
+/* -------------------------------------------------------- */
+
+/* ----- PAGE NOT FOUND START ----- */
+.not-found-container {
+    gap: 25px;
+}
+/* ----- PAGE NOT FOUND END ------- */
 
 /* -------------------------------------------------------- */
 
@@ -397,15 +444,15 @@ body {
 }
 
 .reg-log-wrapper .logo-wrapper {
-    margin-right: 20px;
+    margin-right: 30px;
 }
 
 .reg-log-wrapper .logo-wrapper .logo-img {
-    width: 75px;
+    width: 78px;
 }
 
 .reg-log-wrapper .logo-wrapper .logo-name {
-    width: 85px;
+    width: 88px;
 }
 
 .reg-log-wrapper .reg-log-header {
@@ -503,51 +550,7 @@ body {
     transform: translateY(-3px);
     transition: 0.6s all;
 }
-
 /* ----- HOME ROUTE END ----- */
-
-/* ----- HOME LOADER START ----- */
-/* .home-loader {
-    height: 100vh;
-    overflow: hidden;
-    background-color: var(--main3rdColor);
-} */
-
-.page-loader .loader-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 22vh;
-}
-
-.loader-wrapper .camera-loader {
-    position: absolute;
-    width: 350px;
-    margin-top: -70px;
-}
-
-.loader-wrapper .load-line {
-    position: absolute;
-    left: 50%;
-    margin-bottom: -180px;
-    height: 4px;
-    width: 260px;
-    max-width: 85vw;
-    border-radius: 4px;
-    background: var(--font2ndColor);
-    transform: translate(-50%, -50%);
-}
-
-.loader-wrapper .load-line:after {
-    content: "";
-    display: block;
-    height: 4px;
-    width: 100%;
-    background-color: var(--fontColor);
-    animation: load-line 10s linear;
-}
-/* ----- HOME LOADER END ----- */
 
 /* -------------------------------------------------------- */
 
