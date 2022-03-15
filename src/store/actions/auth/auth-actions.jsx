@@ -37,26 +37,19 @@ export const authenticateUser = (values) => (dispatch) => {
                 });
 
                 if (values.keepLogged) {
-                    cookies.set("isUserAuthenticated", "true");
-                    cookies.set("authToken", `${response.data.body.token}`);
-                    cookies.set(
-                        "authenticatedId",
-                        `${response.data.body.user.id}`
-                    );
+                    cookies.set("iua_cin", "true");
+                    cookies.set("at_cin", `${response.data.body.token}`);
+                    cookies.set("ai_cin", `${response.data.body.user.id}`);
                 } else {
-                    cookies.set("isUserAuthenticated", "true", {
+                    cookies.set("iua_cin", "true", {
                         maxAge: "14400",
                     });
-                    cookies.set("authToken", `${response.data.body.token}`, {
+                    cookies.set("at_cin", `${response.data.body.token}`, {
                         maxAge: "14400",
                     });
-                    cookies.set(
-                        "authenticatedId",
-                        `${response.data.body.user.id}`,
-                        {
-                            maxAge: "14400",
-                        }
-                    );
+                    cookies.set("ai_cin", `${response.data.body.user.id}`, {
+                        maxAge: "14400",
+                    });
                 }
             } else {
                 dispatch({

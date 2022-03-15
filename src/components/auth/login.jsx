@@ -51,7 +51,7 @@ const Login = () => {
     }, [dispatch]);
 
     const isUserAuthenticatedCookie = () => {
-        return cookies.get("isUserAuthenticated");
+        return cookies.get("iua_cin");
     };
 
     return (

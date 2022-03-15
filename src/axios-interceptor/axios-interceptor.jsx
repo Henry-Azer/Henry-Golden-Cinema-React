@@ -6,7 +6,7 @@ const cookies = new Cookies();
 
 axios.interceptors.request.use(
     function(config) {
-        const token = cookies.get("authToken");
+        const token = cookies.get("at_cin");
         config.headers.authorization = `GCin ${token}`;
 
         return config;
