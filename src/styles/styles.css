@@ -74,7 +74,7 @@ body {
     font-weight: 700;
     outline: none;
     border: none;
-    border-radius: 50px;
+    border-radius: 18px;
     cursor: pointer;
 }
 
@@ -174,7 +174,7 @@ body {
 .form-1 textarea {
     width: 450px;
     height: 40px;
-    border-radius: 50px;
+    border-radius: 18px;
     border: none;
     outline: none;
     padding: 0 40px;
@@ -997,13 +997,12 @@ body {
 
     /* ----- FORM START ----- */
     .form-1 input,
-    .form-1 textarea,
-    .reg-log-navigation .btn-1 {
+    .form-1 textarea {
         width: 330px;
     }
 
-    .form-link .btn-1 {
-        width: 360px;
+    .reg-log-navigation .btn-1 {
+        width: 400px;
     }
     /* ----- FORM END ------- */
 
@@ -1039,7 +1038,7 @@ body {
         width: 250px;
     }
 
-    .form-link .btn-1 {
+    .reg-log-navigation .btn-1  {
         width: 330px;
     }
     /* ----- FORM END ------- */
