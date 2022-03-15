@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -18,14 +18,12 @@ const LoaderImgURL =
 const Movies = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    dispatch(nowPlayingMovies());
 
     const location = useLocation();
     const locationState = location.state;
 
-    const nowPlayingMoviesRequest = useSelector(
-        (state) => state.movies.nowPlayingMoviesRequest
-    );
+    const [moviesDispatched, setMoviesDispatched] = useState(false);
+
     const nowPlayingMoviesList = useSelector(
         (state) => state.movies.nowPlayingMoviesList
     );
@@ -41,6 +39,13 @@ const Movies = () => {
                     block: "center",
                 });
     }, [locationState]);
+
+    useEffect(() => {
+        if (!moviesDispatched) {
+            dispatch(nowPlayingMovies());
+            setMoviesDispatched(true);
+        }
+    }, [dispatch, moviesDispatched]);
 
     return (
         <section className="movies-route">
@@ -61,7 +66,7 @@ const Movies = () => {
                     </Typography>
                 </div>
                 <div className="movies-cards display-flex flex-row">
-                    {nowPlayingMoviesList && nowPlayingMoviesRequest ? (
+                    {nowPlayingMoviesList ? (
                         nowPlayingMoviesList.map((movie) => (
                             <div
                                 key={movie.id}

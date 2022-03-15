@@ -26,17 +26,21 @@ export const moviesList = () => (dispatch) => {
     api.get(`${URL}/all`, {
         delay: 0,
     })
-        .then((response) =>
-            dispatch({
-                type: MOVIES_LIST_SUCCEEDED,
-                payload: response.data,
-            })
-        )
-        .catch((error) => {
-            dispatch({
-                type: MOVIES_LIST_ERROR,
-                payload: error.data,
-            });
+        .then(function(response) {
+            if (response.data.status === 200) {
+                dispatch({
+                    type: MOVIES_LIST_SUCCEEDED,
+                    payload: response.data.body,
+                });
+            } else {
+                dispatch({
+                    type: MOVIES_LIST_ERROR,
+                    payload: response.data.message,
+                });
+            }
+        })
+        .catch(function(error) {
+            console.log(error);
         });
 };
 
@@ -46,17 +50,21 @@ export const nowPlayingMovies = () => (dispatch) => {
     api.get(`${URL}/now-play`, {
         delay: 0,
     })
-        .then((response) =>
-            dispatch({
-                type: NOW_PLAYING_MOVIES_SUCCEEDED,
-                payload: response.data,
-            })
-        )
-        .catch((error) => {
-            dispatch({
-                type: NOW_PLAYING_MOVIES_LIST_ERROR,
-                payload: error.data,
-            });
+        .then(function(response) {
+            if (response.data.status === 200) {
+                dispatch({
+                    type: NOW_PLAYING_MOVIES_SUCCEEDED,
+                    payload: response.data.body,
+                });
+            } else {
+                dispatch({
+                    type: NOW_PLAYING_MOVIES_LIST_ERROR,
+                    payload: response.data.message,
+                });
+            }
+        })
+        .catch(function(error) {
+            console.log(error);
         });
 };
 
@@ -66,17 +74,21 @@ export const movieDetails = (id) => (dispatch) => {
     api.get(`${URL}/id/${id}`, {
         delay: 0,
     })
-        .then((response) =>
-            dispatch({
-                type: MOVIE_DETAILS_SUCCEEDED,
-                payload: response.data,
-            })
-        )
-        .catch((error) => {
-            dispatch({
-                type: MOVIE_DETAILS_ERROR,
-                payload: error.data,
-            });
+        .then(function(response) {
+            if (response.data.status === 200) {
+                dispatch({
+                    type: MOVIE_DETAILS_SUCCEEDED,
+                    payload: response.data.body,
+                });
+            } else {
+                dispatch({
+                    type: MOVIE_DETAILS_ERROR,
+                    payload: response.data.message,
+                });
+            }
+        })
+        .catch(function(error) {
+            console.log(error);
         });
 };
 
