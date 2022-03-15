@@ -5,12 +5,14 @@ import {
     LOGIN_REQUEST,
     LOGIN_FAILURE,
     LOGIN_SUCCEEDED,
-    LOGOUT_REQUEST,
-    LOGOUT_FAILURE,
-    LOGOUT_SUCCEEDED,
+    CLEAR_LOGIN_DETAILS,
 } from "../types";
 
-const URL = "http://localhost:8080/api/user";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
+
+const URL = "http://localhost:8080/api/auth";
 
 const api = axios.create({
     adapter: delayAdapterEnhancer(axios.defaults.adapter),
@@ -20,7 +22,7 @@ export const authenticateUser = (values) => (dispatch) => {
     dispatch({ type: LOGIN_REQUEST });
 
     api.post(
-        `${URL}/auth`,
+        `${URL}/login`,
         {
             email: values.email,
             password: values.password,
@@ -28,35 +30,49 @@ export const authenticateUser = (values) => (dispatch) => {
         { delay: 2000 }
     )
         .then(function(response) {
-            dispatch({
-                type: LOGIN_SUCCEEDED,
-                payload: response.data,
-            });
+            if (response.data.status === 200) {
+                dispatch({
+                    type: LOGIN_SUCCEEDED,
+                    payload: response.data.body,
+                });
+
+                if (values.keepLogged) {
+                    cookies.set("isUserAuthenticated", "true");
+                    cookies.set("authToken", `${response.data.body.token}`);
+                    cookies.set(
+                        "authenticatedId",
+                        `${response.data.body.user.id}`
+                    );
+                } else {
+                    cookies.set("isUserAuthenticated", "true", {
+                        maxAge: "14400",
+                    });
+                    cookies.set("authToken", `${response.data.body.token}`, {
+                        maxAge: "14400",
+                    });
+                    cookies.set(
+                        "authenticatedId",
+                        `${response.data.body.user.id}`,
+                        {
+                            maxAge: "14400",
+                        }
+                    );
+                }
+            } else {
+                dispatch({
+                    type: LOGIN_FAILURE,
+                    payload: response.data.message,
+                });
+            }
         })
         .catch(function(error) {
-            dispatch({
-                type: LOGIN_FAILURE,
-                payload: error.data,
-            });
+            console.log(error);
         });
 };
 
-export const unauthenticatedUser = () => (dispatch) => {
-    dispatch({ type: LOGOUT_REQUEST });
-
-    api.post(`${URL}/process-logout`, {
-        delay: 0,
-    })
-        .then((response) => {
-            dispatch({
-                type: LOGOUT_SUCCEEDED,
-                payload: response.data,
-            });
-        })
-        .catch((error) => {
-            dispatch({
-                type: LOGOUT_FAILURE,
-                payload: error.data,
-            });
-        });
-};
+export function clearLoginDetails() {
+    return {
+        type: CLEAR_LOGIN_DETAILS,
+        payload: null,
+    };
+}

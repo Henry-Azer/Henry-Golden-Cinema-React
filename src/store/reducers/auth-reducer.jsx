@@ -2,9 +2,7 @@ import {
     LOGIN_REQUEST,
     LOGIN_FAILURE,
     LOGIN_SUCCEEDED,
-    LOGOUT_REQUEST,
-    LOGOUT_FAILURE,
-    LOGOUT_SUCCEEDED,
+    CLEAR_LOGIN_DETAILS,
 } from "../actions/types";
 
 export default function auth_reducer(state = {}, action) {
@@ -15,7 +13,8 @@ export default function auth_reducer(state = {}, action) {
         case LOGIN_SUCCEEDED:
             return {
                 ...state,
-                authenticatedUser: action.payload,
+                authenticatedUser: action.payload.user,
+                authenticationToken: action.payload.token,
                 isUserAuthenticated: true,
                 loginRequest: false,
             };
@@ -24,26 +23,18 @@ export default function auth_reducer(state = {}, action) {
                 ...state,
                 loginError: action.payload,
                 isUserAuthenticated: false,
+                loginErrorOccurred: true,
                 loginRequest: false,
             };
+        case CLEAR_LOGIN_DETAILS:
+            return {
+                ...state,
+                loginError: action.payload,
+                isUserAuthenticated: null,
+                loginErrorOccurred: null,
+                loginRequest: null,
+            };
 
-        // LOGOUT
-        case LOGOUT_REQUEST:
-            return { ...state, logoutRequest: true };
-        case LOGOUT_SUCCEEDED:
-            return {
-                ...state,
-                authenticatedUser: null,
-                isUserAuthenticated: false,
-                logoutRequest: false,
-            };
-        case LOGOUT_FAILURE:
-            return {
-                ...state,
-                logoutError: action.payload,
-                isUserAuthenticated: true,
-                logoutRequest: false,
-            };
         default:
             return state;
     }

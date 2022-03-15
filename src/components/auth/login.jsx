@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { authenticateUser } from "../../store/actions";
+import { authenticateUser, clearLoginDetails } from "../../store/actions";
+
+import Cookies from "universal-cookie";
 
 import { RequestLoader } from "../global/form-loader";
 
@@ -23,26 +25,34 @@ import { FaFacebookF } from "react-icons/fa";
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const cookies = new Cookies();
 
     const loginRequest = useSelector((state) => state.auth.loginRequest);
-    const isUserAuthenticated = useSelector(
-        (state) => state.auth.isUserAuthenticated
+
+    const loginError = useSelector((state) => state.auth.loginError);
+    const loginErrorOccurred = useSelector(
+        (state) => state.auth.loginErrorOccurred
     );
 
     useEffect(() => {
         document.title = "Login | Henry Golden Cinema";
 
-        console.log(isUserAuthenticated);
-
-        if (isUserAuthenticated)
+        if (isUserAuthenticatedCookie()) {
             navigate("/", {
                 state: {
                     elementScroll: "home-scroll",
                 },
             });
+        }
     });
 
-    const label = { inputProps: { "aria-label": "Checkbox demo" } };
+    useEffect(() => {
+        return dispatch(clearLoginDetails());
+    }, [dispatch]);
+
+    const isUserAuthenticatedCookie = () => {
+        return cookies.get("isUserAuthenticated");
+    };
 
     return (
         <section className="login-route">
@@ -70,7 +80,7 @@ const Login = () => {
                 </Typography>
 
                 <Formik
-                    initialValues={{ email: "", password: "" }}
+                    initialValues={{ email: "", password: "", keepLogged: "" }}
                     validate={(values) => {
                         const errors = {};
 
@@ -86,15 +96,11 @@ const Login = () => {
                         }
 
                         // Password Validation
-                        const passwordRegex = /(?=.*[0-9])/;
                         if (!values.password) {
                             errors.password = "Required";
                         } else if (values.password.length < 8) {
                             errors.password =
                                 "Password must be 8 characters long.";
-                        } else if (!passwordRegex.test(values.password)) {
-                            errors.password =
-                                "Password Must contain one number.";
                         }
 
                         return errors;
@@ -104,7 +110,6 @@ const Login = () => {
 
                         setTimeout(() => {
                             setSubmitting(false);
-                            resetForm();
                         }, 2000);
                     }}
                 >
@@ -154,8 +159,26 @@ const Login = () => {
                             <div className="form-submission display-flex">
                                 {loginRequest ? <RequestLoader /> : null}
 
+                                {loginErrorOccurred && !loginRequest ? (
+                                    <Typography
+                                        variant="h6"
+                                        component="span"
+                                        gutterBottom
+                                    >
+                                        {loginError}
+                                    </Typography>
+                                ) : null}
+
                                 <div className="keep-logged display-flex flex-row">
-                                    <Checkbox {...label} />
+                                    <Checkbox
+                                        name="keepLogged"
+                                        onBlur={handleBlur}
+                                        value={values.keepLogged}
+                                        onChange={handleChange}
+                                        inputProps={{
+                                            "aria-label": "Checkbox demo",
+                                        }}
+                                    />
                                     <Typography
                                         variant="h7"
                                         gutterBottom

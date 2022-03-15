@@ -33,13 +33,14 @@ export default function users_reducer(state = {}, action) {
             return {
                 ...state,
                 registeredUser: action.payload,
-                registrationRequest: false,
                 registrationSucceeded: true,
+                registrationRequest: false,
             };
         case REGISTRATION_ERROR:
             return {
                 ...state,
                 registrationError: action.payload,
+                registrationErrorOccurred: true,
                 registrationRequest: false,
                 registrationSucceeded: false,
             };
@@ -47,6 +48,10 @@ export default function users_reducer(state = {}, action) {
             return {
                 ...state,
                 registeredUser: action.payload,
+                registrationError: action.payload,
+                registrationRequest: action.payload,
+                registrationSucceeded: action.payload,
+                registrationErrorOccurred: action.payload,
             };
         default:
             return state;

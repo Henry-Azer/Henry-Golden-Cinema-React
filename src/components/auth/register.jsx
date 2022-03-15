@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useSelector, useDispatch } from "react-redux";
+import { shallowEqual, useSelector, useDispatch } from "react-redux";
 import {
-    usersList,
     userRegistration,
     clearRegistrationDetails,
 } from "../../store/actions";
@@ -22,12 +21,18 @@ const Register = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const users = useSelector((state) => state.users.usersList);
     const registrationRequest = useSelector(
         (state) => state.users.registrationRequest
     );
     const registrationSucceeded = useSelector(
-        (state) => state.users.registeredUser
+        (state) => state.users.registrationSucceeded,
+        shallowEqual
+    );
+    const registrationError = useSelector(
+        (state) => state.users.registrationError
+    );
+    const registrationErrorOccurred = useSelector(
+        (state) => state.users.registrationErrorOccurred
     );
 
     useEffect(() => {
@@ -35,16 +40,8 @@ const Register = () => {
     });
 
     useEffect(() => {
-        dispatch(usersList());
-
         return dispatch(clearRegistrationDetails());
     }, [dispatch]);
-
-    const checkEmailExists = (email) => {
-        for (const user of users) if (user.email === email) return true;
-
-        return false;
-    };
 
     return (
         <section className="register-route">
@@ -92,13 +89,6 @@ const Register = () => {
                             errors.email = "Invalid email address.";
                         }
 
-                        if (
-                            values.email !== "" &&
-                            checkEmailExists(values.email)
-                        ) {
-                            errors.email = "Email already exist.";
-                        }
-
                         // Username Validation
                         const usernameRegex = /^[a-zA-Z0-9]+$/;
                         if (!values.username) {
@@ -131,12 +121,11 @@ const Register = () => {
                     }}
                     onSubmit={(values, { setSubmitting, resetForm }) => {
                         dispatch(userRegistration(values));
-                        dispatch(usersList());
 
                         setTimeout(() => {
                             setSubmitting(false);
                             resetForm();
-                        }, 2000);
+                        }, 4000);
                     }}
                 >
                     {({
@@ -216,8 +205,20 @@ const Register = () => {
                                 {registrationRequest ? <RequestLoader /> : null}
 
                                 {registrationSucceeded &&
-                                registrationRequest === false ? (
+                                !registrationRequest ? (
                                     <RequestSucceeded />
+                                ) : null}
+
+                                {!registrationSucceeded &&
+                                registrationErrorOccurred &&
+                                !registrationRequest ? (
+                                    <Typography
+                                        variant="h6"
+                                        component="span"
+                                        gutterBottom
+                                    >
+                                        {registrationError}
+                                    </Typography>
                                 ) : null}
 
                                 <button
