@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { submitMessage } from "../store/actions";
+import { submitMessage, clearReviewDetails } from "../store/actions";
 
 import Header from "./global/header";
 import Footer from "./global/footer";
@@ -51,6 +51,10 @@ const AboutUs = () => {
                     block: "center",
                 });
     }, [locationState]);
+
+    useEffect(() => {
+        return dispatch(clearReviewDetails());
+    }, [dispatch]);
 
     return (
         <section className="about-us-route">

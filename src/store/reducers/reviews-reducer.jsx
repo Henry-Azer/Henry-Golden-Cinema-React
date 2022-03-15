@@ -2,7 +2,8 @@ import {
     REVIEW_REQUEST,
     REVIEW_SUCCEEDED,
     REVIEW_ERROR,
-} from "../actions/types.jsx";
+    CLEAR_REVIEW_DETAILS,
+} from "../actions/types";
 
 export default function reviews_reducer(state = {}, action) {
     switch (action.type) {
@@ -21,6 +22,13 @@ export default function reviews_reducer(state = {}, action) {
                 submissionError: action.payload,
                 reviewRequest: false,
                 reviewSucceeded: false,
+            };
+        case CLEAR_REVIEW_DETAILS:
+            return {
+                ...state,
+                reviewRequest: action.payload,
+                reviewSucceeded: action.payload,
+                submissionError: action.payload,
             };
         default:
             return state;

@@ -1,7 +1,7 @@
 import axios from "axios";
 import delayAdapterEnhancer from "axios-delay";
 
-import { REVIEW_REQUEST, REVIEW_SUCCEEDED, REVIEW_ERROR } from "../types";
+import { REVIEW_REQUEST, REVIEW_SUCCEEDED, REVIEW_ERROR, CLEAR_REVIEW_DETAILS } from "../types";
 
 const URL = "http://localhost:8080/api/review";
 
@@ -48,3 +48,10 @@ export const submitMessage = (message) => (dispatch) => {
             });
         });
 };
+
+export function clearReviewDetails() {
+    return {
+        type: CLEAR_REVIEW_DETAILS,
+        payload: null,
+    };
+}
