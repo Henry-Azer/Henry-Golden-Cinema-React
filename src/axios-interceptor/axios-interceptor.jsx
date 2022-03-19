@@ -7,7 +7,7 @@ const cookies = new Cookies();
 axios.interceptors.request.use(
     function(config) {
         const token = cookies.get("at_cin");
-        config.headers.authorization = `GCin ${token}`;
+        config.headers.authorization = `Bearer ${token}`;
 
         return config;
     },
