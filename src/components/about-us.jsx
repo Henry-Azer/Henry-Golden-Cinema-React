@@ -348,10 +348,9 @@ const AboutUs = () => {
                                 component="div"
                                 gutterBottom
                             >
-                                Skilled Full Stack Java/React Developer, 3+
-                                years of self-studying. Quick learner, working
-                                hard as self-teaching and looking forward to
-                                keeping pace with the times.
+                                Skilled Front-End Developer, UI expert, works a
+                                long time in designing, expert with adobe
+                                technologies like photoshop and illustrator.
                             </Typography>
                             <CardActions>
                                 <div className="social-container display-flex flex-row">
