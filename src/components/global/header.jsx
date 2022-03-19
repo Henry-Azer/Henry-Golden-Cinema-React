@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useSelector } from "react-redux";
+import Cookies from "universal-cookie";
 
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Typography from "@mui/material/Typography";
 
 import { Divide as Hamburger } from "hamburger-react";
 
@@ -15,10 +15,12 @@ import logoName from "../../resources/icons/logo-02.png";
 
 const Header = () => {
     const navigate = useNavigate();
+    const cookies = new Cookies();
 
-    const isUserAuthenticated = useSelector(
-        (state) => state.auth.isUserAuthenticated
+    const [isUserAuthenticated, setIsUserAuthenticated] = useState(
+        cookies.get("iua_cin")
     );
+    const [authenticatedUsername] = useState(cookies.get("aun_cin"));
 
     const [isHamburgerOpen, setHamburgerOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -57,6 +59,14 @@ const Header = () => {
 
     const handleClose = () => {
         setAnchorEl(null);
+    };
+
+    const logout = () => {
+        cookies.remove("at_cin");
+        cookies.remove("iua_cin");
+        cookies.remove("aui_cin");
+        cookies.remove("aun_cin");
+        setIsUserAuthenticated(!isUserAuthenticated);
     };
 
     return (
@@ -141,7 +151,7 @@ const Header = () => {
                             variant="h6"
                             component="span"
                         >
-                            Welcome, User!
+                            Welcome, {authenticatedUsername}!
                         </Typography>
                     ) : (
                         <Typography
@@ -159,20 +169,22 @@ const Header = () => {
                     {isUserAuthenticated ? (
                         <Menu
                             id="basic-menu"
-                            anchorEl={anchorEl}
                             open={open}
+                            anchorEl={anchorEl}
                             onClose={handleClose}
                             MenuListProps={{
                                 "aria-labelledby": "basic-button",
                             }}
                         >
-                            <MenuItem>Log out</MenuItem>
+                            <MenuItem onClick={() => logout()}>
+                                Log out
+                            </MenuItem>
                         </Menu>
                     ) : (
                         <Menu
                             id="basic-menu"
-                            anchorEl={anchorEl}
                             open={open}
+                            anchorEl={anchorEl}
                             onClose={handleClose}
                             MenuListProps={{
                                 "aria-labelledby": "basic-button",
