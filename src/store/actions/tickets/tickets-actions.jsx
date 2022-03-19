@@ -5,6 +5,9 @@ import {
     TICKETS_LIST_USER_REQUEST,
     TICKETS_LIST_USER_ERROR,
     TICKETS_LIST_USER_SUCCEEDED,
+    TICKET_CANCEL_REQUEST,
+    TICKET_CANCEL_SUCCEEDED,
+    TICKET_CANCEL_ERROR,
 } from "../types";
 
 import Cookies from "universal-cookie";
@@ -22,7 +25,7 @@ const api = axios.create({
 export const ticketsListUser = () => (dispatch) => {
     dispatch({ type: TICKETS_LIST_USER_REQUEST });
 
-    api.get(`${URL}/all`, {
+    api.get(`${URL}/auth-id/${authenticatedUserId}`, {
         delay: 1000,
     })
         .then(function(response) {
@@ -43,21 +46,21 @@ export const ticketsListUser = () => (dispatch) => {
         });
 };
 
-export const cancelBookedTicket = () => (dispatch) => {
-    dispatch({ type: TICKETS_LIST_USER_REQUEST });
+export const cancelBookedTicket = (ticketId) => (dispatch) => {
+    dispatch({ type: TICKET_CANCEL_REQUEST });
 
-    api.get(`${URL}/all`, {
+    api.delete(`${URL}/${ticketId}`, {
         delay: 1000,
     })
         .then(function(response) {
             if (response.data.status === 200) {
                 dispatch({
-                    type: TICKETS_LIST_USER_SUCCEEDED,
+                    type: TICKET_CANCEL_SUCCEEDED,
                     payload: response.data.body,
                 });
             } else {
                 dispatch({
-                    type: TICKETS_LIST_USER_ERROR,
+                    type: TICKET_CANCEL_ERROR,
                     payload: response.data.message,
                 });
             }

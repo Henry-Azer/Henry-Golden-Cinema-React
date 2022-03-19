@@ -722,8 +722,9 @@ body {
 
 .bookings .Collapsible {
     width: auto;
-    min-width: 350px;
-    margin: 20px 120px;
+    min-width: 250px;
+    max-width: 550px;
+    margin: 0 auto;
     transition: 0.6s all;
 }
 
@@ -736,7 +737,6 @@ body {
     content: "";
     padding-top: 15px;
     border-bottom: 1px solid var(--mainColor);
-    width: 100%;
     display: block;
 }
 
@@ -758,8 +758,31 @@ body {
     transition: 0.6s all;
 }
 
-.bookings .ticket-operations a {
+.bookings .ticket-operations .cancel-ticket {
     color: var(--font2ndColor);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin: 5px 0;
+    font-size: 15px;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: 0.7s all;
+}
+
+.bookings .ticket-operations .cancel-ticket:hover {
+    color: var(--mainColor);
+}
+
+.react-confirm-alert-overlay {
+    background-color: rgba(58, 58, 58, 0.7) !important;
+}
+
+.react-confirm-alert-body {
+    background-color: var(--main3rdColor) !important;
+    color: var(--fontColor) !important;
+    border: 2px solid var(--fontColor);
+    width: auto !important;
 }
 /* ----- BOOKINGS ROUTE END ----- */
 
@@ -945,14 +968,6 @@ body {
     /* ----- HEADER ROUTE END ------- */
 
     /* -------------------------------------------------------- */
-
-    /* ----- BOOKINGS ROUTE START ----- */
-    .bookings .Collapsible {
-        margin: 20px 120px;
-    }
-    /* ----- BOOKINGS ROUTE END ------- */
-
-    /* -------------------------------------------------------- */
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
@@ -963,14 +978,6 @@ body {
         margin: 0 100px;
     }
     /* ----- GLOBAL END ------- */
-
-    /* -------------------------------------------------------- */
-
-    /* ----- BOOKINGS ROUTE START ----- */
-    .bookings .Collapsible {
-        margin: 20px 60px;
-    }
-    /* ----- BOOKINGS ROUTE END ------- */
 
     /* -------------------------------------------------------- */
 }
@@ -1007,14 +1014,6 @@ body {
     /* ----- FORM END ------- */
 
     /* -------------------------------------------------------- */
-
-    /* ----- BOOKINGS ROUTE START ----- */
-    .bookings .Collapsible {
-        margin: 20px 0;
-    }
-    /* ----- BOOKINGS ROUTE END ------- */
-
-    /* -------------------------------------------------------- */
 }
 
 @media only screen and (max-width: 577px) {
@@ -1038,7 +1037,7 @@ body {
         width: 250px;
     }
 
-    .reg-log-navigation .btn-1  {
+    .reg-log-navigation .btn-1 {
         width: 330px;
     }
     /* ----- FORM END ------- */
@@ -1098,7 +1097,7 @@ body {
 
     /* ----- BOOKINGS ROUTE START ----- */
     .bookings .ticket-wrapper img {
-        width: 300px;
+        width: 350px;
         height: 200px;
     }
     /* ----- BOOKINGS ROUTE END ------- */
