@@ -14,6 +14,7 @@ import "aos/dist/aos.css";
 import "./styles/styles.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
