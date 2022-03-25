@@ -10,23 +10,17 @@ import {
     TICKET_CANCEL_ERROR,
 } from "../types";
 
-import Cookies from "universal-cookie";
-
-const cookies = new Cookies();
-
-var authenticatedUserId = cookies.get("aui_cin");
-
 const URL = "http://localhost:8080/api/ticket";
 
 const api = axios.create({
     adapter: delayAdapterEnhancer(axios.defaults.adapter),
 });
 
-export const ticketsListUser = () => (dispatch) => {
+export const ticketsListUser = (authenticatedUserId) => (dispatch) => {
     dispatch({ type: TICKETS_LIST_USER_REQUEST });
 
     api.get(`${URL}/auth-id/${authenticatedUserId}`, {
-        delay: 1000,
+        delay: 500,
     })
         .then(function(response) {
             if (response.data.status === 200) {
@@ -50,7 +44,7 @@ export const cancelBookedTicket = (ticketId) => (dispatch) => {
     dispatch({ type: TICKET_CANCEL_REQUEST });
 
     api.delete(`${URL}/${ticketId}`, {
-        delay: 1000,
+        delay: 500,
     })
         .then(function(response) {
             if (response.data.status === 200) {

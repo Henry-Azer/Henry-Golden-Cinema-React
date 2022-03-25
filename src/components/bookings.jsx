@@ -31,6 +31,7 @@ const Bookings = () => {
     const locationState = location.state;
 
     const [isUserAuthenticated] = useState(cookies.get("iua_cin"));
+    const [authenticatedUserId] = useState(cookies.get("aui_cin"));
     const [authenticatedUsername] = useState(cookies.get("aun_cin"));
 
     const [ticketsDispatched, setTicketsDispatched] = useState(false);
@@ -59,11 +60,11 @@ const Bookings = () => {
     useEffect(() => {
         if (isUserAuthenticatedCookie()) {
             if (!ticketsDispatched) {
-                dispatch(ticketsListUser());
+                dispatch(ticketsListUser(authenticatedUserId));
                 setTicketsDispatched(true);
             }
         }
-    }, [dispatch, ticketsDispatched, tickets]);
+    }, [dispatch, ticketsDispatched, authenticatedUserId]);
 
     const isUserAuthenticatedCookie = () => {
         return cookies.get("iua_cin");
