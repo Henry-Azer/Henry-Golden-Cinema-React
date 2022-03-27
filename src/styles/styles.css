@@ -195,10 +195,15 @@ body {
     color: var(--font2ndColor);
 }
 
+.form-1 .form-control {
+    width: 480px;
+    transition: 0.6s all;
+}
+
 .form-1 .process-img {
     width: 50px;
     height: 50px;
-    padding-bottom: 10px;
+    padding: 15px 0;
     transition: 0.6s all;
 }
 
@@ -556,10 +561,9 @@ body {
 
 /* ----- MOVIE ROUTE START ----- */
 .movie-route .movie-wrapper {
-    margin: 0 22px;
-    display: grid;
-    margin: 0 70px;
-    grid-template-columns: 430px 520px;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin: 0 60px;
 }
 
 .movie-details .movie-img {
@@ -578,19 +582,19 @@ body {
 
 .movie-details .movie-data {
     display: grid;
-    margin: 0 8px;
+    margin: 0 10px;
 }
 
 .movie-data .movie-title {
     font-size: 30px;
     font-weight: 900;
-    margin: 15px 0;
+    margin: 18px 0;
     width: 250px;
 }
 
 .movie-details .details-wrapper {
     display: grid;
-    margin: 10px 0;
+    margin: 5px 0;
     grid-template-columns: 120px 150px;
 }
 
@@ -603,15 +607,28 @@ body {
 }
 
 .movie-details .movie-description {
+    margin-top: 15px;
     width: 250px;
+}
+
+.movie-booking .movie-trailer {
+    text-align: center;
+    margin-top: 50px;
 }
 
 .movie-trailer .movie-attrib {
     font-size: 28px;
+    text-align: left;
 }
 
 .movie-route-wrapper .empty-details {
     text-align: center;
+}
+
+.movie-trailer .trailer-video {
+    width: 500px;
+    height: 280px;
+    transition: 0.6s all;
 }
 
 .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root,
@@ -724,7 +741,7 @@ body {
     width: auto;
     min-width: 250px;
     max-width: 550px;
-    margin: 0 auto;
+    margin: 20px auto;
     transition: 0.6s all;
 }
 
@@ -899,6 +916,17 @@ body {
     /* -------------------------------------------------------- */
 }
 
+@media only screen and (max-width: 1260px) {
+    .movie-route .movie-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .movie-wrapper .movie-booking {
+        margin-top: 80px;
+    }
+}
+
 @media only screen and (max-width: 1088px) {
     /* -------------------------------------------------------- */
 
@@ -1037,6 +1065,10 @@ body {
         width: 250px;
     }
 
+    .form-1 .form-control {
+        width: 300px;
+    }
+
     .reg-log-navigation .btn-1 {
         width: 330px;
     }
@@ -1090,6 +1122,16 @@ body {
     .movie-card .movie-card-img {
         height: 300px;
         width: 210px;
+    }
+    /* ------------------------------------------ */
+
+    /* -------------------------------------------------------- */
+   
+    /* ----------- MOVIE ROUTE START ----------- */
+    .movie-trailer .trailer-video {
+        width: 300px;
+        height: 200px;
+        transition: 0.6s all;
     }
     /* ------------------------------------------ */
 
