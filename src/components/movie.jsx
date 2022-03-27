@@ -8,7 +8,6 @@ import Header from "./global/header";
 import Footer from "./global/footer";
 import Chatbot from "./global/chatbot";
 import BookingForm from "./movie/booking-form";
-// import { RequestLoader, RequestSucceeded } from "./global/form-loader";
 
 import YouTube from "react-youtube";
 
@@ -19,11 +18,8 @@ import { FaCaretRight } from "react-icons/fa";
 import Typography from "@mui/material/Typography";
 
 const youtubeOpts = {
-    height: "300",
-    width: "500",
     playerVars: {
         autoplay: 0,
-        origin: "http:localhost:3000",
         enablejsapi: "1",
     },
 };
@@ -42,7 +38,7 @@ const Movie = () => {
         document.title = movie
             ? `${movie.title} | Henry Golden Cinema`
             : "Movie | Henry Golden Cinema";
-    }, [movie]);
+    }, [movie, dispatch]);
 
     useEffect(() => {
         if (locationState == null && params.title !== "...") {
@@ -66,7 +62,7 @@ const Movie = () => {
 
             {!movieRequest ? (
                 movie ? (
-                    <div className="movie-route-wrapper  content-fit">
+                    <div className="movie-route-wrapper content-fit">
                         <div className="heading-wrapper display-flex flex-row">
                             <FaCaretRight className="heading-icon" />
                             <Typography
@@ -77,7 +73,7 @@ const Movie = () => {
                                 {movie.title}
                             </Typography>
                         </div>
-                        <div className="movie-wrapper">
+                        <div className="movie-wrapper display-flex flex-row">
                             <div className="movie-details">
                                 <img
                                     className="movie-img"
@@ -218,7 +214,7 @@ const Movie = () => {
                                 </div>
                             </div>
                             <div className="movie-booking">
-                                <BookingForm />
+                                <BookingForm movieId={locationState.movie.id} />
                                 <div className="movie-trailer">
                                     <Typography
                                         className="movie-attrib"
@@ -229,7 +225,11 @@ const Movie = () => {
                                         <b>Watch Trailer</b>
                                     </Typography>
                                     <YouTube
-                                        videoId={movie.ytTrailerId}
+                                        className="trailer-video"
+                                        videoId={
+                                            movie.ytTrailerId +
+                                            "?showinfo=0&enablejsapi=1&origin=http://localhost:3000"
+                                        }
                                         opts={youtubeOpts}
                                     />
                                 </div>
