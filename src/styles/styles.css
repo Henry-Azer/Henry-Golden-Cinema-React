@@ -630,6 +630,38 @@ body {
     transition: 0.6s all;
 }
 
+.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root,
+.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+    color: rgb(185, 185, 185) !important;
+}
+
+.css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon,
+.css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon {
+    color: #e5890a !important;
+}
+
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+    background: url("/src/resources/backgrounds/bg-01.png") !important;
+}
+
+.css-1480iag-MuiInputBase-root-MuiInput-root,
+.css-6hp17o-MuiList-root-MuiMenu-list {
+    color: white !important;
+}
+
+.css-6hp17o-MuiList-root-MuiMenu-list li {
+    justify-content: center !important;
+}
+
+.css-1480iag-MuiInputBase-root-MuiInput-root:before {
+    border-bottom: 1px solid #e5890a !important;
+}
+
+.css-1480iag-MuiInputBase-root-MuiInput-root:after {
+    border-bottom: 2px solid #e5890a !important;
+}
+
+/* Adjust for build */
 .css-1cccqvr,
 .css-348fk2,
 .css-348fk2:focus {
@@ -662,6 +694,7 @@ body {
 .css-1wt0ykv:after {
     border-bottom: 2px solid #e5890a !important;
 }
+/* Adjust for build */
 /* ----- MOVIE ROUTE END ----- */
 
 /* -------------------------------------------------------- */
