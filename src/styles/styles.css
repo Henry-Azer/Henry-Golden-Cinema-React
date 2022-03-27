@@ -443,8 +443,7 @@ body {
 }
 
 .reg-log-wrapper {
-    padding-top: 40px;
-    padding: auto 0;
+    padding: 50px 0;
     gap: 20px;
 }
 
@@ -631,34 +630,36 @@ body {
     transition: 0.6s all;
 }
 
-.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root,
-.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+.css-1cccqvr,
+.css-348fk2,
+.css-348fk2:focus {
+    color: var(--fontColor) !important;
+}
+
+.css-mqt2s5 {
     color: rgb(185, 185, 185) !important;
 }
 
-.css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon,
-.css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon {
+.css-1wkhih1,
+.css-1utq5rl,
+.css-pqjvzy {
     color: #e5890a !important;
 }
 
-.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+.css-177ic5c {
     background: url("/src/resources/backgrounds/bg-01.png") !important;
 }
 
-.css-1480iag-MuiInputBase-root-MuiInput-root,
-.css-6hp17o-MuiList-root-MuiMenu-list {
-    color: white !important;
-}
-
-.css-6hp17o-MuiList-root-MuiMenu-list li {
+.css-1km1ehz {
+    color: var(--fontColor) !important;
     justify-content: center !important;
 }
 
-.css-1480iag-MuiInputBase-root-MuiInput-root:before {
+.css-1wt0ykv:before {
     border-bottom: 1px solid #e5890a !important;
 }
 
-.css-1480iag-MuiInputBase-root-MuiInput-root:after {
+.css-1wt0ykv:after {
     border-bottom: 2px solid #e5890a !important;
 }
 /* ----- MOVIE ROUTE END ----- */
@@ -1126,7 +1127,7 @@ body {
     /* ------------------------------------------ */
 
     /* -------------------------------------------------------- */
-   
+
     /* ----------- MOVIE ROUTE START ----------- */
     .movie-trailer .trailer-video {
         width: 300px;
