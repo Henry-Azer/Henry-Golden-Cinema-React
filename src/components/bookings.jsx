@@ -3,7 +3,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { ticketsListUser, cancelBookedTicket } from "../store/actions";
+import {
+    ticketsListUser,
+    clearTicketsListUser,
+    cancelBookedTicket,
+} from "../store/actions";
 
 import Cookies from "universal-cookie";
 
@@ -34,6 +38,7 @@ const Bookings = () => {
     const [authenticatedUserId] = useState(cookies.get("aui_cin"));
     const [authenticatedUsername] = useState(cookies.get("aun_cin"));
 
+    const [indexTicket, setIndexTicket] = useState(null);
     const [ticketsDispatched, setTicketsDispatched] = useState(false);
     const [ticketDownloaded, setTicketDownloaded] = useState(false);
 
@@ -42,7 +47,7 @@ const Bookings = () => {
         (state) => state.tickets.ticketsListUserRequest
     );
     const ticketCancelRequest = useSelector(
-        (state) => state.tickets.ticketsListUserRequest
+        (state) => state.tickets.ticketCancelRequest
     );
 
     useEffect(() => {
@@ -64,15 +69,20 @@ const Bookings = () => {
                 setTicketsDispatched(true);
             }
         }
+
+        return () => {
+            dispatch(clearTicketsListUser());
+        };
     }, [dispatch, ticketsDispatched, authenticatedUserId]);
 
     const isUserAuthenticatedCookie = () => {
         return cookies.get("iua_cin");
     };
 
-    const downloadTicketImage = (ticketImage, movieTitle) => {
+    const downloadTicketImage = (ticketId, ticketImage, movieTitle) => {
         var ticket = base64ToArrayBuffer(ticketImage);
         saveByteArray(`${movieTitle}-Ticket.png`, ticket);
+        setIndexTicket(ticketId);
         setTicketDownloaded(true);
     };
 
@@ -104,7 +114,11 @@ const Bookings = () => {
                 {
                     label: "Yes",
                     onClick: () => {
+                        setIndexTicket(ticketId);
                         dispatch(cancelBookedTicket(ticketId));
+                        setTimeout(() => {
+                            setTicketsDispatched(false);
+                        }, 6000);
                     },
                 },
                 {
@@ -142,8 +156,7 @@ const Bookings = () => {
                                     <Collapsible
                                         key={i}
                                         trigger={[
-                                            `jj`,
-                                            // `${ticket.movie.title}`,
+                                            `${ticket.movie.title}`,
                                             <FaCaretLeft key={i} />,
                                         ]}
                                     >
@@ -156,7 +169,8 @@ const Bookings = () => {
                                         </div>
                                         <div className="ticket-operations display-flex">
                                             <div>
-                                                {ticketDownloaded ? (
+                                                {ticketDownloaded &&
+                                                indexTicket === ticket.id ? (
                                                     <>
                                                         <Alert severity="success">
                                                             Ticket downloaded
@@ -167,7 +181,8 @@ const Bookings = () => {
                                                 ) : null}
                                             </div>
                                             <div>
-                                                {ticketCancelRequest ? (
+                                                {ticketCancelRequest &&
+                                                indexTicket === ticket.id ? (
                                                     <>
                                                         <Alert severity="warning">
                                                             Ticket canceled
@@ -181,7 +196,9 @@ const Bookings = () => {
                                                 className="btn-1"
                                                 onClick={() =>
                                                     downloadTicketImage(
-                                                        ticket.image
+                                                        ticket.id,
+                                                        ticket.image,
+                                                        ticket.movie.title
                                                     )
                                                 }
                                             >
