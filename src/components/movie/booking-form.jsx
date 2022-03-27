@@ -3,7 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { ticketBooking, clearTicketBooking, showsList, clearShowsList } from "../../store/actions";
+import {
+    ticketBooking,
+    clearTicketBooking,
+    showsList,
+    clearShowsList,
+} from "../../store/actions";
 
 import { RequestLoader, RequestSucceeded } from "../global/form-loader";
 
@@ -23,6 +28,7 @@ const BookingForm = ({ movieId }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const [isUserAuthenticated] = useState(cookies.get("iua_cin"));
     const [authenticatedUserId] = useState(cookies.get("aui_cin"));
     const [showsDispatched, setShowsDispatched] = useState(false);
 
@@ -49,7 +55,7 @@ const BookingForm = ({ movieId }) => {
 
         return () => {
             dispatch(clearShowsList());
-            dispatch(clearTicketBooking())
+            dispatch(clearTicketBooking());
         };
     }, [dispatch, showsDispatched, movieId]);
 
@@ -98,240 +104,268 @@ const BookingForm = ({ movieId }) => {
 
     return (
         <div className="booking-form display-flex">
-            {shows ? (
-                <>
-                    <Typography variant="h5" gutterBottom component="div">
-                        Book Ticket Now!
-                    </Typography>
-                    <Formik
-                        initialValues={{
-                            date: "",
-                            time: "",
-                            seat: "",
-                        }}
-                        validate={(values) => {
-                            const errors = {};
+            {isUserAuthenticated ? (
+                shows ? (
+                    <>
+                        <Typography variant="h5" gutterBottom component="div">
+                            Book Ticket Now!
+                        </Typography>
+                        <Formik
+                            initialValues={{
+                                date: "",
+                                time: "",
+                                seat: "",
+                            }}
+                            validate={(values) => {
+                                const errors = {};
 
-                            // Date Validation
-                            if (!values.date) errors.date = "Required";
+                                // Date Validation
+                                if (!values.date) errors.date = "Required";
 
-                            // Time Validation
-                            if (!values.time) errors.time = "Required";
+                                // Time Validation
+                                if (!values.time) errors.time = "Required";
 
-                            // Seat Validation
-                            if (!values.seat) errors.seat = "Required";
+                                // Seat Validation
+                                if (!values.seat) errors.seat = "Required";
 
-                            return errors;
-                        }}
-                        onSubmit={(values, { setSubmitting, resetForm }) => {
-                            dispatch(
-                                ticketBooking(
-                                    values,
-                                    movieId,
-                                    authenticatedUserId
-                                )
-                            );
+                                return errors;
+                            }}
+                            onSubmit={(
+                                values,
+                                { setSubmitting, resetForm }
+                            ) => {
+                                dispatch(
+                                    ticketBooking(
+                                        values,
+                                        movieId,
+                                        authenticatedUserId
+                                    )
+                                );
 
-                            setTimeout(() => {
-                                setSubmitting(false);
-                                resetForm();
-                                dispatch(showsList(movieId));
-                            }, 8000);
-                        }}
-                    >
-                        {({
-                            values,
-                            errors,
-                            touched,
-                            handleChange,
-                            handleBlur,
-                            handleSubmit,
-                            isSubmitting,
-                        }) => (
-                            <form onSubmit={handleSubmit} className="form-1">
-                                <div className="form-wrapper display-flex">
-                                    <FormControl
-                                        variant="standard"
-                                        className="form-control"
-                                    >
-                                        <InputLabel id="demo-simple-select-standard-label">
-                                            Date
-                                        </InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-standard-label"
-                                            id="demo-simple-select-standard"
-                                            label="Date"
-                                            name="date"
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.date}
+                                setTimeout(() => {
+                                    setSubmitting(false);
+                                    resetForm();
+                                    dispatch(showsList(movieId));
+                                }, 8000);
+                            }}
+                        >
+                            {({
+                                values,
+                                errors,
+                                touched,
+                                handleChange,
+                                handleBlur,
+                                handleSubmit,
+                                isSubmitting,
+                            }) => (
+                                <form
+                                    onSubmit={handleSubmit}
+                                    className="form-1"
+                                >
+                                    <div className="form-wrapper display-flex">
+                                        <FormControl
+                                            variant="standard"
+                                            className="form-control"
                                         >
-                                            <MenuItem value="">
-                                                <em>None</em>
-                                            </MenuItem>
-                                            {filterShowsByDate().map(
-                                                (show, i) => (
-                                                    <MenuItem
-                                                        key={i}
-                                                        value={show.showDate}
-                                                    >
-                                                        {show.showDate}
-                                                    </MenuItem>
-                                                )
-                                            )}
-                                        </Select>
-                                    </FormControl>
-                                    <span>
-                                        {errors.date &&
-                                            touched.date &&
-                                            errors.date}
-                                    </span>
+                                            <InputLabel id="demo-simple-select-standard-label">
+                                                Date
+                                            </InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-standard-label"
+                                                id="demo-simple-select-standard"
+                                                label="Date"
+                                                name="date"
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.date}
+                                            >
+                                                <MenuItem value="">
+                                                    <em>None</em>
+                                                </MenuItem>
+                                                {filterShowsByDate().map(
+                                                    (show, i) => (
+                                                        <MenuItem
+                                                            key={i}
+                                                            value={
+                                                                show.showDate
+                                                            }
+                                                        >
+                                                            {show.showDate}
+                                                        </MenuItem>
+                                                    )
+                                                )}
+                                            </Select>
+                                        </FormControl>
+                                        <span>
+                                            {errors.date &&
+                                                touched.date &&
+                                                errors.date}
+                                        </span>
 
-                                    <FormControl
-                                        variant="standard"
-                                        className="form-control"
-                                    >
-                                        <InputLabel id="demo-simple-select-standard-label">
-                                            Time
-                                        </InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-standard-label"
-                                            id="demo-simple-select-standard"
-                                            label="Time"
-                                            name="time"
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.time}
+                                        <FormControl
+                                            variant="standard"
+                                            className="form-control"
                                         >
-                                            <MenuItem value="">
-                                                <em>None</em>
-                                            </MenuItem>
-                                            {values.date !== ""
-                                                ? filterShowsForChosenDate(
-                                                      values.date
-                                                  ).map((show, i) => (
-                                                      <MenuItem
-                                                          key={i}
-                                                          value={show.showTime}
-                                                      >
-                                                          {show.showTime}
-                                                      </MenuItem>
-                                                  ))
-                                                : null}
-                                        </Select>
-                                    </FormControl>
-                                    <span>
-                                        {errors.time &&
-                                            touched.time &&
-                                            errors.time}
-                                    </span>
+                                            <InputLabel id="demo-simple-select-standard-label">
+                                                Time
+                                            </InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-standard-label"
+                                                id="demo-simple-select-standard"
+                                                label="Time"
+                                                name="time"
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.time}
+                                            >
+                                                <MenuItem value="">
+                                                    <em>None</em>
+                                                </MenuItem>
+                                                {values.date !== ""
+                                                    ? filterShowsForChosenDate(
+                                                          values.date
+                                                      ).map((show, i) => (
+                                                          <MenuItem
+                                                              key={i}
+                                                              value={
+                                                                  show.showTime
+                                                              }
+                                                          >
+                                                              {show.showTime}
+                                                          </MenuItem>
+                                                      ))
+                                                    : null}
+                                            </Select>
+                                        </FormControl>
+                                        <span>
+                                            {errors.time &&
+                                                touched.time &&
+                                                errors.time}
+                                        </span>
 
-                                    <FormControl
-                                        variant="standard"
-                                        className="form-control"
-                                    >
-                                        <InputLabel id="demo-simple-select-standard-label">
-                                            Seat
-                                        </InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-standard-label"
-                                            id="demo-simple-select-standard"
-                                            label="Seat Number"
-                                            name="seat"
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.seat}
+                                        <FormControl
+                                            variant="standard"
+                                            className="form-control"
                                         >
-                                            <MenuItem value="">
-                                                <em>None</em>
-                                            </MenuItem>
-                                            {filterShowsForChosenTime(
-                                                values.time,
-                                                values.date
-                                            ).map((show, i) =>
-                                                filterShowSeats(
+                                            <InputLabel id="demo-simple-select-standard-label">
+                                                Seat
+                                            </InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-standard-label"
+                                                id="demo-simple-select-standard"
+                                                label="Seat Number"
+                                                name="seat"
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.seat}
+                                            >
+                                                <MenuItem value="">
+                                                    <em>None</em>
+                                                </MenuItem>
+                                                {filterShowsForChosenTime(
                                                     values.time,
                                                     values.date
-                                                ).map((seat, i) => (
-                                                    <MenuItem
-                                                        key={i}
-                                                        value={seat}
-                                                    >
-                                                        {seat}
-                                                    </MenuItem>
-                                                ))
-                                            )}
-                                        </Select>
-                                    </FormControl>
-                                    <span>
-                                        {errors.seat &&
-                                            touched.seat &&
-                                            errors.seat}
-                                    </span>
-                                </div>
+                                                ).map((show, i) =>
+                                                    filterShowSeats(
+                                                        values.time,
+                                                        values.date
+                                                    ).map((seat, i) => (
+                                                        <MenuItem
+                                                            key={i}
+                                                            value={seat}
+                                                        >
+                                                            {seat}
+                                                        </MenuItem>
+                                                    ))
+                                                )}
+                                            </Select>
+                                        </FormControl>
+                                        <span>
+                                            {errors.seat &&
+                                                touched.seat &&
+                                                errors.seat}
+                                        </span>
+                                    </div>
 
-                                <div className="form-submission display-flex">
-                                    {ticketBookingRequest ? (
-                                        <RequestLoader />
-                                    ) : null}
+                                    <div className="form-submission display-flex">
+                                        {ticketBookingRequest ? (
+                                            <RequestLoader />
+                                        ) : null}
 
-                                    {ticketBookingSucceeded &&
-                                    !ticketBookingRequest ? (
-                                        <RequestSucceeded />
-                                    ) : null}
+                                        {ticketBookingSucceeded &&
+                                        !ticketBookingRequest ? (
+                                            <RequestSucceeded />
+                                        ) : null}
 
-                                    {!ticketBookingSucceeded &&
-                                    ticketBookingErrorOccurred &&
-                                    !ticketBookingRequest ? (
+                                        {!ticketBookingSucceeded &&
+                                        ticketBookingErrorOccurred &&
+                                        !ticketBookingRequest ? (
+                                            <Typography
+                                                variant="h6"
+                                                component="span"
+                                                gutterBottom
+                                            >
+                                                {ticketBookingError}
+                                            </Typography>
+                                        ) : null}
+
                                         <Typography
-                                            variant="h6"
-                                            component="span"
+                                            variant="subtitle1"
                                             gutterBottom
+                                            component="div"
                                         >
-                                            {ticketBookingError}
+                                            <b>Price:</b> &nbsp; 100$
                                         </Typography>
-                                    ) : null}
 
-                                    <Typography
-                                        variant="subtitle1"
-                                        gutterBottom
-                                        component="div"
-                                    >
-                                        <b>Price:</b> &nbsp; 100$
-                                    </Typography>
-
-                                    <button
-                                        className="btn-1"
-                                        type="submit"
-                                        disabled={isSubmitting}
-                                    >
-                                        Book
-                                    </button>
-                                </div>
-                            </form>
-                        )}
-                    </Formik>
-                </>
+                                        <button
+                                            className="btn-1"
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                        >
+                                            Book
+                                        </button>
+                                    </div>
+                                </form>
+                            )}
+                        </Formik>
+                    </>
+                ) : (
+                    <>
+                        <br />
+                        <Typography variant="h6" component="div" gutterBottom>
+                            Tickets are sold out.
+                        </Typography>
+                        <Typography variant="h5" component="div" gutterBottom>
+                            Book another movie now!
+                        </Typography>
+                        <button
+                            className="btn-1"
+                            onClick={() =>
+                                navigate("/movies", {
+                                    state: {
+                                        elementScroll: "movies-scroll",
+                                    },
+                                })
+                            }
+                        >
+                            Movies
+                        </button>
+                    </>
+                )
             ) : (
                 <>
                     <br />
                     <Typography variant="h6" component="div" gutterBottom>
-                        Tickets are sold out.
+                    You didn't logged in until now!
                     </Typography>
                     <Typography variant="h5" component="div" gutterBottom>
-                        Book another movie now!
+                        Be a member to book tickets easily.
                     </Typography>
                     <button
                         className="btn-1"
-                        onClick={() =>
-                            navigate("/movies", {
-                                state: {
-                                    elementScroll: "movies-scroll",
-                                },
-                            })
-                        }
+                        onClick={() => navigate("/login")}
                     >
-                        Movies
+                        Login Now
                     </button>
                 </>
             )}
